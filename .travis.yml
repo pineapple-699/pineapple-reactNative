@@ -9,7 +9,7 @@ install:
 
 script:
   - npm ci --no-optional
-  # - npm run test 
-  - npm run lint
-  # - codecov
-  - npm run build
+  - npm run test 
+  # - npm run lint
+  # # - codecov
+  # - npm run build
