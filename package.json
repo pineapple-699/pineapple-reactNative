@@ -1,67 +1,40 @@
 {
-  "name": "pineapple-react-next",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "dev": "next",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint --ext=js --ext=jsx .",
-    "release": "standard-version",
-    "snyk-protect": "snyk protect"
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "eject": "expo eject",
+    "test": "jest --watchAll"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/pineapple-699/pineapple-react.git"
+  "jest": {
+    "preset": "jest-expo"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/pineapple-699/pineapple-react/issues"
-  },
-  "homepage": "https://github.com/pineapple-699/pineapple-react#readme",
   "dependencies": {
-    "next": "9.2.1",
-    "react": "16.12.0",
-    "react-dom": "16.12.0"
+    "@expo/samples": "~36.0.0",
+    "@expo/vector-icons": "~10.0.0",
+    "@react-navigation/web": "~1.0.0-alpha.9",
+    "expo": "~36.0.0",
+    "expo-asset": "~8.0.0",
+    "expo-constants": "~8.0.0",
+    "expo-font": "~8.0.0",
+    "expo-web-browser": "~8.0.0",
+    "react": "~16.9.0",
+    "react-dom": "~16.9.0",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-36.0.0.tar.gz",
+    "react-native-gesture-handler": "~1.5.0",
+    "react-native-reanimated": "~1.4.0",
+    "react-native-screens": "2.0.0-alpha.12",
+    "react-native-web": "~0.11.7",
+    "react-navigation": "~4.0.10",
+    "react-navigation-stack": "~1.10.3",
+    "react-navigation-tabs": "~2.6.2"
   },
-  "pre-commit": {
-    "run": [
-      "lint"
-    ]
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ],
   "devDependencies": {
-    "@babel/core": "7.8.3",
-    "@babel/plugin-proposal-class-properties": "7.8.3",
-    "@babel/preset-react": "7.8.3",
-    "@babel/register": "7.8.3",
-    "@fortawesome/fontawesome-free": "5.12.0",
-    "babel-eslint": "10.0.3",
-    "chai": "4.2.0",
-    "codecov": "3.6.1",
-    "enzyme": "3.11.0",
-    "enzyme-adapter-react-16": "1.15.2",
-    "eslint": "^6.8.0",
-    "eslint-config-standard": "^14.1.0",
-    "eslint-config-standard-react": "9.2.0",
-    "eslint-plugin-import": "^2.20.0",
-    "eslint-plugin-node": "^11.0.0",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-react": "^7.18.0",
-    "eslint-plugin-standard": "^4.0.1",
-    "jsdom-global": "3.0.2",
-    "mocha": "7.0.0",
-    "nyc": "15.0.0",
-    "pre-commit": "1.2.2",
-    "standard-version": "7.0.1"
+    "@babel/core": "^7.0.0",
+    "babel-preset-expo": "~8.0.0",
+    "jest-expo": "~36.0.1"
   },
-  "snyk": true
+  "private": true
 }
