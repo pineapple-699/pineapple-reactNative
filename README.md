@@ -21,4 +21,5 @@ Here are some quick commands to get started:
 
 ## Resources
 [Dev Stack](https://dev.to/newbiebr/my-react-native-stack-after-1-year-37j)
+
 [Collecting Coverage Reports](https://github.com/codecov/example-node)
