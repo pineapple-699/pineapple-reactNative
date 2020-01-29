@@ -15,3 +15,8 @@ Here are some quick commands to get started:
  
 ## Standards
 ![](https://camo.githubusercontent.com/ac39e55435127da9f093723cb83e5e17ca951220/687474703a2f2f692e696d6775722e636f6d2f413258614e71632e706e67)
+
+
+## Resources
+[Dev Stack](https://dev.to/newbiebr/my-react-native-stack-after-1-year-37j)
+[Collecting Coverage Reports](https://github.com/codecov/example-node)

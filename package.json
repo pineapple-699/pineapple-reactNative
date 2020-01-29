@@ -7,11 +7,13 @@
     "web": "expo start --web",
     "eject": "expo eject",
     "test": "jest --watchAll",
-    "test-run": "jest --forceExit --detectOpenHandles",
+    "test-run": "jest --forceExit --detectOpenHandles && codecov",
     "lint": "eslint --fix *.js"
   },
   "jest": {
-    "preset": "jest-expo"
+    "preset": "jest-expo",
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true
   },
   "dependencies": {
     "@expo/samples": "36.0.0",
