@@ -1,4 +1,4 @@
-module.exports = function(api) {
+module.exports = function babz(api) {
   api.cache(true);
   return {
     presets: ['babel-preset-expo'],

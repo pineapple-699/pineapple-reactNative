@@ -1,27 +1,12 @@
 {
     "env": {
-        "browser": true,
-        "es6": true
+        "node": true, // this is the best starting point
+        "browser": true, // for react web
+        "es6": true // enables es6 features
     },
-    "extends": [
-        "plugin:react/recommended",
-        "standard"
-    ],
-    "globals": {
-        "Atomics": "readonly",
-        "SharedArrayBuffer": "readonly"
-    },
-    "parserOptions": {
-        "ecmaFeatures": {
-            "jsx": true
-        },
-        "ecmaVersion": 2018,
-        "sourceType": "module"
-    },
-    "plugins": [
-        "react"
-    ],
+    "parser": "babel-eslint", // needed to make babel stuff work properly
+    "extends": "airbnb",
     "rules": {
-        "react/react-in-jsx-scope": "off"
-    }
+        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+      }
 }
