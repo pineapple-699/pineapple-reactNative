@@ -7,10 +7,11 @@ This project is built with [React-Native](https://facebook.github.io/react-nativ
 
 Here are some quick commands to get started:
 
-- `npm install`: Install Node dependencies
+- `npm install`: Install Node dependencies.
 - `npm run web`: Start the hot reloading development server.
-- `npm test`: Run the test suit and watch for changes.
+- `npm run test`: Run the test suit and watch for changes.
+- `npm run lint`: Run the lint suit to make sure code is up to standard.
 
  
 ## Standards
-[![js-standard-style](https://cdn.rawgit.com/standard/standard/master/badge.svg)](https://github.com/standard/standard)
+![](https://camo.githubusercontent.com/ac39e55435127da9f093723cb83e5e17ca951220/687474703a2f2f692e696d6775722e636f6d2f413258614e71632e706e67)
