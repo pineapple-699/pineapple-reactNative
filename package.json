@@ -16,6 +16,7 @@
     "@expo/samples": "~36.0.0",
     "@expo/vector-icons": "~10.0.0",
     "@react-navigation/web": "~1.0.0-alpha.9",
+    "babel-eslint": "^10.0.3",
     "expo": "~36.0.0",
     "expo-asset": "~8.0.0",
     "expo-constants": "~8.0.0",
@@ -35,6 +36,7 @@
   "devDependencies": {
     "@babel/core": "^7.0.0",
     "babel-preset-expo": "~8.0.0",
+    "eslint": "^6.8.0",
     "jest-expo": "~36.0.1"
   },
   "private": true
