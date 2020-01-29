@@ -49,7 +49,7 @@ function handleFinishLoading(setLoadingComplete) {
 
 export default function App({ skipLoadingScreen }) {
   App.propTypes = {
-    skipLoadingScreen: PropTypes.shape.isRequired,
+    skipLoadingScreen: PropTypes.bool.isRequired,
   };
 
   const [isLoadingComplete, setLoadingComplete] = useState(false);
