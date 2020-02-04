@@ -12,7 +12,7 @@ Here are some quick commands to get started:
 - `npm install`: Install Node dependencies.
 - `npm run web`: Start the hot reloading development server.
 - `npm run test`: Run the test suit and watch for changes.
-- `npm run lint`: Run the lint suit to make sure code is up to standard.
+- `npm run lint`: Run the lint suit to make sure code is up to standard. 
 
  
 ## Standards
