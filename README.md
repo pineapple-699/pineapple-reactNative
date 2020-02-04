@@ -5,7 +5,7 @@
 
 ## Development
 
-This project is built with [React-Native](https://facebook.github.io/react-native/).
+This project is built with [React-Native](https://facebook.github.io/react-native/). 
 
 Here are some quick commands to get started:
 
