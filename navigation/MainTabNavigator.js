@@ -4,7 +4,7 @@ import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 
 import TabBarIcon from '../components/TabBarIcon';
-import HomeScreen from '../screens/HomeScreen';
+import { HomeScreen } from '../screens/HomeScreen';
 import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 
@@ -15,7 +15,12 @@ const config = Platform.select({
 
 const HomeStack = createStackNavigator(
   {
-    Home: HomeScreen,
+    Activity: {
+      screen: HomeScreen,
+      navigationOptions: {
+        title: 'Home',
+      }
+    }
   },
   config
 );
@@ -38,7 +43,12 @@ HomeStack.path = '';
 
 const LinksStack = createStackNavigator(
   {
-    Links: LinksScreen,
+    Links: {
+      screen: LinksScreen,
+      navigationOptions: {
+        title: 'Links',
+      }
+    }
   },
   config
 );
@@ -54,7 +64,12 @@ LinksStack.path = '';
 
 const SettingsStack = createStackNavigator(
   {
-    Settings: SettingsScreen,
+    Settings: {
+      screen: SettingsScreen,
+      navigationOptions: {
+        title: 'Settings',
+      }
+    }
   },
   config
 );
