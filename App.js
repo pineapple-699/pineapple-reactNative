@@ -2,9 +2,7 @@ import { AppLoading } from 'expo';
 import { Asset } from 'expo-asset';
 import * as Font from 'expo-font';
 import React, { useState } from 'react';
-import {
-  Platform, StatusBar, StyleSheet, View,
-} from 'react-native';
+import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import PropTypes from 'prop-types';
 import { Ionicons } from '@expo/vector-icons';
 
@@ -23,10 +21,7 @@ const styles = StyleSheet.create({
 
 async function loadResourcesAsync() {
   await Promise.all([
-    Asset.loadAsync([
-      robotDevImage,
-      robotProdImage,
-    ]),
+    Asset.loadAsync([robotDevImage, robotProdImage]),
     Font.loadAsync({
       // This is the font that we are using for our tab bar
       ...Ionicons.font,
@@ -45,7 +40,6 @@ function handleLoadingError(error) {
 function handleFinishLoading(setLoadingComplete) {
   setLoadingComplete(true);
 }
-
 
 export default function App({ skipLoadingScreen }) {
   App.propTypes = {

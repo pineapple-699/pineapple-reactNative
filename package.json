@@ -9,7 +9,7 @@
     "eject": "expo eject",
     "test": "jest --watchAll",
     "test-run": "jest --forceExit --detectOpenHandles && codecov",
-    "lint": "eslint --fix *.js"
+    "lint": "eslint *.js **/*.js"
   },
   "jest": {
     "preset": "jest-expo",
@@ -42,13 +42,17 @@
     "@babel/core": "7.0.0",
     "babel-eslint": "10.0.3",
     "babel-preset-expo": "8.0.0",
-    "eslint": "6.8.0",
-    "eslint-config-airbnb": "18.0.1",
-    "eslint-plugin-import": "2.20.1",
-    "eslint-plugin-jsx-a11y": "6.2.3",
-    "eslint-plugin-react": "7.18.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.18.0",
     "eslint-plugin-react-hooks": "1.7.0",
-    "jest-expo": "36.0.1"
+    "jest-expo": "36.0.1",
+    "prettier": "^1.19.1"
   },
   "private": true
 }
