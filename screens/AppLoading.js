@@ -25,7 +25,7 @@ export class loadingScreen extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <View style={styles.splashContainer}>
         <StatusBar barStyle='light-content' />
         {/* <Image
           style={{ height: 100, width: 100, resizeMode: 'contain' }}

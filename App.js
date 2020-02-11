@@ -8,6 +8,8 @@ import { Ionicons } from '@expo/vector-icons';
 
 import AppNavigator from './navigation/AppNavigator';
 
+console.disableYellowBox = true; 
+
 const robotDevImage = require('./assets/images/robot-dev.png');
 const robotProdImage = require('./assets/images/robot-prod.png');
 const monoFont = require('./assets/fonts/SpaceMono-Regular.ttf');

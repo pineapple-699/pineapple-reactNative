@@ -1,10 +1,20 @@
 import React from 'react';
-import { ExpoConfigView } from '@expo/samples';
+import {
+  Text,
+  View,
+} from 'react-native';
+import { styles } from '../constants/Style';
 
-export default function SettingsScreen() {
-  /**
-   * Go ahead and delete ExpoConfigView and replace it with your content;
-   * we just wanted to give you a quick view of your config.
-   */
-  return <ExpoConfigView />;
+export class SettingsScreen extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+
+  render() {
+    return (
+      <View style={styles.container}>
+        <Text>This is the homescreen!</Text>
+      </View>
+    );
+  }
 }

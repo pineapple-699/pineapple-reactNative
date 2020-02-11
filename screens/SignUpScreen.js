@@ -11,7 +11,7 @@ export class SignUpScreen extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <View style={styles.splashContainer}>
         <StatusBar barStyle='light-content' />
         <Text style={ styles.authText }>This is the sign up screen</Text>
         <Button
