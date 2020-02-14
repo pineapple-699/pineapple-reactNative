@@ -1,13 +1,9 @@
 import React from 'react';
 import { View, StatusBar, Text } from 'react-native';
 import { Button } from 'react-native-elements';
-import { styles } from '../constants/Style';
+import styles from '../constants/Style';
 
 export default class SignUpScreen extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <View style={styles.splashContainer}>

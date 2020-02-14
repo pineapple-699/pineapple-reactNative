@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 
-export const styles = StyleSheet.create({
-  
+const styles = StyleSheet.create({
+
   splashContainer: {
     flex: 1,
     backgroundColor: '#007AFF',
@@ -15,9 +15,9 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 
-  //Auth screens styles
+  // Auth screens styles
   splashSection: {
-    flex: .33,
+    flex: 0.33,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -29,7 +29,7 @@ export const styles = StyleSheet.create({
   },
   authText: {
     fontSize: 24,
-    color: "#fff",
+    color: '#fff',
   },
   authButton: {
     height: 40,
@@ -42,3 +42,5 @@ export const styles = StyleSheet.create({
     backgroundColor: '#fff',
   }
 });
+
+export default styles;

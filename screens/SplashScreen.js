@@ -1,7 +1,9 @@
 import React from 'react';
-import { View, StatusBar, Text, Alert } from 'react-native';
+import {
+  View, StatusBar, Text, Alert
+} from 'react-native';
 import { Button } from 'react-native-elements';
-import { styles } from '../constants/Style';
+import styles from '../constants/Style';
 
 export default class LogInScreen extends React.Component {
   constructor(props) {

@@ -4,13 +4,9 @@ import {
   View,
   Button
 } from 'react-native';
-import { styles } from '../constants/Style';
+import styles  from '../constants/Style';
 
 export class HomeScreen extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
   render() {
     return (
       <View style={styles.container}>

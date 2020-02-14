@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View } from 'react-native';
-import { styles } from '../constants/Style';
+import styles from '../constants/Style';
 
 export default class SettingsScreen extends React.Component {
   constructor(props) {
