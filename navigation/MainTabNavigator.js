@@ -26,7 +26,7 @@ const HomeStack = createStackNavigator(
     Scanner: {
       screen: ScannerScreen,
       navigationOptions: {
-        title: "Scan Barcode",
+        title: 'Scan Barcode',
       }
     }
   },
@@ -77,27 +77,24 @@ const SettingsStack = createStackNavigator(
       navigationOptions: {
         title: 'Settings',
         headerRight:
-          <Icon
-            name="logout-variant"
-            color='#0077AF'
-            size={28}
-            style={{ paddingRight: 30 }}
-            onPress={() =>
-              Alert.alert('Log Out?', 'Are you sure you want to log out of Open Container?',
-                  [
-                    {
-                      text: 'No',
-                      style: 'default'
-                    },
-                    {
-                      text: 'Yes',
-                      onPress: () => this.props.navigation.navigate('Load'),
-                      style: 'cancel'
-                    }
-                  ]
-                )
-              }
-          />
+  <Icon
+    name="logout-variant"
+    color="#0077AF"
+    size={28}
+    style={{ paddingRight: 30 }}
+    onPress={() => Alert.alert('Log Out?', 'Are you sure you want to log out of Open Container?',
+      [
+        {
+          text: 'No',
+          style: 'default'
+        },
+        {
+          text: 'Yes',
+          onPress: () => this.props.navigation.navigate('Load'),
+          style: 'cancel'
+        }
+      ])}
+  />
       }
     }
   },

@@ -1,4 +1,4 @@
-//General Imports
+// General Imports
 import React from 'react';
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
@@ -23,7 +23,7 @@ const LoadNavigator = createStackNavigator(
   {
     initialRouteName: 'Home',
   }
-)
+);
 
 const StackNavigator = createStackNavigator(
   {
@@ -40,7 +40,7 @@ const StackNavigator = createStackNavigator(
       }
     }
   }
-)
+);
 
 const App = createSwitchNavigator({
   // You could add another route here for authentication.

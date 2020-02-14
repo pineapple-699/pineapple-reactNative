@@ -6,10 +6,6 @@ import { Button } from 'react-native-elements';
 import styles from '../constants/Style';
 
 export default class LogInScreen extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <View style={styles.splashContainer}>
