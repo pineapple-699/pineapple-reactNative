@@ -1,37 +1,22 @@
 import React from 'react';
-import { View, StatusBar, Image } from 'react-native';
-import { styles } from '../constants/Style';
-// import firebase from 'firebase';
-// import '@firebase/firestore';
+import { View, StatusBar } from 'react-native';
+import styles from '../constants/Style';
 
-
-export class loadingScreen extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
+export default class loadingScreen extends React.Component {
   componentDidMount() {
     this.checkLoggedIn();
   }
 
   checkLoggedIn = () => {
-    this.props.navigation.navigate('LogIn');
-
-
-    // firebase.auth().onAuthStateChanged(user => {
-    //   this.props.navigation.navigate(user ? 'Activity' : 'LogIn')
-    // });
+    const { navigation } = this.props;
+    navigation.navigate('LogIn');
   }
 
   render() {
     return (
-      <View style={styles.container}>
-        <StatusBar barStyle='light-content' />
-        {/* <Image
-          style={{ height: 100, width: 100, resizeMode: 'contain' }}
-          source={require('../assets/unicorn.png')}
-        /> */}
+      <View style={styles.splashContainer}>
+        <StatusBar barStyle="light-content" />
       </View>
-    )
+    );
   }
 }

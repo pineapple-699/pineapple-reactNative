@@ -1,5 +1,4 @@
-//General Imports
-import React from 'react';
+// General Imports
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
@@ -7,9 +6,9 @@ import { createStackNavigator } from 'react-navigation-stack';
 import MainTabNavigator from './MainTabNavigator';
 
 // Screen Imports
-import { loadingScreen } from '../screens/AppLoading';
-import { LogInScreen } from '../screens/SplashScreen';
-import { SignUpScreen } from '../screens/SignUpScreen';
+import loadingScreen from '../screens/AppLoading';
+import LogInScreen from '../screens/SplashScreen';
+import SignUpScreen from '../screens/SignUpScreen';
 
 const LoadNavigator = createStackNavigator(
   {
@@ -23,7 +22,7 @@ const LoadNavigator = createStackNavigator(
   {
     initialRouteName: 'Home',
   }
-)
+);
 
 const StackNavigator = createStackNavigator(
   {
@@ -40,7 +39,7 @@ const StackNavigator = createStackNavigator(
       }
     }
   }
-)
+);
 
 const App = createSwitchNavigator({
   // You could add another route here for authentication.
