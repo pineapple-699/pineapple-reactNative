@@ -7,7 +7,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import TabBarIcon from '../components/TabBarIcon';
 import { HomeScreen } from '../screens/HomeScreen';
 import LinksScreen from '../screens/LinksScreen';
-import { SettingsScreen } from '../screens/SettingsScreen';
+import SettingsScreen from '../screens/SettingsScreen';
 import ScannerScreen from '../screens/ScannerScreen';
 
 const config = Platform.select({
