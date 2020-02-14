@@ -8,7 +8,8 @@ export default class loadingScreen extends React.Component {
   }
 
   checkLoggedIn = () => {
-    this.props.navigation.navigate('LogIn');
+    const { navigation } = this.props;
+    navigation.navigate('LogIn');
   }
 
   render() {

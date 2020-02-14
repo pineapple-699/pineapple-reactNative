@@ -5,29 +5,30 @@ import {
 import { Button } from 'react-native-elements';
 import styles from '../constants/Style';
 
-export default class LogInScreen extends React.Component {
-  render() {
-    return (
-      <View style={styles.splashContainer}>
-        <StatusBar barStyle="light-content" />
-        <Text style={styles.authHeader}>Welcome to Pineapple!</Text>
-        <Text style={styles.authText}>this is the splash screen</Text>
-        <Button
-          buttonStyle={styles.authButton}
-          title="Go to Sign Up page"
-          type="clear"
-          onPress={() => this.props.navigation.navigate('SignUp')}
-        />
-        <Button
-          buttonStyle={styles.authButton}
-          title="Log In with Google"
-          type="clear"
-          onPress={() => Alert.alert('This should log you in, but it is not working right now')}
-        />
-      </View>
-    );
-  }
-}
+const LogInScreen = (props) => {
+  const { navigation } = props;
+  return (
+    <View style={styles.splashContainer}>
+      <StatusBar barStyle="light-content" />
+      <Text style={styles.authHeader}>Welcome to Pineapple!</Text>
+      <Text style={styles.authText}>this is the splash screen</Text>
+      <Button
+        buttonStyle={styles.authButton}
+        title="Go to Sign Up page"
+        type="clear"
+        onPress={() => navigation.navigate('SignUp')}
+      />
+      <Button
+        buttonStyle={styles.authButton}
+        title="Log In with Google"
+        type="clear"
+        onPress={() => Alert.alert('This should log you in, but it is not working right now')}
+      />
+    </View>
+  );
+};
+
+export default LogInScreen;
 
 // export class LogInScreen extends React.Component {
 //   constructor(props) {

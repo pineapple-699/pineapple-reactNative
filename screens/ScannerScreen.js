@@ -18,7 +18,7 @@ export default function ScannerScreen() {
 
   const handleBarCodeScanned = ({ type, data }) => {
     setScanned(true);
-    alert(`Bar code with type ${type} and data ${data} has been scanned!`);
+    alert(`Bar code with type ${type} and data ${data} has been scanned!`); // eslint-disable-line
   };
 
   if (hasPermission === null) {
