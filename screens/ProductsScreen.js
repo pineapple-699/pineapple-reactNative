@@ -42,8 +42,8 @@ class ProductsScreen extends React.Component {
         <br />
         {dataSource.products.map((dat) => (
           <div>
-            <li>{dat.product}</li>
-            <li>{dat.price}</li>
+            <h2>{dat.product}</h2>
+            <p>{dat.price}</p>
           </div>
         ))}
 
