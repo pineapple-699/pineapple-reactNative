@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import styles from '../constants/Style';
 
-function Item({ title,price }) {
+function Item({ title, price }) {
   return (
     <View style={styles.item}>
       <Text style={styles.title}>{title}</Text>
@@ -38,7 +38,6 @@ class ProductsScreen extends React.Component {
 
   render() {
     const { dataSource, loading } = this.state;
-    console.log(dataSource);
     if (loading) {
       return (
         <View style={styles.loader}>
@@ -56,12 +55,11 @@ class ProductsScreen extends React.Component {
             <h2>{dat.product}</h2>
             <p>{dat.price}</p>
           </div>
-        ))} */} 
-       
+        ))} */}
         <FlatList
           data={dataSource.products}
           renderItem={({ item }) => <Item title={item.product} price={item.price} />}
-          keyExtractor={item => item.id}
+          keyExtractor={(item) => item.id}
         />
 
       </View>
