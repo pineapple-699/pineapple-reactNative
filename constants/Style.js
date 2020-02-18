@@ -40,7 +40,13 @@ const styles = StyleSheet.create({
     height: 40,
     margin: 5,
     backgroundColor: '#fff',
-  }
+  },
+  item: {
+    backgroundColor: '#f9c2ff',
+    padding: 20,
+    marginVertical: 8,
+    marginHorizontal: 16,
+  },
 });
 
 export default styles;
