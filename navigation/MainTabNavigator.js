@@ -1,12 +1,15 @@
 import React from 'react';
-import { Platform } from 'react-native';
+import { Platform, Alert } from 'react-native';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
+import ProductsScreen from '../screens/ProductsScreen';
 import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
+import ScannerScreen from '../screens/ScannerScreen';
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
@@ -15,7 +18,18 @@ const config = Platform.select({
 
 const HomeStack = createStackNavigator(
   {
-    Home: HomeScreen,
+    Activity: {
+      screen: HomeScreen,
+      navigationOptions: {
+        title: 'Home',
+      }
+    },
+    Scanner: {
+      screen: ScannerScreen,
+      navigationOptions: {
+        title: 'Scan Barcode',
+      }
+    }
   },
   config
 );
@@ -36,9 +50,42 @@ HomeStack.navigationOptions = {
 
 HomeStack.path = '';
 
+const ProductStack = createStackNavigator(
+  {
+    Activity: {
+      screen: ProductsScreen,
+      navigationOptions: {
+        title: 'Products',
+      }
+    }
+  },
+  config
+);
+
+ProductStack.navigationOptions = {
+  tabBarLabel: 'Product',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={
+        Platform.OS === 'ios'
+          ? `ios-information-circle${focused ? '' : '-outline'}`
+          : 'md-information-circle'
+      }
+    />
+  ),
+};
+
+ProductStack.path = '';
+
 const LinksStack = createStackNavigator(
   {
-    Links: LinksScreen,
+    Links: {
+      screen: LinksScreen,
+      navigationOptions: {
+        title: 'Links',
+      }
+    }
   },
   config
 );
@@ -54,7 +101,31 @@ LinksStack.path = '';
 
 const SettingsStack = createStackNavigator(
   {
-    Settings: SettingsScreen,
+    Settings: {
+      screen: SettingsScreen,
+      navigationOptions: {
+        title: 'Settings',
+        headerRight:
+  <Icon
+    name="logout-variant"
+    color="#0077AF"
+    size={28}
+    style={{ paddingRight: 30 }}
+    onPress={() => Alert.alert('Log Out?', 'Are you sure you want to log out of Open Container?',
+      [
+        {
+          text: 'No',
+          style: 'default'
+        },
+        {
+          text: 'Yes',
+          onPress: () => this.props.navigation.navigate('Load'),
+          style: 'cancel'
+        }
+      ])}
+  />
+      }
+    }
   },
   config
 );
@@ -70,6 +141,7 @@ SettingsStack.path = '';
 
 const tabNavigator = createBottomTabNavigator({
   HomeStack,
+  ProductStack,
   LinksStack,
   SettingsStack,
 });
