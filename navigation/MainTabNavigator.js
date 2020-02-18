@@ -6,6 +6,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
+import ProductsScreen from '../screens/ProductsScreen';
 import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import ScannerScreen from '../screens/ScannerScreen';
@@ -48,6 +49,34 @@ HomeStack.navigationOptions = {
 };
 
 HomeStack.path = '';
+
+const ProductStack = createStackNavigator(
+  {
+    Activity: {
+      screen: ProductsScreen,
+      navigationOptions: {
+        title: 'Products',
+      }
+    }
+  },
+  config
+);
+
+ProductStack.navigationOptions = {
+  tabBarLabel: 'Product',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={
+        Platform.OS === 'ios'
+          ? `ios-information-circle${focused ? '' : '-outline'}`
+          : 'md-information-circle'
+      }
+    />
+  ),
+};
+
+ProductStack.path = '';
 
 const LinksStack = createStackNavigator(
   {
@@ -112,6 +141,7 @@ SettingsStack.path = '';
 
 const tabNavigator = createBottomTabNavigator({
   HomeStack,
+  ProductStack,
   LinksStack,
   SettingsStack,
 });

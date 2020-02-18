@@ -10,6 +10,7 @@
         "comma-dangle": "off"
       },
     "env": {
-        "jest": true
+        "jest": true,
+        "browser": true
     }
 }
