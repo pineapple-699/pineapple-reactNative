@@ -1,9 +1,5 @@
 import React from 'react';
-import {
-  Text,
-  View,
-  Button
-} from 'react-native';
+import { Text, View, Button } from 'react-native';
 import styles from '../constants/Style';
 
 const HomeScreen = (props) => {

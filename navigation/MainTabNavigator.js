@@ -2,12 +2,14 @@ import React from 'react';
 import { Platform, Alert } from 'react-native';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import ProductsScreen from '../screens/ProductsScreen';
-import LinksScreen from '../screens/LinksScreen';
+import CartScreen from '../screens/CartScreen';
+import ProfileScreen from '../screens/ProfileScreen';
+// import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import ScannerScreen from '../screens/ScannerScreen';
 
@@ -50,20 +52,20 @@ HomeStack.navigationOptions = {
 
 HomeStack.path = '';
 
-const ProductStack = createStackNavigator(
+const CartStack = createStackNavigator(
   {
     Activity: {
-      screen: ProductsScreen,
+      screen: CartScreen,
       navigationOptions: {
-        title: 'Products',
+        title: 'Shopping Cart',
       }
     }
   },
   config
 );
 
-ProductStack.navigationOptions = {
-  tabBarLabel: 'Product',
+CartStack.navigationOptions = {
+  tabBarLabel: 'Shopping Cart',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -76,53 +78,52 @@ ProductStack.navigationOptions = {
   ),
 };
 
-ProductStack.path = '';
+CartStack.path = '';
 
-const LinksStack = createStackNavigator(
-  {
-    Links: {
-      screen: LinksScreen,
-      navigationOptions: {
-        title: 'Links',
-      }
-    }
-  },
-  config
-);
+// const LinksStack = createStackNavigator(
+//   {
+//     Links: {
+//       screen: LinksScreen,
+//       navigationOptions: {
+//         title: 'Links',
+//       }
+//     }
+//   },
+//   config
+// );
 
-LinksStack.navigationOptions = {
-  tabBarLabel: 'Links',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
-  ),
-};
+// LinksStack.navigationOptions = {
+//   tabBarLabel: 'Links',
+//   tabBarIcon: ({ focused }) => (
+//     <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
+//   ),
+// };
 
-LinksStack.path = '';
+// LinksStack.path = '';
 
-const SettingsStack = createStackNavigator(
+const ProfileStack = createStackNavigator(
   {
     Settings: {
-      screen: SettingsScreen,
+      screen: ProfileScreen,
       navigationOptions: {
-        title: 'Settings',
+        title: 'Profile',
         headerRight:
   <Icon
-    name="logout-variant"
-    color="#0077AF"
-    size={28}
+    name="cog"
+    size={24}
     style={{ paddingRight: 30 }}
-    onPress={() => Alert.alert('Log Out?', 'Are you sure you want to log out of Open Container?',
-      [
-        {
-          text: 'No',
-          style: 'default'
-        },
-        {
-          text: 'Yes',
-          onPress: () => this.props.navigation.navigate('Load'),
-          style: 'cancel'
-        }
-      ])}
+    // onPress={() => Alert.alert('Log Out?', 'Are you sure you want to log out of Open Container?',
+    //   [
+    //     {
+    //       text: 'No',
+    //       style: 'default'
+    //     },
+    //     {
+    //       text: 'Yes',
+    //       onPress: () => this.props.navigation.navigate('Load'),
+    //       style: 'cancel'
+    //     }
+    //   ])}
   />
       }
     }
@@ -130,20 +131,22 @@ const SettingsStack = createStackNavigator(
   config
 );
 
-SettingsStack.navigationOptions = {
-  tabBarLabel: 'Settings',
+ProfileStack.navigationOptions = {
+  tabBarLabel: 'Profile',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
   ),
 };
 
-SettingsStack.path = '';
+ProfileStack.path = '';
 
 const tabNavigator = createBottomTabNavigator({
   HomeStack,
-  ProductStack,
-  LinksStack,
-  SettingsStack,
+  CartStack,
+  // ProductStack,
+  // LinksStack,
+  ProfileStack,
+  // SettingsStack,
 });
 
 tabNavigator.path = '';

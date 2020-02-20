@@ -18,6 +18,7 @@ const styles = StyleSheet.create({
   // Auth screens styles
   splashSection: {
     flex: 0.33,
+    flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -39,6 +40,20 @@ const styles = StyleSheet.create({
   authGoogle: {
     height: 40,
     margin: 5,
+    backgroundColor: '#fff',
+  },
+
+  // Sign Up Styles
+  signUpContainer: {
+    flex: 0.33,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  signUpText: {
+    paddingLeft: 10,
+    margin: 10,
+    width: 250,
+    height: 50,
     backgroundColor: '#fff',
   }
 });
