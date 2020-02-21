@@ -3,15 +3,18 @@ import { Platform, Alert } from 'react-native';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import Icon from 'react-native-vector-icons/FontAwesome';
-
 import TabBarIcon from '../components/TabBarIcon';
+
+// Import Screens
 import HomeScreen from '../screens/HomeScreen';
+import ScannerScreen from '../screens/ScannerScreen';
 import ProductsScreen from '../screens/ProductsScreen';
 import CartScreen from '../screens/CartScreen';
+import PaymentScreen from '../screens/PaymentScreen';
+import ConfirmationScreen from '../screens/ConfirmationScreen';
 import ProfileScreen from '../screens/ProfileScreen';
-// import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
-import ScannerScreen from '../screens/ScannerScreen';
+// Import LinksScreen from '../screens/LinksScreen';
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
@@ -24,12 +27,27 @@ const HomeStack = createStackNavigator(
       screen: HomeScreen,
       navigationOptions: {
         title: 'Home',
+        header: (navigation) => ({
+          headerRight: 
+          <Icon
+            name="barcode"
+            size={24}
+            onPress={() => Alert.alert('This is a button')}
+            style={{ paddingRight: 30 }}
+          />
+        })
       }
     },
     Scanner: {
       screen: ScannerScreen,
       navigationOptions: {
         title: 'Scan Barcode',
+      }
+    },
+    Product: {
+      screen: ProductsScreen,
+      navigationOptions: {
+        title: 'Product Name'
       }
     }
   },
@@ -54,10 +72,22 @@ HomeStack.path = '';
 
 const CartStack = createStackNavigator(
   {
-    Activity: {
+    Cart: {
       screen: CartScreen,
       navigationOptions: {
         title: 'Shopping Cart',
+      }
+    },
+    Payment: {
+      screen: PaymentScreen,
+      navigationOptions: {
+        title: 'Enter Payment Information'
+      }
+    },
+    Confirmation: {
+      screen: ConfirmationScreen,
+      navigationOptions: {
+        title: 'Confirm Order',
       }
     }
   },
@@ -103,7 +133,7 @@ CartStack.path = '';
 
 const ProfileStack = createStackNavigator(
   {
-    Settings: {
+    Profile: {
       screen: ProfileScreen,
       navigationOptions: {
         title: 'Profile',
@@ -112,19 +142,13 @@ const ProfileStack = createStackNavigator(
     name="cog"
     size={24}
     style={{ paddingRight: 30 }}
-    // onPress={() => Alert.alert('Log Out?', 'Are you sure you want to log out of Open Container?',
-    //   [
-    //     {
-    //       text: 'No',
-    //       style: 'default'
-    //     },
-    //     {
-    //       text: 'Yes',
-    //       onPress: () => this.props.navigation.navigate('Load'),
-    //       style: 'cancel'
-    //     }
-    //   ])}
   />
+      }
+    },
+    Settings: {
+      screen: SettingsScreen,
+      navigationOptions: {
+        title: 'Settings'
       }
     }
   },
