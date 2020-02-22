@@ -1,9 +1,8 @@
 import React from 'react';
-import { Platform, Alert } from 'react-native';
+import { Platform } from 'react-native';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import TabBarIcon from '../components/TabBarIcon';
 
 // Import Screens
 import HomeScreen from '../screens/HomeScreen';
@@ -35,7 +34,7 @@ const HomeStack = createStackNavigator(
   <Icon
     name="barcode"
     size={24}
-    onPress={() => navigation.navigate('Scanner')}
+    onPress={({ navigation }) => navigation.navigate('Scanner')}
     style={{ paddingRight: 30 }}
   />
       }
@@ -185,7 +184,7 @@ const ProfileStack = createStackNavigator(
 
 ProfileStack.navigationOptions = {
   tabBarLabel: 'Profile',
-  tabBarIcon: ({ focused, tintColor }) => (
+  tabBarIcon: ({ tintColor }) => (
     <Icon name="user" size={28} color={tintColor} />
   ),
 };

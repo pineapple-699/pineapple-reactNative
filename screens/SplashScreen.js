@@ -5,6 +5,8 @@ import {
 import { Button } from 'react-native-elements';
 import styles from '../constants/Style';
 
+const iconLogo = require('../assets/images/icon-logo.png');
+
 const LogInScreen = (props) => {
   const { navigation } = props;
 
@@ -14,7 +16,7 @@ const LogInScreen = (props) => {
       <View style={styles.splashHeader}>
         <Image
           style={styles.logo}
-          source={require('../assets/images/icon-logo.png')}
+          source={iconLogo}
         />
         <Text style={styles.authHeader}>Welcome to Pineapple!</Text>
         <Text style={styles.authText}>this is the splash screen</Text>
