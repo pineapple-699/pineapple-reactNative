@@ -26,27 +26,37 @@ const HomeStack = createStackNavigator(
     Activity: {
       screen: HomeScreen,
       navigationOptions: {
+        headerStyle: {
+          backgroundColor: '#9cf99c',
+          borderBottomWidth: 0,
+        },
         title: 'Home',
-        header: (navigation) => ({
-          headerRight: 
-          <Icon
-            name="barcode"
-            size={24}
-            onPress={() => Alert.alert('This is a button')}
-            style={{ paddingRight: 30 }}
-          />
-        })
+        headerRight:
+  <Icon
+    name="barcode"
+    size={24}
+    onPress={() => navigation.navigate('Scanner')}
+    style={{ paddingRight: 30 }}
+  />
       }
     },
     Scanner: {
       screen: ScannerScreen,
       navigationOptions: {
+        headerStyle: {
+          backgroundColor: '#9cf99c',
+          borderBottomWidth: 0,
+        },
         title: 'Scan Barcode',
       }
     },
     Product: {
       screen: ProductsScreen,
       navigationOptions: {
+        headerStyle: {
+          backgroundColor: '#9cf99c',
+          borderBottomWidth: 0,
+        },
         title: 'Product Name'
       }
     }
@@ -56,15 +66,8 @@ const HomeStack = createStackNavigator(
 
 HomeStack.navigationOptions = {
   tabBarLabel: 'Home',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={
-        Platform.OS === 'ios'
-          ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'
-      }
-    />
+  tabBarIcon: ({ tintColor }) => (
+    <Icon name="home" size={28} color={tintColor} />
   ),
 };
 
@@ -75,18 +78,30 @@ const CartStack = createStackNavigator(
     Cart: {
       screen: CartScreen,
       navigationOptions: {
+        headerStyle: {
+          backgroundColor: '#9cf99c',
+          borderBottomWidth: 0,
+        },
         title: 'Shopping Cart',
       }
     },
     Payment: {
       screen: PaymentScreen,
       navigationOptions: {
+        headerStyle: {
+          backgroundColor: '#9cf99c',
+          borderBottomWidth: 0,
+        },
         title: 'Enter Payment Information'
       }
     },
     Confirmation: {
       screen: ConfirmationScreen,
       navigationOptions: {
+        headerStyle: {
+          backgroundColor: '#9cf99c',
+          borderBottomWidth: 0,
+        },
         title: 'Confirm Order',
       }
     }
@@ -96,16 +111,21 @@ const CartStack = createStackNavigator(
 
 CartStack.navigationOptions = {
   tabBarLabel: 'Shopping Cart',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={
-        Platform.OS === 'ios'
-          ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'
-      }
-    />
+  tabBarIcon: ({ tintColor }) => (
+    <Icon name="shopping-cart" size={28} color={tintColor} />
+  // tabBarIcon: ({ focused }) => (
+  //   <TabBarIcon
+  //     focused={focused}
+  //     name={
+  //       Platform.OS === 'ios'
+  //         ? `ios-information-circle${focused ? '' : '-outline'}`
+  //         : 'md-information-circle'
+  //     }
+  //   />
   ),
+  // tabBarOptions: {
+  //   activeTintColor: '#00AA77',
+  // }
 };
 
 CartStack.path = '';
@@ -136,6 +156,10 @@ const ProfileStack = createStackNavigator(
     Profile: {
       screen: ProfileScreen,
       navigationOptions: {
+        headerStyle: {
+          backgroundColor: '#9cf99c',
+          borderBottomWidth: 0,
+        },
         title: 'Profile',
         headerRight:
   <Icon
@@ -148,6 +172,10 @@ const ProfileStack = createStackNavigator(
     Settings: {
       screen: SettingsScreen,
       navigationOptions: {
+        headerStyle: {
+          backgroundColor: '#9cf99c',
+          borderBottomWidth: 0,
+        },
         title: 'Settings'
       }
     }
@@ -157,8 +185,8 @@ const ProfileStack = createStackNavigator(
 
 ProfileStack.navigationOptions = {
   tabBarLabel: 'Profile',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
+  tabBarIcon: ({ focused, tintColor }) => (
+    <Icon name="user" size={28} color={tintColor} />
   ),
 };
 

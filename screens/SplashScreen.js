@@ -1,29 +1,56 @@
 import React from 'react';
 import {
-  View, StatusBar, Text, Alert
+  View, StatusBar, Text, Alert, Image, TextInput
 } from 'react-native';
 import { Button } from 'react-native-elements';
 import styles from '../constants/Style';
 
 const LogInScreen = (props) => {
   const { navigation } = props;
+
   return (
     <View style={styles.splashContainer}>
-      <StatusBar barStyle="light-content" />
-      <Text style={styles.authHeader}>Welcome to Pineapple!</Text>
-      <Text style={styles.authText}>this is the splash screen</Text>
-      <Button
-        buttonStyle={styles.authButton}
-        title="Go to Sign Up page"
-        type="clear"
-        onPress={() => navigation.navigate('SignUp')}
-      />
-      <Button
-        buttonStyle={styles.authButton}
-        title="Log In with Google"
-        type="clear"
-        onPress={() => Alert.alert('This should log you in, but it is not working right now')}
-      />
+      <StatusBar barStyle="dark-content" />
+      <View style={styles.splashHeader}>
+        <Image
+          style={styles.logo}
+          source={require('../assets/images/icon-logo.png')}
+        />
+        <Text style={styles.authHeader}>Welcome to Pineapple!</Text>
+        <Text style={styles.authText}>this is the splash screen</Text>
+      </View>
+      <View style={styles.splashInputs}>
+        <TextInput
+          placeholder="Email"
+          style={styles.signUpText}
+        />
+        <TextInput
+          placeholder="Password"
+          style={styles.signUpText}
+        />
+      </View>
+      <View style={styles.splashButtons}>
+        <View style={styles.buttonsView}>
+          <Button
+            buttonStyle={styles.authButton}
+            title="Log In"
+            type="clear"
+            onPress={() => Alert.alert('This should log you in, but it is not working right now')}
+          />
+          <Button
+            buttonStyle={styles.authButton}
+            title="Sign Up"
+            type="clear"
+            onPress={() => navigation.navigate('SignUp')}
+          />
+        </View>
+        <Button
+          buttonStyle={styles.authGoogle}
+          title="Log In with Google"
+          type="clear"
+          onPress={() => Alert.alert('This should log you in, but it is not working right now')}
+        />
+      </View>
     </View>
   );
 };

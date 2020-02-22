@@ -11,9 +11,17 @@ const SignUpScreen = (props) => {
     <View style={styles.splashContainer}>
       <StatusBar barStyle="light-content" />
       <View style={styles.signUpContainer}>
-        <Text style={styles.authText}>This is the whatever screen!</Text>
+        <Text style={styles.authText}>This is a change!</Text>
       </View>
       <View style={styles.signUpContainer}>
+        <TextInput
+          placeholder="Placeholder"
+          style={styles.signUpText}
+        />
+        <TextInput
+          placeholder="Placeholder"
+          style={styles.signUpText}
+        />
         <TextInput
           placeholder="Placeholder"
           style={styles.signUpText}
@@ -38,12 +46,12 @@ const SignUpScreen = (props) => {
           type="clear"
           onPress={() => navigation.navigate('Activity')}
         />
-        {/* <Button
+        <Button
           buttonStyle={styles.authButton}
           title="Go back"
           type="clear"
           onPress={() => navigation.goBack()}
-        /> */}
+        />
       </View>
     </View>
   );
