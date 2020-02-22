@@ -3,8 +3,18 @@ import {
   Text,
   View,
   ActivityIndicator,
+  FlatList
 } from 'react-native';
 import styles from '../constants/Style';
+
+function Item({ title, price }) {
+  return (
+    <View style={styles.item}>
+      <Text style={styles.title}>{title}</Text>
+      <Text style={styles.title}>{price}</Text>
+    </View>
+  );
+}
 
 class ProductsScreen extends React.Component {
   constructor(props) {
@@ -39,13 +49,18 @@ class ProductsScreen extends React.Component {
     return (
       <View style={styles.container}>
         <Text>Products Screen</Text>
-        <br />
+        {/* <br />
         {dataSource.products.map((dat) => (
           <div>
             <h2>{dat.product}</h2>
             <p>{dat.price}</p>
           </div>
-        ))}
+        ))} */}
+        <FlatList
+          data={dataSource.products}
+          renderItem={({ item }) => <Item title={item.product} price={item.price} />}
+          keyExtractor={(item) => item.id}
+        />
 
       </View>
     );
