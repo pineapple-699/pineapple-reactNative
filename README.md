@@ -1,6 +1,6 @@
 # Pineapple React-Native
-[![Build Status](https://travis-ci.com/pineapple-699/pineapple-react.svg?branch=master)](https://travis-ci.com/pineapple-699/pineapple-react)
-[![codecov](https://codecov.io/gh/pineapple-699/pineapple-react/branch/master/graph/badge.svg)](https://codecov.io/gh/pineapple-699/pineapple-react)
+[![Build Status](https://travis-ci.com/pineapple-699/pineapple-reactNative.svg?branch=master)](https://travis-ci.com/pineapple-699/pineapple-reactNative)
+[![codecov](https://codecov.io/gh/pineapple-699/pineapple-reactNative/branch/master/graph/badge.svg)](https://codecov.io/gh/pineapple-699/pineapple-reactNative)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com)
 
 ## Development
