@@ -2,17 +2,17 @@ import React from 'react';
 import { Text, View, Button } from 'react-native';
 import styles from '../constants/Style';
 
-const HomeScreen = (props) => {
+const ConfirmationScreen = (props) => {
   const { navigation } = props;
   return (
     <View style={styles.container}>
-      <Text>This is the homescreen!</Text>
+      <Text>Your Order is Confirmed!</Text>
       <Button
-        title="SCAN"
-        onPress={() => navigation.navigate('Scanner')}
+        title="Home"
+        onPress={() => navigation.navigate('Home')}
       />
     </View>
   );
 };
 
-export default HomeScreen;
+export default ConfirmationScreen;

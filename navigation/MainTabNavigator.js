@@ -1,15 +1,19 @@
 import React from 'react';
-import { Platform, Alert } from 'react-native';
+import { Platform } from 'react-native';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
-import TabBarIcon from '../components/TabBarIcon';
+// Import Screens
 import HomeScreen from '../screens/HomeScreen';
-import ProductsScreen from '../screens/ProductsScreen';
-import LinksScreen from '../screens/LinksScreen';
-import SettingsScreen from '../screens/SettingsScreen';
 import ScannerScreen from '../screens/ScannerScreen';
+import ProductsScreen from '../screens/ProductsScreen';
+import CartScreen from '../screens/CartScreen';
+import PaymentScreen from '../screens/PaymentScreen';
+import ConfirmationScreen from '../screens/ConfirmationScreen';
+import ProfileScreen from '../screens/ProfileScreen';
+import SettingsScreen from '../screens/SettingsScreen';
+// Import LinksScreen from '../screens/LinksScreen';
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
@@ -21,13 +25,38 @@ const HomeStack = createStackNavigator(
     Activity: {
       screen: HomeScreen,
       navigationOptions: {
+        headerStyle: {
+          backgroundColor: '#9cf99c',
+          borderBottomWidth: 0,
+        },
         title: 'Home',
+        headerRight:
+  <Icon
+    name="barcode"
+    size={24}
+    onPress={({ navigation }) => navigation.navigate('Scanner')}
+    style={{ paddingRight: 30 }}
+  />
       }
     },
     Scanner: {
       screen: ScannerScreen,
       navigationOptions: {
+        headerStyle: {
+          backgroundColor: '#9cf99c',
+          borderBottomWidth: 0,
+        },
         title: 'Scan Barcode',
+      }
+    },
+    Product: {
+      screen: ProductsScreen,
+      navigationOptions: {
+        headerStyle: {
+          backgroundColor: '#9cf99c',
+          borderBottomWidth: 0,
+        },
+        title: 'Product Name'
       }
     }
   },
@@ -36,114 +65,139 @@ const HomeStack = createStackNavigator(
 
 HomeStack.navigationOptions = {
   tabBarLabel: 'Home',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={
-        Platform.OS === 'ios'
-          ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'
-      }
-    />
+  tabBarIcon: ({ tintColor }) => (
+    <Icon name="home" size={28} color={tintColor} />
   ),
 };
 
 HomeStack.path = '';
 
-const ProductStack = createStackNavigator(
+const CartStack = createStackNavigator(
   {
-    Activity: {
-      screen: ProductsScreen,
+    Cart: {
+      screen: CartScreen,
       navigationOptions: {
-        title: 'Products',
+        headerStyle: {
+          backgroundColor: '#9cf99c',
+          borderBottomWidth: 0,
+        },
+        title: 'Shopping Cart',
+      }
+    },
+    Payment: {
+      screen: PaymentScreen,
+      navigationOptions: {
+        headerStyle: {
+          backgroundColor: '#9cf99c',
+          borderBottomWidth: 0,
+        },
+        title: 'Enter Payment Information'
+      }
+    },
+    Confirmation: {
+      screen: ConfirmationScreen,
+      navigationOptions: {
+        headerStyle: {
+          backgroundColor: '#9cf99c',
+          borderBottomWidth: 0,
+        },
+        title: 'Confirm Order',
       }
     }
   },
   config
 );
 
-ProductStack.navigationOptions = {
-  tabBarLabel: 'Product',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={
-        Platform.OS === 'ios'
-          ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'
-      }
-    />
+CartStack.navigationOptions = {
+  tabBarLabel: 'Shopping Cart',
+  tabBarIcon: ({ tintColor }) => (
+    <Icon name="shopping-cart" size={28} color={tintColor} />
+  // tabBarIcon: ({ focused }) => (
+  //   <TabBarIcon
+  //     focused={focused}
+  //     name={
+  //       Platform.OS === 'ios'
+  //         ? `ios-information-circle${focused ? '' : '-outline'}`
+  //         : 'md-information-circle'
+  //     }
+  //   />
   ),
+  // tabBarOptions: {
+  //   activeTintColor: '#00AA77',
+  // }
 };
 
-ProductStack.path = '';
+CartStack.path = '';
 
-const LinksStack = createStackNavigator(
+// const LinksStack = createStackNavigator(
+//   {
+//     Links: {
+//       screen: LinksScreen,
+//       navigationOptions: {
+//         title: 'Links',
+//       }
+//     }
+//   },
+//   config
+// );
+
+// LinksStack.navigationOptions = {
+//   tabBarLabel: 'Links',
+//   tabBarIcon: ({ focused }) => (
+//     <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
+//   ),
+// };
+
+// LinksStack.path = '';
+
+const ProfileStack = createStackNavigator(
   {
-    Links: {
-      screen: LinksScreen,
+    Profile: {
+      screen: ProfileScreen,
       navigationOptions: {
-        title: 'Links',
+        headerStyle: {
+          backgroundColor: '#9cf99c',
+          borderBottomWidth: 0,
+        },
+        title: 'Profile',
+        headerRight:
+  <Icon
+    name="cog"
+    size={24}
+    style={{ paddingRight: 30 }}
+  />
       }
-    }
-  },
-  config
-);
-
-LinksStack.navigationOptions = {
-  tabBarLabel: 'Links',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
-  ),
-};
-
-LinksStack.path = '';
-
-const SettingsStack = createStackNavigator(
-  {
+    },
     Settings: {
       screen: SettingsScreen,
       navigationOptions: {
-        title: 'Settings',
-        headerRight:
-  <Icon
-    name="logout-variant"
-    color="#0077AF"
-    size={28}
-    style={{ paddingRight: 30 }}
-    onPress={() => Alert.alert('Log Out?', 'Are you sure you want to log out of Open Container?',
-      [
-        {
-          text: 'No',
-          style: 'default'
+        headerStyle: {
+          backgroundColor: '#9cf99c',
+          borderBottomWidth: 0,
         },
-        {
-          text: 'Yes',
-          onPress: () => this.props.navigation.navigate('Load'),
-          style: 'cancel'
-        }
-      ])}
-  />
+        title: 'Settings'
       }
     }
   },
   config
 );
 
-SettingsStack.navigationOptions = {
-  tabBarLabel: 'Settings',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
+ProfileStack.navigationOptions = {
+  tabBarLabel: 'Profile',
+  tabBarIcon: ({ tintColor }) => (
+    <Icon name="user" size={28} color={tintColor} />
   ),
 };
 
-SettingsStack.path = '';
+ProfileStack.path = '';
 
 const tabNavigator = createBottomTabNavigator({
   HomeStack,
-  ProductStack,
-  LinksStack,
-  SettingsStack,
+  CartStack,
+  // ProductStack,
+  // LinksStack,
+  ProfileStack,
+  // SettingsStack,
 });
 
 tabNavigator.path = '';
