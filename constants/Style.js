@@ -19,27 +19,36 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
 
-  // Auth screens styles
-  splashSection: {
-    flex: 0.33,
-    flexDirection: 'column',
+  // Splash screen styles
+  splashHeader: {
+    flex: 0.575,
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+  },
+  splashInputs: {
+    flex: 0.15,
     alignItems: 'center',
     justifyContent: 'center',
   },
-  authHeader: {
-    fontSize: 32,
+  splashButtons: {
+    flex: 0.275,
+    alignItems: 'center',
+    justifyContent: 'flex-start'
+  },
+  splashButtonsView: {
+    flexDirection: 'row',
+  },
+  splashHeaderText: {
+    fontSize: 40,
+    textAlign: 'center',
     fontWeight: 'bold',
     color: '#333',
-    paddingBottom: 10,
   },
-  authText: {
+  splashText: {
     fontSize: 24,
     color: '#333',
   },
-  buttonsView: {
-    flexDirection: 'row',
-  },
-  authButton: {
+  authButton: { // Used on Splash and Sign Up pages
     height: 40,
     width: 120,
     margin: 5,
@@ -51,42 +60,44 @@ const styles = StyleSheet.create({
     margin: 5,
     backgroundColor: '#fff',
   },
-  // Splash Screen Style
-  splashHeader: {
-    flex: 0.50,
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-  },
-  splashInputs: {
-    flex: 0.20,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  splashButtons: {
-    flex: 0.30,
-    alignItems: 'center',
-    justifyContent: 'flex-start'
-  },
 
   // Sign Up Styles
-  signUpContainer: {
-    flex: 0.33,
+  signUpHeaderView: {
+    flex: 0.375,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    // backgroundColor: 'red',
+  },
+  signUpInputView: {
+    flex: 0.5,
     justifyContent: 'center',
     alignItems: 'center',
+    // backgroundColor: 'blue',
   },
-  signUpText: {
-    paddingLeft: 10,
-    margin: 10,
-    width: 250,
-    height: 50,
+  signUpButtonView: {
+    flex: 0.175,
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+  },
+  authInputs: {
     backgroundColor: '#fff',
+    borderWidth: 1,
+    borderRadius: 5,
+    borderColor: '#9f9f9f',
+    fontSize: 20,
+    height: 40,
+    width: 250,
+    margin: 5,
+    paddingHorizontal: 10,
   },
-  item: {
-    backgroundColor: '#f9c2ff',
-    padding: 20,
-    marginVertical: 8,
-    marginHorizontal: 16,
-  },
+  signUpButton: {
+    height: 40,
+    width: 250,
+    margin: 5,
+    backgroundColor: '#fff',
+    borderWidth: 1,
+    borderColor: '#9f9f9f',
+  }
 });
 
 export default styles;

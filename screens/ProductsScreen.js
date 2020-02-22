@@ -40,28 +40,19 @@ class ProductsScreen extends React.Component {
     const { dataSource, loading } = this.state;
     if (loading) {
       return (
-        <View style={styles.loader}>
-          <ActivityIndicator size="large" color="#0c9" />
+        <View style={styles.container}>
+          <ActivityIndicator size="large" color="#333" />
         </View>
       );
     }
 
     return (
       <View style={styles.container}>
-        <Text>Products Screen</Text>
-        {/* <br />
-        {dataSource.products.map((dat) => (
-          <div>
-            <h2>{dat.product}</h2>
-            <p>{dat.price}</p>
-          </div>
-        ))} */}
         <FlatList
           data={dataSource.products}
           renderItem={({ item }) => <Item title={item.product} price={item.price} />}
           keyExtractor={(item) => item.id}
         />
-
       </View>
     );
   }

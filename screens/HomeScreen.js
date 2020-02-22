@@ -26,7 +26,7 @@ class HomeScreen extends React.Component {
         <Text>This is the homescreen!</Text>
         <Button
           title="SCAN"
-          onPress={() => navigation.navigate('Scanner')}
+          onPress={() => navigation.navigate('Product')}
         />
       </View>
     );
