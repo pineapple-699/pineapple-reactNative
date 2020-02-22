@@ -3,24 +3,22 @@ import { Text, View, Button } from 'react-native';
 import styles from '../constants/Style';
 
 class HomeScreen extends React.Component {
-  componentDidMount = async() => {
+  componentDidMount = async () => {
     const rawResponse = await fetch('https://pineapple-rest-api.herokuapp.com/register', {
       method: 'POST',
       headers: {
-        'Accept': 'application/json',
+        Accept: 'application/json',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({username: "TestDoser", password: 'password'})
-    }).catch(err =>{
-      console.log('caught it!',err);
+      body: JSON.stringify({ username: 'TestDoser', password: 'password' })
     });
 
     const content = await rawResponse.json();
 
-    console.log(content.message);
-
+    console.log(content.message); //eslint-disable-line
   }
-  render(){
+
+  render() {
     const { navigation } = this.props;
 
     return (
@@ -31,7 +29,8 @@ class HomeScreen extends React.Component {
           onPress={() => navigation.navigate('Scanner')}
         />
       </View>
-    )};
-};
+    );
+  }
+}
 
 export default HomeScreen;
