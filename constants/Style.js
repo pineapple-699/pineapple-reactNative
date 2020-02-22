@@ -53,17 +53,17 @@ const styles = StyleSheet.create({
   },
   // Splash Screen Style
   splashHeader: {
-    flex: .50,
+    flex: 0.50,
     alignItems: 'center',
     justifyContent: 'flex-end',
   },
   splashInputs: {
-    flex: .20,
+    flex: 0.20,
     alignItems: 'center',
     justifyContent: 'center',
   },
   splashButtons: {
-    flex: .30,
+    flex: 0.30,
     alignItems: 'center',
     justifyContent: 'flex-start'
   },
