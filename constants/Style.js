@@ -18,6 +18,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center'
   },
+  appText: {
+    fontSize: 17,
+    color: '#333',
+  },
+  linkText: {
+    fontSize: 14,
+    color: '#333',
+  },
 
   // Splash screen styles
   splashHeader: {
@@ -97,7 +105,56 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     borderWidth: 1,
     borderColor: '#9f9f9f',
+  },
+  // Product Screen Styles
+  productImage: {
+    flex: 0.4,
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#efefef',
+    borderBottomColor: '#333',
+    borderBottomWidth: 1,
+  },
+  productContent: {
+    flex: 0.6,
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  productInfo: {
+    flex: 0.8,
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  productButtons: {
+    flex: 0.2,
+    width: '100%',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+  },
+  addToCart: {
+    marginTop: 5,
+    marginBottom: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 40,
+    width: '95%',
+    color: '#333',
+    backgroundColor: '#333',
+    borderRadius: 5,
+    borderWidth: 1,
+    borderColor: '#333',
+  },
+  addToCartText: {
+    color: '#9cf99c',
+    fontSize: 17,
+    textAlign: 'center',
+    paddingLeft: 10,
+    paddingRight: 10
   }
+
 });
 
 export default styles;
