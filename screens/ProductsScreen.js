@@ -4,40 +4,78 @@ import {
   View,
   Alert,
   TouchableOpacity,
+  StatusBar,
   // ActivityIndicator,
   // FlatList
 } from 'react-native';
 // import { Button } from 'react-native-elements';
 import styles from '../constants/Style';
 
-const ProductsScreen = (props) => {
-  const { navigation } = props;
-  return (
-    <View style={styles.container}>
-      <View style={styles.productImage}>
-        <Text>Product Image(s)</Text>
-      </View>
-      <View style={styles.productContent}>
-        <View style={styles.productInfo}>
-          <Text style={styles.appText}>Descirption</Text>
-          <Text style={styles.appText}>Sizes</Text>
-          <Text style={styles.appText}>Color</Text>
-          <Text style={styles.appText}>Regular Fit/Size and Fit Guide</Text>
+class ProductsScreen extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.productUpc = this.props.navigation.getParam('upc');
+
+    this.state = {
+      dataSource: [],
+      productToView: [],
+    };
+  }
+
+  componentDidMount() {
+    this.setState({
+      productToView: [],
+    });
+    fetch('https://pineapple-rest-api.herokuapp.com/products')
+      .then((response) => response.json())
+      .then((responseJson) => {
+        let products = responseJson.products;
+
+        for (var i = 0; i < products.length; i++) {
+          var product = products[i];
+          if ( product.upc = this.productUpc ) {
+            this.setState({
+              productToView: product,
+            });
+          }
+        }
+
+        // Try doing the above when the upc is scanned on the scanner screen. 
+        console.log(this.state.productToView);
+      });
+  }
+
+  render() {
+    return (
+      <View style={styles.container}>
+        <StatusBar barStyle="dark-content" />
+        <View style={styles.productImage}>
+          <Text>Product Image(s)</Text>
         </View>
-        <View style={styles.productButtons}>
-          <Text style={styles.linkText}>In Store Pickup</Text>
-          <TouchableOpacity
-            style={styles.addToCart}
-            onPress={() => Alert.alert('This should log you in, but it is not working right now')}
-            underlayColor="#fff"
-          >
-            <Text style={styles.addToCartText}>Add To Cart</Text>
-          </TouchableOpacity>
+        <View style={styles.productContent}>
+          <View style={styles.productInfo}>
+            <Text style={styles.appText}>{this.state.productToView.upc}</Text>
+            <Text style={styles.appText}>{this.state.productToView.description}</Text>
+            <Text style={styles.appText}>{this.state.productToView.size}</Text>
+            <Text style={styles.appText}>{this.state.productToView.color}</Text>
+            <Text style={styles.appText}>{this.state.productToView.price}</Text>
+          </View>
+          <View style={styles.productButtons}>
+            <Text style={styles.linkText}>In Store Pickup</Text>
+            <TouchableOpacity
+              style={styles.addToCart}
+              onPress={() => Alert.alert('This should add an item to your cart, but it is not working right now')}
+              underlayColor="#fff"
+            >
+              <Text style={styles.addToCartText}>Add To Cart</Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
-    </View>
-  );
-};
+    );
+  }
+}
 
 export default ProductsScreen;
 

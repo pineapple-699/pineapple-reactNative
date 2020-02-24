@@ -15,7 +15,7 @@ export default class loadingScreen extends React.Component {
   render() {
     return (
       <View style={styles.splashContainer}>
-        <StatusBar barStyle="light-content" />
+        <StatusBar barStyle="dark-content" />
       </View>
     );
   }

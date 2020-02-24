@@ -153,7 +153,15 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     paddingLeft: 10,
     paddingRight: 10
-  }
+  },
+  // Scanner Screen Styles
+  scanScreenMessage: {
+    fontSize: 20,
+    color: 'white',
+    textAlign: 'center',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
 
 });
 

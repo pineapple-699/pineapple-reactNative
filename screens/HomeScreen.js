@@ -1,5 +1,7 @@
 import React from 'react';
-import { Text, View, Button } from 'react-native';
+import {
+  Text, View, Button, StatusBar
+} from 'react-native';
 import styles from '../constants/Style';
 
 class HomeScreen extends React.Component {
@@ -23,10 +25,11 @@ class HomeScreen extends React.Component {
 
     return (
       <View style={styles.container}>
+        <StatusBar barStyle="dark-content" />
         <Text>This is the homescreen!</Text>
         <Button
           title="SCAN"
-          onPress={() => navigation.navigate('Product')}
+          onPress={() => navigation.navigate('Scanner')}
         />
       </View>
     );

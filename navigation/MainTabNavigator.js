@@ -42,12 +42,15 @@ const HomeStack = createStackNavigator(
     Scanner: {
       screen: ScannerScreen,
       navigationOptions: {
+        headerTransparent: true,
         headerStyle: {
-          backgroundColor: '#9cf99c',
           borderBottomWidth: 0,
         },
         title: 'Scan Barcode',
-      }
+        headerTitleStyle: {
+          color: '#fff',
+        },
+      },
     },
     Product: {
       screen: ProductsScreen,
