@@ -10,7 +10,7 @@ class PaymentScreen extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.cartList}>
-          <Text>This is where you enter your payment and shipping info!</Text>
+          <Text>This is where you enter your payment/shipping info!</Text>
         </View>
         <View style={styles.cartButtons}>
           <TouchableOpacity
