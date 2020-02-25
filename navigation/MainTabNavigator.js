@@ -2,7 +2,7 @@ import React from 'react';
 import { Platform } from 'react-native';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 // Import Screens
 import HomeScreen from '../screens/HomeScreen';
@@ -32,7 +32,7 @@ const HomeStack = createStackNavigator(
         title: 'Home',
         headerRight:
   <Icon
-    name="barcode"
+    name="ios-barcode"
     size={24}
     onPress={({ navigation }) => navigation.navigate('Scanner')}
     style={{ paddingRight: 30 }}
@@ -69,8 +69,11 @@ const HomeStack = createStackNavigator(
 HomeStack.navigationOptions = {
   tabBarLabel: 'Home',
   tabBarIcon: ({ tintColor }) => (
-    <Icon name="home" size={28} color={tintColor} />
+    <Icon name="ios-home" size={28} color={tintColor} />
   ),
+  tabBarOptions: {
+    activeTintColor: '#9cf99c',
+  }
 };
 
 HomeStack.path = '';
@@ -104,7 +107,8 @@ const CartStack = createStackNavigator(
           backgroundColor: '#9cf99c',
           borderBottomWidth: 0,
         },
-        title: 'Confirm Order',
+        title: 'Order Confirmed',
+        headerLeft: null,
       }
     }
   },
@@ -114,7 +118,7 @@ const CartStack = createStackNavigator(
 CartStack.navigationOptions = {
   tabBarLabel: 'Shopping Cart',
   tabBarIcon: ({ tintColor }) => (
-    <Icon name="shopping-cart" size={28} color={tintColor} />
+    <Icon name="ios-cart" size={28} color={tintColor} />
   // tabBarIcon: ({ focused }) => (
   //   <TabBarIcon
   //     focused={focused}
@@ -125,9 +129,9 @@ CartStack.navigationOptions = {
   //     }
   //   />
   ),
-  // tabBarOptions: {
-  //   activeTintColor: '#00AA77',
-  // }
+  tabBarOptions: {
+    activeTintColor: '#9cf99c',
+  }
 };
 
 CartStack.path = '';
@@ -165,7 +169,7 @@ const ProfileStack = createStackNavigator(
         title: 'Profile',
         headerRight:
   <Icon
-    name="cog"
+    name="ios-settings"
     size={24}
     style={{ paddingRight: 30 }}
   />
@@ -188,8 +192,11 @@ const ProfileStack = createStackNavigator(
 ProfileStack.navigationOptions = {
   tabBarLabel: 'Profile',
   tabBarIcon: ({ tintColor }) => (
-    <Icon name="user" size={28} color={tintColor} />
+    <Icon name="ios-person" size={28} color={tintColor} />
   ),
+  tabBarOptions: {
+    activeTintColor: '#9cf99c',
+  }
 };
 
 ProfileStack.path = '';

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import { useState, useEffect } from 'react';
 import {
-  Text, View, StyleSheet, Alert, StatusBar // , Vibration
+  Text, View, StyleSheet, Alert, StatusBar, Vibration
 } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 import styles from '../constants/Style';
@@ -32,7 +32,7 @@ class ScannerScreen extends Component {
       return;
     }
 
-    // Vibration.vibrate();
+    Vibration.vibrate();
     this.setState({
       upc: data,
       type,
@@ -56,10 +56,6 @@ class ScannerScreen extends Component {
         this.resetScanner();
         this.props.navigation.navigate('Product', { productToView: scannedProduct });
       });
-
-    // console.log(`EAN scanned: ${data}`);
-    // this.resetScanner();
-    // this.props.navigation.navigate('Product', { productToView: scannedProduct });
 
     // Keeping this junk for later use
 
@@ -137,52 +133,3 @@ class ScannerScreen extends Component {
 }
 
 export default ScannerScreen;
-
-// constructor(props) {
-//   super(props);
-//   this.state = {
-//     hasPermission: null,
-//     scanned: false,
-//     upc: '',
-//   }
-// }
-// componentDidMount() {
-//   (async () => {
-//     const { status } = await BarCodeScanner.requestPermissionsAsync();
-//     this.setState({ hasPermission: status === 'granted' })
-//   })();
-// }
-// componentDidUpdate() {
-//   (async () => {
-//     const { status } = await BarCodeScanner.requestPermissionsAsync();
-//     this.setState({ hasPermission: status === 'granted' })
-//   })();
-// }
-// render() {
-//   console.log(this.state.data, upc);
-//   const handleBarCodeScanned = ({ type, data }) => {
-//     this.setState({
-//       scanned: true,
-//       upc: data,
-//     })
-//     alert(`Bar code with type ${type} and data ${data} has been scanned!`);
-//   };
-//   if (this.state.hasPermission === null) {
-//     return <Text>Requesting for camera permission</Text>;
-//   }
-//   if (this.state.hasPermission === false) {
-//     return <Text>No access to camera</Text>;
-//   }
-//   return (
-//     <View style={styles.container}>
-//       <StatusBar barStyle="light-content" />
-//       <BarCodeScanner
-//         onBarCodeScanned={this.state.scanned ? undefined : handleBarCodeScanned}
-//         style={StyleSheet.absoluteFillObject}
-//       />
-//       {this.state.scanned && (
-//         <Button title="Tap to Scan Again" onPress={() => this.setState({ scanned: false })} />
-//       )}
-//     </View>
-//   )
-// };

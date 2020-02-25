@@ -4,27 +4,25 @@ import {
 } from 'react-native';
 import styles from '../constants/Style';
 
-class PaymentScreen extends React.Component {
-  render() {
-    const nav = this.props;
-    return (
-      <View style={styles.container}>
-        <View style={styles.cartList}>
-          <Text>This is where you enter your payment/shipping info!</Text>
-        </View>
-        <View style={styles.cartButtons}>
-          <TouchableOpacity
-            style={styles.addToCart}
-            onPress={() => nav.navigation.navigate('Checkout')}
-            underlayColor="#fff"
-          >
-            <Text style={styles.addToCartText}>Confirm Order</Text>
-          </TouchableOpacity>
-        </View>
+const PaymentScreen = (props) => {
+  const { navigation } = props;
+  return (
+    <View style={styles.container}>
+      <View style={styles.cartList}>
+        <Text style={styles.appText}>This is where you enter your payment/shipping info!</Text>
       </View>
-    );
-  }
-}
+      <View style={styles.cartButtons}>
+        <TouchableOpacity
+          style={styles.largeButton}
+          onPress={() => navigation.navigate('Confirmation')}
+          underlayColor="#fff"
+        >
+          <Text style={styles.largeButtonText}>Confirm Order</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
+};
 
 export default PaymentScreen;
 
