@@ -106,6 +106,14 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#9f9f9f',
   },
+  // Scanner Screen Styles
+  scanScreenMessage: {
+    fontSize: 20,
+    color: 'white',
+    textAlign: 'center',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
   // Product Screen Styles
   productImage: {
     flex: 0.4,
@@ -154,14 +162,31 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     paddingRight: 10
   },
-  // Scanner Screen Styles
-  scanScreenMessage: {
-    fontSize: 20,
-    color: 'white',
-    textAlign: 'center',
+  // Cart screen styles
+  cartList: {
+    flex: 0.9175,
+    width: '100%',
+    justifyContent: 'center',
     alignItems: 'center',
-    justifyContent: 'center'
   },
+  cartButtons: {
+    flex: 0.0825,
+    width: '100%',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+  },
+  // Payment screen styles
+  paymentModal: {
+    flex: 0.5,
+    width: '75%',
+    backgroundColor: '#333',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  modalContent: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  }
 
 });
 

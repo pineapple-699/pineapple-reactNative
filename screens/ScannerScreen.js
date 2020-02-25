@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import { useState, useEffect } from 'react';
 import {
-  Text, View, StyleSheet, Alert, StatusBar, Vibration
+  Text, View, StyleSheet, Alert, StatusBar // , Vibration
 } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 import styles from '../constants/Style';
@@ -32,15 +32,34 @@ class ScannerScreen extends Component {
       return;
     }
 
-    Vibration.vibrate();
+    // Vibration.vibrate();
     this.setState({
       upc: data,
       type,
     });
 
+    fetch('https://pineapple-rest-api.herokuapp.com/products')
+      .then((response) => response.json())
+      .then((responseJson) => {
+        const { products } = responseJson;
+        const scannedProduct = [];
+
+        for (let i = 0; i < products.length; i += 1) {
+          const product = products[i];
+          if (product.upc == this.state.upc && product.size == 'L') {
+            scannedProduct.push(product);
+            // this.setState({
+            //   productToView: scannedProduct,
+            // });
+          }
+        }
+        this.resetScanner();
+        this.props.navigation.navigate('Product', { productToView: scannedProduct });
+      });
+
     // console.log(`EAN scanned: ${data}`);
-    this.resetScanner();
-    this.props.navigation.navigate('Product', { upc: data });
+    // this.resetScanner();
+    // this.props.navigation.navigate('Product', { productToView: scannedProduct });
 
     // Keeping this junk for later use
 

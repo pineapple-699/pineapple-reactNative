@@ -91,7 +91,14 @@ class SignUpScreen extends React.Component {
             buttonStyle={styles.signUpButton}
             title="Sign Up"
             type="clear"
-            onPress={() => nav.navigation.navigate('Activity')}
+            onPress={() => nav.navigation.navigate('Activity', {
+              email: that.email,
+              password: that.password,
+              gender: that.gender,
+              pantSize: that.pantSize,
+              shirtSize: that.shirtSize,
+              shoeSize: that.shoeSize,
+            })}
           />
         </View>
       </View>
