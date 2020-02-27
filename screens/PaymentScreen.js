@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Text, View, TouchableOpacity,
+  Text, View, TouchableOpacity, TextInput
 } from 'react-native';
 import styles from '../constants/Style';
 
@@ -9,7 +9,71 @@ const PaymentScreen = (props) => {
   return (
     <View style={styles.container}>
       <View style={styles.cartList}>
-        <Text style={styles.appText}>This is where you enter your payment/shipping info!</Text>
+        <Text style={styles.appSectionHeader}>Payment Information</Text>
+        <TextInput
+          placeholder="Name on Card"
+          style={styles.authInputs}
+          autoCapitalize="none"
+          //value={}
+          //onChangeText={(value) => { this.setState({ email: value }); }}
+        />
+        <TextInput
+          placeholder="Credit Card Number"
+          style={styles.authInputs}
+          autoCapitalize="none"
+        //value={}
+        //onChangeText={(value) => { this.setState({ email: value }); }}
+        />
+        <TextInput
+          placeholder="Expiration Date"
+          style={styles.authInputs}
+          autoCapitalize="none"
+        //value={}
+        //onChangeText={(value) => { this.setState({ email: value }); }}
+        />
+        <TextInput
+          placeholder="3-Digit Code on Back"
+          style={styles.authInputs}
+          autoCapitalize="none"
+        //value={}
+        //onChangeText={(value) => { this.setState({ email: value }); }}
+        />
+        <Text style={styles.appSectionHeader}>Shipping Information</Text>
+        <TextInput
+          placeholder="Name"
+          style={styles.authInputs}
+          autoCapitalize="none"
+        //value={}
+        //onChangeText={(value) => { this.setState({ email: value }); }}
+        />
+        <TextInput
+          placeholder="Address"
+          style={styles.authInputs}
+          autoCapitalize="none"
+        //value={}
+        //onChangeText={(value) => { this.setState({ email: value }); }}
+        />
+        <TextInput
+          placeholder="City"
+          style={styles.authInputs}
+          autoCapitalize="none"
+        //value={}
+        //onChangeText={(value) => { this.setState({ email: value }); }}
+        />
+        <TextInput
+          placeholder="State"
+          style={styles.authInputs}
+          autoCapitalize="none"
+        //value={}
+        //onChangeText={(value) => { this.setState({ email: value }); }}
+        />
+        <TextInput
+          placeholder="Zip"
+          style={styles.authInputs}
+          autoCapitalize="none"
+        //value={}
+        //onChangeText={(value) => { this.setState({ email: value }); }}
+        />
       </View>
       <View style={styles.cartButtons}>
         <TouchableOpacity

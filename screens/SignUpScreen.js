@@ -30,7 +30,7 @@ class SignUpScreen extends React.Component {
         <StatusBar barStyle="dark-content" />
         <View style={styles.signUpHeaderView}>
           <Image
-            style={styles.logo}
+            style={styles.signUpLogo}
             source={iconLogo}
           />
           <Text style={styles.splashHeaderText}>Sign Up!</Text>

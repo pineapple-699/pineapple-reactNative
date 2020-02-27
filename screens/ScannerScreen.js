@@ -10,7 +10,7 @@ class ScannerScreen extends Component {
   constructor(props) {
     super(props);
 
-    this.onBarCodeRead = this.onBarCodeRead.bind(this);
+    // this.onBarCodeRead = this.onBarCodeRead.bind(this);
     this.renderMessage = this.renderMessage.bind(this);
     this.scannedCode = null;
 
@@ -27,8 +27,11 @@ class ScannerScreen extends Component {
     this.resetScanner();
   }
 
-  onBarCodeRead({ type, data }) {
-    if ((type === this.state.type && data === this.state.upc) || data === null) {
+  onBarCodeRead = ({ typo, data }) => {
+    const { type, upc } = this.state;
+    const { navigation } = this.props;
+
+    if ((typo === type && data === upc) || data === null) {
       return;
     }
 
@@ -43,18 +46,19 @@ class ScannerScreen extends Component {
       .then((responseJson) => {
         const { products } = responseJson;
         const scannedProduct = [];
+        console.log(upc);
 
         for (let i = 0; i < products.length; i += 1) {
           const product = products[i];
           if (product.upc == this.state.upc && product.size == 'L') {
             scannedProduct.push(product);
-            // this.setState({
-            //   productToView: scannedProduct,
+            //  this.setState({
+            //    productToView: scannedProduct,
             // });
           }
         }
         this.resetScanner();
-        this.props.navigation.navigate('Product', { productToView: scannedProduct });
+        navigation.navigate('Product', { productToView: scannedProduct });
       });
 
     // Keeping this junk for later use
@@ -99,8 +103,10 @@ class ScannerScreen extends Component {
   }
 
   renderMessage() {
-    if (this.state.scannedItem && this.state.scannedItem.type) {
-      const { type, data } = this.state.scannedItem;
+    const { scannedItem } = this.state;
+
+    if (scannedItem && scannedItem.type) {
+      const { type, data } = scannedItem;
       return (
         <Text style={styles.scanScreenMessage}>
           {`Scanned \n ${type} \n ${data}`}

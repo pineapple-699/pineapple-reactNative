@@ -13,16 +13,28 @@ import styles from '../constants/Style';
 class ProductsScreen extends React.Component {
   constructor(props) {
     super(props);
-    const nav = this.props;
-    const scannedProduct = nav.navigation.getParam('productToView');
+    const { navigation } = this.props;
+    const scannedProduct = navigation.getParam('productToView');
 
     this.state = {
       productToView: scannedProduct[0],
     };
   }
 
+  // componentDidMount() {
+  //   const { navigation } = this.props;
+  //   const scannedProduct = navigation.getParam('productToView');
+  //   console.log('Product Screen');
+  //   console.log(scannedProduct);
+  //   this.setState({
+  //     productToView: scannedProduct[0],
+  //   })
+
+  // }
+
   render() {
-    const nav = this.props;
+    const { navigation } = this.props;
+    const { productToView } = this.state;
     return (
       <View style={styles.container}>
         <StatusBar barStyle="dark-content" />
@@ -33,22 +45,22 @@ class ProductsScreen extends React.Component {
           <View style={styles.productInfo}>
             <View style={styles.productName}>
               <Text style={styles.appSectionHeader}>Product UPC Code: </Text>
-              <Text style={styles.appText}>{this.state.productToView.upc}</Text>
+              <Text style={styles.appText}>{productToView.upc}</Text>
             </View>
             <View style={styles.productAbout}>
               <View style={styles.productDescription}>
                 <Text style={styles.appSectionHeader}>Product Description:</Text>
-                <Text style={styles.appText}>{this.state.productToView.description}</Text>
+                <Text style={styles.appText}>{productToView.description}</Text>
               </View>
               <View style={styles.productAttributes}>
                 <Text style={styles.appSectionHeader}>Size: </Text>
-                <Text style={styles.appText}>{this.state.productToView.size}</Text>
+                <Text style={styles.appText}>{productToView.size}</Text>
                 <Text style={styles.appSectionHeader}>Color: </Text>
-                <Text style={styles.appText}>{this.state.productToView.color}</Text>
+                <Text style={styles.appText}>{productToView.color}</Text>
                 <Text style={styles.appSectionHeader}>Price:</Text>
-                <Text style={styles.appText}>{this.state.productToView.price}</Text>
+                <Text style={styles.appText}>{productToView.price}</Text>
                 <Text style={styles.appSectionHeader}>Amount In Stock: </Text>
-                <Text style={styles.appText}>{this.state.productToView.amt}</Text>
+                <Text style={styles.appText}>{productToView.amt}</Text>
               </View>
             </View>
           </View>
@@ -56,7 +68,7 @@ class ProductsScreen extends React.Component {
             <Text style={styles.linkText}>In Store Pickup</Text>
             <TouchableOpacity
               style={styles.largeButton}
-              onPress={() => nav.navigation.navigate('Cart')}
+              onPress={() => navigation.navigate('Cart')}
               underlayColor="#fff"
             >
               <Text style={styles.largeButtonText}>Add To Cart</Text>

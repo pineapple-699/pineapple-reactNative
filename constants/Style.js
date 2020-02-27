@@ -13,8 +13,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  logo: {
+  splashLogo: {
     margin: 10,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  signUpLogo: {
+    margin: 10,
+    height: 110,
+    width: 62,
     alignItems: 'center',
     justifyContent: 'center'
   },
@@ -78,21 +85,22 @@ const styles = StyleSheet.create({
 
   // Sign Up Styles
   signUpHeaderView: {
-    flex: 0.375,
+    flex: 0.3,
     justifyContent: 'flex-end',
     alignItems: 'center',
     // backgroundColor: 'red',
   },
   signUpInputView: {
-    flex: 0.5,
+    flex: 0.65,
     justifyContent: 'center',
     alignItems: 'center',
     // backgroundColor: 'blue',
   },
   signUpButtonView: {
-    flex: 0.175,
+    flex: 0.15,
     justifyContent: 'flex-start',
     alignItems: 'center',
+    // backgroundColor: 'red',
   },
   authInputs: {
     backgroundColor: '#fff',

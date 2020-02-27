@@ -25,7 +25,7 @@ class LogInScreen extends React.Component {
         <StatusBar barStyle="dark-content" />
         <View style={styles.splashHeader}>
           <Image
-            style={styles.logo}
+            style={styles.splashLogo}
             source={iconLogo}
           />
           <Text style={styles.splashHeaderText}>Welcome to Pineapple!</Text>
