@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-// import { useState, useEffect } from 'react';
+import Toast, {DURATION} from 'react-native-easy-toast';
+
 import {
   Text, View, StyleSheet, Alert, StatusBar, Vibration
 } from 'react-native';
@@ -18,6 +19,7 @@ class ScannerScreen extends Component {
       hasCameraPermission: true,
       upc: '',
       type: '',
+      toastVisible: false
     };
   }
 
@@ -56,9 +58,19 @@ class ScannerScreen extends Component {
             //    productToView: scannedProduct,
             // });
           }
+          else{
+
+          }
         }
         this.resetScanner();
-        navigation.navigate('Product', { productToView: scannedProduct });
+
+        if( scannedProduct == undefined){
+          navigation.navigate('Product', { productToView: scannedProduct });
+        }
+        else{
+          this.refs.toast.show('Product not available', 500)
+        }
+        
       });
 
     // Keeping this junk for later use
@@ -117,7 +129,7 @@ class ScannerScreen extends Component {
   }
 
   render() {
-    const { hasCameraPermission } = this.state;
+    const { hasCameraPermission, toastVisible } = this.state;
 
     if (hasCameraPermission === null) {
       return <Text>Requesting for camera permission</Text>;
@@ -132,6 +144,7 @@ class ScannerScreen extends Component {
           onBarCodeScanned={this.onBarCodeRead}
           style={StyleSheet.absoluteFill}
         />
+        <Toast ref="toast"/>
         {this.renderMessage()}
       </View>
     );
