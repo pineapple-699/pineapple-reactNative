@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Toast, {DURATION} from 'react-native-easy-toast';
+import Toast from 'react-native-easy-toast';
 
 import {
   Text, View, StyleSheet, Alert, StatusBar, Vibration
@@ -19,7 +19,6 @@ class ScannerScreen extends Component {
       hasCameraPermission: true,
       upc: '',
       type: '',
-      toastVisible: false
     };
   }
 
@@ -37,7 +36,7 @@ class ScannerScreen extends Component {
       return;
     }
 
-    Vibration.vibrate();
+    // Vibration.vibrate();
     this.setState({
       upc: data,
       type,
@@ -58,19 +57,14 @@ class ScannerScreen extends Component {
             //    productToView: scannedProduct,
             // });
           }
-          else{
-
-          }
         }
         this.resetScanner();
 
-        if( scannedProduct == undefined){
+        if (scannedProduct && scannedProduct.length) {
           navigation.navigate('Product', { productToView: scannedProduct });
+        } else {
+          this.refs.toast.show('Product not available', 500);
         }
-        else{
-          this.refs.toast.show('Product not available', 500)
-        }
-        
       });
 
     // Keeping this junk for later use
@@ -129,7 +123,7 @@ class ScannerScreen extends Component {
   }
 
   render() {
-    const { hasCameraPermission, toastVisible } = this.state;
+    const { hasCameraPermission } = this.state;
 
     if (hasCameraPermission === null) {
       return <Text>Requesting for camera permission</Text>;
@@ -144,7 +138,7 @@ class ScannerScreen extends Component {
           onBarCodeScanned={this.onBarCodeRead}
           style={StyleSheet.absoluteFill}
         />
-        <Toast ref="toast"/>
+        <Toast ref="toast" />
         {this.renderMessage()}
       </View>
     );
