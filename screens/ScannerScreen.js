@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-// import { useState, useEffect } from 'react';
+import Toast from 'react-native-easy-toast';
+
 import {
   Text, View, StyleSheet, Alert, StatusBar, Vibration
 } from 'react-native';
@@ -11,7 +12,6 @@ class ScannerScreen extends Component {
     super(props);
 
     // this.onBarCodeRead = this.onBarCodeRead.bind(this);
-    this.renderMessage = this.renderMessage.bind(this);
     this.scannedCode = null;
 
     this.state = {
@@ -20,6 +20,7 @@ class ScannerScreen extends Component {
       type: '',
     };
   }
+
 
   async componentDidMount() {
     const { status } = await BarCodeScanner.requestPermissionsAsync();
@@ -46,19 +47,20 @@ class ScannerScreen extends Component {
       .then((responseJson) => {
         const { products } = responseJson;
         const scannedProduct = [];
-        // console.log(upc);
 
         for (let i = 0; i < products.length; i += 1) {
           const product = products[i];
           if (product.upc === upc && product.size === 'L') {
             scannedProduct.push(product);
-            //  this.setState({
-            //    productToView: scannedProduct,
-            // });
           }
         }
         this.resetScanner();
-        navigation.navigate('Product', { productToView: scannedProduct });
+
+        if (scannedProduct && scannedProduct.length) {
+          navigation.navigate('Product', { productToView: scannedProduct });
+        } else {
+          this.refs.toast.show('Product not available', 500);
+        }
       });
 
     // Keeping this junk for later use
@@ -102,7 +104,7 @@ class ScannerScreen extends Component {
     );
   }
 
-  renderMessage() {
+  renderMessage = () => {
     const { scannedItem } = this.state;
 
     if (scannedItem && scannedItem.type) {
@@ -132,6 +134,7 @@ class ScannerScreen extends Component {
           onBarCodeScanned={this.onBarCodeRead}
           style={StyleSheet.absoluteFill}
         />
+        <Toast ref="toast" position="center" />
         {this.renderMessage()}
       </View>
     );
