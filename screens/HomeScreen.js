@@ -56,7 +56,8 @@ class HomeScreen extends React.Component {
         <StatusBar barStyle="dark-content" />
         <Text>
           Welcome
-          {authInfo.firstname}
+          {` ${authInfo.firstName} ${authInfo.lastName}`}
+          !
         </Text>
         <Button
           title="SCAN"
