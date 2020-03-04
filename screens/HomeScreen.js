@@ -2,7 +2,11 @@ import React from 'react';
 import {
   Text, View, Button, StatusBar
 } from 'react-native';
+import { connect } from 'react-redux';
+
 import styles from '../constants/Style';
+
+import { getAuthInfo } from '../reducers/login';
 
 class HomeScreen extends React.Component {
   componentDidMount = async () => {
@@ -45,12 +49,16 @@ class HomeScreen extends React.Component {
   }
 
   render() {
-    const { navigation } = this.props;
+    const { navigation, authInfo } = this.props;
 
     return (
       <View style={styles.container}>
         <StatusBar barStyle="dark-content" />
-        <Text>This is the homescreen!</Text>
+        <Text>
+          Welcome
+          {` ${authInfo.firstName} ${authInfo.lastName}`}
+          !
+        </Text>
         <Button
           title="SCAN"
           onPress={() => navigation.navigate('Scanner')}
@@ -60,4 +68,8 @@ class HomeScreen extends React.Component {
   }
 }
 
-export default HomeScreen;
+const mapStateToProps = (state) => ({
+  authInfo: getAuthInfo(state)
+});
+
+export default connect(mapStateToProps, null)(HomeScreen);

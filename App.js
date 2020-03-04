@@ -7,6 +7,8 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 import { Ionicons } from '@expo/vector-icons';
+import { Provider } from 'react-redux';
+import configureStore from './configure-store';
 
 import AppNavigator from './navigation/AppNavigator';
 
@@ -49,6 +51,7 @@ export default function App({ skipLoadingScreen }) {
   };
 
   const [isLoadingComplete, setLoadingComplete] = useState(false);
+  const store = configureStore();
 
   if (!isLoadingComplete && !skipLoadingScreen) {
     return (
@@ -61,8 +64,10 @@ export default function App({ skipLoadingScreen }) {
   }
   return (
     <View style={styles.container}>
-      {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-      <AppNavigator />
+      <Provider store={store}>
+        {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
+        <AppNavigator />
+      </Provider>
     </View>
   );
 }

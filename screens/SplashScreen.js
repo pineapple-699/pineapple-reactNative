@@ -2,8 +2,13 @@ import React from 'react';
 import {
   View, StatusBar, Text, Alert, Image, TextInput
 } from 'react-native';
+
 import { Button } from 'react-native-elements';
+import { connect } from 'react-redux';
 import styles from '../constants/Style';
+
+// Redux
+import { setAuthentication, setProfile } from '../reducers/login';
 
 const iconLogo = require('../assets/images/icon-logo.png');
 
@@ -15,6 +20,22 @@ class LogInScreen extends React.Component {
       email: '',
       password: '',
     };
+  }
+
+  componentDidMount() {
+    const {
+      setAuth, setProf
+    } = this.props;
+
+    const loggedInUser = {
+      username: 'Test',
+      email: 'test@gmail.com',
+      first_name: 'Test',
+      last_name: 'Testerton',
+    };
+
+    setProf(loggedInUser);
+    setAuth(true);
   }
 
   render() {
@@ -74,4 +95,9 @@ class LogInScreen extends React.Component {
   }
 }
 
-export default LogInScreen;
+const mapDispatchToProps = {
+  setAuth: setAuthentication,
+  setProf: setProfile
+};
+
+export default connect(null, mapDispatchToProps)(LogInScreen);
