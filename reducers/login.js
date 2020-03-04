@@ -11,7 +11,7 @@ const defaultState = {
 // ACTIONS
 
 const setProfile = createAction('SET_PROFILE');
-const setAuth = createAction('SET_AUTHENTICATION');
+const setAuthentication = createAction('SET_AUTHENTICATION');
 
 const reducer = handleActions(
   {
@@ -22,7 +22,7 @@ const reducer = handleActions(
       firstName: payload.first_name,
       lastName: payload.last_name,
     }),
-    [setAuth]: (state, { payload }) => {
+    [setAuthentication]: (state, { payload }) => {
       if (payload === true) {
         return { ...state, isAuthenticated: true };
       }
@@ -36,4 +36,4 @@ const reducer = handleActions(
 const getAuthInfo = (state) => state.login;
 
 export default reducer;
-export { setProfile, setAuth, getAuthInfo };
+export { setProfile, setAuthentication, getAuthInfo };

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
   View, StatusBar, Text, Alert, Image, TextInput
 } from 'react-native';
@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import styles from '../constants/Style';
 
 // Redux
-import { getAuthInfo, setAuth, setProfile } from '../reducers/login';
+import { setAuthentication, setProfile } from '../reducers/login';
 
 const iconLogo = require('../assets/images/icon-logo.png');
 
@@ -22,11 +22,11 @@ class LogInScreen extends React.Component {
     };
   }
 
-  componentDidMount(){
+  componentDidMount() {
     const {
-      navigation, setAuth, setProfile, getAuthInfo
-    } = props;
-  
+      setAuth, setProf
+    } = this.props;
+
     const loggedInUser = {
       username: 'Test',
       email: 'test@gmail.com',
@@ -34,9 +34,8 @@ class LogInScreen extends React.Component {
       last_name: 'Testerton',
     };
 
-    setProfile(loggedInUser);
+    setProf(loggedInUser);
     setAuth(true);
-    console.log(getAuthInfo);
   }
 
   render() {
@@ -96,13 +95,9 @@ class LogInScreen extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  authInfo: getAuthInfo(state)
-});
-
 const mapDispatchToProps = {
-  setAuth,
-  setProfile
+  setAuth: setAuthentication,
+  setProf: setProfile
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(LogInScreen);
+export default connect(null, mapDispatchToProps)(LogInScreen);
