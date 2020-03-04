@@ -2,9 +2,9 @@
   "devToolsPort": 19002,
   "expoServerPort": 19000,
   "packagerPort": 19001,
-  "packagerPid": 1319,
-  "expoServerNgrokUrl": "https://vz-6gx.anonymous.pineapple-reactnative.exp.direct",
-  "packagerNgrokUrl": "https://packager.vz-6gx.anonymous.pineapple-reactnative.exp.direct",
-  "ngrokPid": 1334,
+  "packagerPid": 60290,
+  "expoServerNgrokUrl": "https://vz-6gx.anonymous.pineapple-master.exp.direct",
+  "packagerNgrokUrl": "https://packager.vz-6gx.anonymous.pineapple-master.exp.direct",
+  "ngrokPid": 60328,
   "webpackServerPort": null
 }

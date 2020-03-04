@@ -46,11 +46,11 @@ class ScannerScreen extends Component {
       .then((responseJson) => {
         const { products } = responseJson;
         const scannedProduct = [];
-        console.log(upc);
+        // console.log(upc);
 
         for (let i = 0; i < products.length; i += 1) {
           const product = products[i];
-          if (product.upc == this.state.upc && product.size == 'L') {
+          if (product.upc === upc && product.size === 'L') {
             scannedProduct.push(product);
             //  this.setState({
             //    productToView: scannedProduct,
