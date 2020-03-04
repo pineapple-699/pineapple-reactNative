@@ -12,70 +12,89 @@ import { getAuthInfo, setAuth, setProfile } from '../reducers/login';
 
 const iconLogo = require('../assets/images/icon-logo.png');
 
-const LogInScreen = (props) => {
-  const {
-    navigation, setAuth, setProfile, getAuthInfo
-  } = props;
+class LogInScreen extends React.Component {
+  constructor(props) {
+    super(props);
 
-  const loggedInUser = {
-    username: 'Test',
-    email: 'test@gmail.com',
-    first_name: 'Test',
-    last_name: 'Testerton',
-  };
+    this.state = {
+      email: '',
+      password: '',
+    };
+  }
 
-  useEffect(() => {
+  componentDidMount(){
+    const {
+      navigation, setAuth, setProfile, getAuthInfo
+    } = props;
+  
+    const loggedInUser = {
+      username: 'Test',
+      email: 'test@gmail.com',
+      first_name: 'Test',
+      last_name: 'Testerton',
+    };
+
     setProfile(loggedInUser);
     setAuth(true);
     console.log(getAuthInfo);
-  });
+  }
 
-  return (
-    <View style={styles.splashContainer}>
-      <StatusBar barStyle="dark-content" />
-      <View style={styles.splashHeader}>
-        <Image
-          style={styles.logo}
-          source={iconLogo}
-        />
-        <Text style={styles.authHeader}>Welcome to Pineapple!</Text>
-        <Text style={styles.authText}>this is the splash screen</Text>
-      </View>
-      <View style={styles.splashInputs}>
-        <TextInput
-          placeholder="Email"
-          style={styles.signUpText}
-        />
-        <TextInput
-          placeholder="Password"
-          style={styles.signUpText}
-        />
-      </View>
-      <View style={styles.splashButtons}>
-        <View style={styles.buttonsView}>
+  render() {
+    const that = this.state;
+    const nav = this.props;
+    return (
+      <View style={styles.splashContainer}>
+        <StatusBar barStyle="dark-content" />
+        <View style={styles.splashHeader}>
+          <Image
+            style={styles.splashLogo}
+            source={iconLogo}
+          />
+          <Text style={styles.splashHeaderText}>Welcome to Pineapple!</Text>
+          <Text style={styles.splashText}>this is the splash screen</Text>
+        </View>
+        <View style={styles.splashInputs}>
+          <TextInput
+            placeholder="Email"
+            style={styles.authInputs}
+            autoCapitalize="none"
+            value={that.email}
+            onChangeText={(value) => { this.setState({ email: value }); }}
+          />
+          <TextInput
+            placeholder="Password"
+            style={styles.authInputs}
+            autoCapitalize="none"
+            value={that.password}
+            onChangeText={(value) => { this.setState({ password: value }); }}
+          />
+        </View>
+        <View style={styles.splashButtons}>
+          <View style={styles.splashButtonsView}>
+            <Button
+              buttonStyle={styles.authButton}
+              title="Log In"
+              type="clear"
+              onPress={() => Alert.alert('This should log you in, but it is not working right now')}
+            />
+            <Button
+              buttonStyle={styles.authButton}
+              title="Sign Up"
+              type="clear"
+              onPress={() => nav.navigation.navigate('SignUp')}
+            />
+          </View>
           <Button
-            buttonStyle={styles.authButton}
-            title="Log In"
+            buttonStyle={styles.authGoogle}
+            title="Log In with Google"
             type="clear"
             onPress={() => Alert.alert('This should log you in, but it is not working right now')}
           />
-          <Button
-            buttonStyle={styles.authButton}
-            title="Sign Up"
-            type="clear"
-            onPress={() => navigation.navigate('SignUp')}
-          />
         </View>
-        <Button
-          buttonStyle={styles.authGoogle}
-          title="Log In with Google"
-          type="clear"
-          onPress={() => Alert.alert('This should log you in, but it is not working right now')}
-        />
       </View>
-    </View>
-  );
-};
+    );
+  }
+}
 
 const mapStateToProps = (state) => ({
   authInfo: getAuthInfo(state)

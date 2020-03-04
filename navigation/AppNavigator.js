@@ -30,12 +30,20 @@ const StackNavigator = createStackNavigator(
       screen: LogInScreen,
       navigationOptions: {
         header: null,
+        // headerStyle: {
+        //   backgroundColor: '#9cf99c',
+        //   borderBottomWidth: 0,
+        // },
+        headerBackTitle: 'Log In',
       }
     },
     SignUp: {
       screen: SignUpScreen,
       navigationOptions: {
-        header: null,
+        headerStyle: {
+          backgroundColor: '#9cf99c',
+          borderBottomWidth: 0,
+        },
       }
     }
   }

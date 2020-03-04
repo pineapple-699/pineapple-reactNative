@@ -2,66 +2,79 @@ import React from 'react';
 import {
   Text,
   View,
-  ActivityIndicator,
-  FlatList
+  TouchableOpacity,
+  StatusBar,
+  // ActivityIndicator,
+  // FlatList
 } from 'react-native';
+// import { Button } from 'react-native-elements';
 import styles from '../constants/Style';
-
-function Item({ title, price }) {
-  return (
-    <View style={styles.item}>
-      <Text style={styles.title}>{title}</Text>
-      <Text style={styles.title}>{price}</Text>
-    </View>
-  );
-}
 
 class ProductsScreen extends React.Component {
   constructor(props) {
     super(props);
+    const { navigation } = this.props;
+    const scannedProduct = navigation.getParam('productToView');
+
     this.state = {
-      loading: true,
-      dataSource: []
+      productToView: scannedProduct[0],
     };
   }
 
-  componentDidMount() {
-    fetch('https://pineapple-rest-api.herokuapp.com/products')
-      .then((response) => response.json())
-      .then((responseJson) => {
-        this.setState({
-          loading: false,
-          dataSource: responseJson
-        });
-      });
-  }
+  // componentDidMount() {
+  //   const { navigation } = this.props;
+  //   const scannedProduct = navigation.getParam('productToView');
+  //   console.log('Product Screen');
+  //   console.log(scannedProduct);
+  //   this.setState({
+  //     productToView: scannedProduct[0],
+  //   })
+
+  // }
 
   render() {
-    const { dataSource, loading } = this.state;
-    if (loading) {
-      return (
-        <View style={styles.loader}>
-          <ActivityIndicator size="large" color="#0c9" />
-        </View>
-      );
-    }
-
+    const { navigation } = this.props;
+    const { productToView } = this.state;
     return (
       <View style={styles.container}>
-        <Text>Products Screen</Text>
-        {/* <br />
-        {dataSource.products.map((dat) => (
-          <div>
-            <h2>{dat.product}</h2>
-            <p>{dat.price}</p>
-          </div>
-        ))} */}
-        <FlatList
-          data={dataSource.products}
-          renderItem={({ item }) => <Item title={item.product} price={item.price} />}
-          keyExtractor={(item) => item.id}
-        />
-
+        <StatusBar barStyle="dark-content" />
+        <View style={styles.productImage}>
+          <Text>Product Image(s)</Text>
+        </View>
+        <View style={styles.productContent}>
+          <View style={styles.productInfo}>
+            <View style={styles.productName}>
+              <Text style={styles.appSectionHeader}>Product UPC Code: </Text>
+              <Text style={styles.appText}>{productToView.upc}</Text>
+            </View>
+            <View style={styles.productAbout}>
+              <View style={styles.productDescription}>
+                <Text style={styles.appSectionHeader}>Product Description:</Text>
+                <Text style={styles.appText}>{productToView.description}</Text>
+              </View>
+              <View style={styles.productAttributes}>
+                <Text style={styles.appSectionHeader}>Size: </Text>
+                <Text style={styles.appText}>{productToView.size}</Text>
+                <Text style={styles.appSectionHeader}>Color: </Text>
+                <Text style={styles.appText}>{productToView.color}</Text>
+                <Text style={styles.appSectionHeader}>Price:</Text>
+                <Text style={styles.appText}>{productToView.price}</Text>
+                <Text style={styles.appSectionHeader}>Amount In Stock: </Text>
+                <Text style={styles.appText}>{productToView.amt}</Text>
+              </View>
+            </View>
+          </View>
+          <View style={styles.productButtons}>
+            <Text style={styles.linkText}>In Store Pickup</Text>
+            <TouchableOpacity
+              style={styles.largeButton}
+              onPress={() => navigation.navigate('Cart')}
+              underlayColor="#fff"
+            >
+              <Text style={styles.largeButtonText}>Add To Cart</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
       </View>
     );
   }
