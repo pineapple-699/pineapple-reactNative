@@ -12,7 +12,6 @@ class ScannerScreen extends Component {
     super(props);
 
     // this.onBarCodeRead = this.onBarCodeRead.bind(this);
-    this.renderMessage = this.renderMessage.bind(this);
     this.scannedCode = null;
 
     this.state = {
@@ -21,6 +20,7 @@ class ScannerScreen extends Component {
       type: '',
     };
   }
+
 
   async componentDidMount() {
     const { status } = await BarCodeScanner.requestPermissionsAsync();
@@ -36,7 +36,7 @@ class ScannerScreen extends Component {
       return;
     }
 
-    // Vibration.vibrate();
+    Vibration.vibrate();
     this.setState({
       upc: data,
       type,
@@ -47,15 +47,11 @@ class ScannerScreen extends Component {
       .then((responseJson) => {
         const { products } = responseJson;
         const scannedProduct = [];
-        // console.log(upc);
 
         for (let i = 0; i < products.length; i += 1) {
           const product = products[i];
           if (product.upc === upc && product.size === 'L') {
             scannedProduct.push(product);
-            //  this.setState({
-            //    productToView: scannedProduct,
-            // });
           }
         }
         this.resetScanner();
@@ -108,7 +104,7 @@ class ScannerScreen extends Component {
     );
   }
 
-  renderMessage() {
+  renderMessage = () => {
     const { scannedItem } = this.state;
 
     if (scannedItem && scannedItem.type) {
@@ -138,7 +134,7 @@ class ScannerScreen extends Component {
           onBarCodeScanned={this.onBarCodeRead}
           style={StyleSheet.absoluteFill}
         />
-        <Toast ref="toast" />
+        <Toast ref="toast" position="center" />
         {this.renderMessage()}
       </View>
     );
