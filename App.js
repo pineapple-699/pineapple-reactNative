@@ -7,8 +7,8 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 import { Ionicons } from '@expo/vector-icons';
-import { Provider } from "react-redux";
-import configureStore from "./configure-store";
+import { Provider } from 'react-redux';
+import configureStore from './configure-store';
 
 import AppNavigator from './navigation/AppNavigator';
 

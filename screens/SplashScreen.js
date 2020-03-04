@@ -1,19 +1,21 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import {
   View, StatusBar, Text, Alert, Image, TextInput
 } from 'react-native';
 
 import { Button } from 'react-native-elements';
+import { connect } from 'react-redux';
 import styles from '../constants/Style';
 
-//Redux
-import { connect } from "react-redux";
-import { getAuthInfo, setAuth,setProfile } from '../reducers/login';
+// Redux
+import { getAuthInfo, setAuth, setProfile } from '../reducers/login';
 
 const iconLogo = require('../assets/images/icon-logo.png');
 
 const LogInScreen = (props) => {
-  const { navigation, setAuth, setProfile, getAuthInfo } = props;
+  const {
+    navigation, setAuth, setProfile, getAuthInfo
+  } = props;
 
   const loggedInUser = {
     username: 'Test',
@@ -25,9 +27,9 @@ const LogInScreen = (props) => {
   useEffect(() => {
     setProfile(loggedInUser);
     setAuth(true);
-    console.log(getAuthInfo)
+    console.log(getAuthInfo);
   });
-  
+
   return (
     <View style={styles.splashContainer}>
       <StatusBar barStyle="dark-content" />
@@ -75,15 +77,13 @@ const LogInScreen = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return { 
-      authInfo: getAuthInfo(state)
-  }
-};
+const mapStateToProps = (state) => ({
+  authInfo: getAuthInfo(state)
+});
 
 const mapDispatchToProps = {
   setAuth,
   setProfile
 };
 
-export default connect(mapStateToProps,mapDispatchToProps)(LogInScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(LogInScreen);
