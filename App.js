@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 import { Ionicons } from '@expo/vector-icons';
+import StorybookUIRoot from './storybook';
 import { Provider } from 'react-redux';
 import configureStore from './configure-store';
 
@@ -22,6 +23,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
 });
+
+const SHOW_STORYBOOK = true;
 
 async function loadResourcesAsync() {
   await Promise.all([
@@ -59,6 +62,13 @@ export default function App({ skipLoadingScreen }) {
         startAsync={loadResourcesAsync}
         onError={handleLoadingError}
         onFinish={() => handleFinishLoading(setLoadingComplete)}
+      />
+    );
+  }
+
+  if (SHOW_STORYBOOK) {
+    return (
+      <StorybookUIRoot
       />
     );
   }
