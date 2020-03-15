@@ -1,10 +1,10 @@
 {
   "devToolsPort": 19002,
-  "expoServerPort": null,
-  "packagerPort": null,
-  "packagerPid": null,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null,
+  "expoServerPort": 19000,
+  "packagerPort": 19001,
+  "packagerPid": 67306,
+  "expoServerNgrokUrl": "https://vz-6gx.anonymous.pineapple-master.exp.direct",
+  "packagerNgrokUrl": "https://packager.vz-6gx.anonymous.pineapple-master.exp.direct",
+  "ngrokPid": 67328,
   "webpackServerPort": null
 }
