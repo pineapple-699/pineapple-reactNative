@@ -1,8 +1,8 @@
 import React from 'react';
 import {
-  View, StatusBar, Text, TextInput, Image
+  View, StatusBar, Text, TextInput, Image, Alert
 } from 'react-native';
-import { Button } from 'react-native-elements';
+import { Button, registerCustomIconType } from 'react-native-elements';
 import styles from '../constants/Style';
 
 const iconLogo = require('../assets/images/icon-logo.png');
@@ -20,6 +20,49 @@ class SignUpScreen extends React.Component {
       shirtSize: '',
       shoeSize: '',
     };
+  }
+
+  register = async () => {
+    const item = this.state;
+    const nav = this.props;
+
+    if (item.password != item.cPassword) {
+      Alert.alert("Your passwords do not match, please try again with matching passwords.")
+    } else {
+      const rawResponse = await fetch('https://pineapple-rest-api.herokuapp.com/register', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          username: item.email,
+          address: 'Ann Arbor',
+          password: item.password,
+          sex: item.gender,
+          shoe_size: item.shoeSize,
+          shirt_size: item.shirtSize,
+          pant_size_waist: item.pantSize,
+          pant_size_length: '30'
+        })
+      });
+
+      const content = await rawResponse.json();
+
+      if (content.message === "User with the same name already exists in database!") {
+        Alert.alert("This email is already in use, please log in or try again with a different email.")
+      } else {
+        nav.navigation.navigate('Activity', {
+        email: that.email,
+        password: that.password,
+        gender: that.gender,
+        pantSize: that.pantSize,
+        shirtSize: that.shirtSize,
+        shoeSize: that.shoeSize,
+        })
+      }
+      console.log(content); //eslint-disable-line
+    }
   }
 
   render() {
@@ -91,14 +134,16 @@ class SignUpScreen extends React.Component {
             buttonStyle={styles.signUpButton}
             title="Sign Up"
             type="clear"
-            onPress={() => nav.navigation.navigate('Activity', {
-              email: that.email,
-              password: that.password,
-              gender: that.gender,
-              pantSize: that.pantSize,
-              shirtSize: that.shirtSize,
-              shoeSize: that.shoeSize,
-            })}
+            onPress={() => this.register()
+              // nav.navigation.navigate('Activity', {
+              // email: that.email,
+              // password: that.password,
+              // gender: that.gender,
+              // pantSize: that.pantSize,
+              // shirtSize: that.shirtSize,
+              // shoeSize: that.shoeSize,
+            // })
+          }
           />
         </View>
       </View>
