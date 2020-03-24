@@ -47,12 +47,12 @@ class ScannerScreen extends Component {
       .then((responseJson) => {
         const products = responseJson;
         const scannedProduct = [];
-        console.log(upc);
+        // console.log(upc);
 
         for (let i = 0; i < products.length; i += 1) {
           const product = products[i];
           if (product.upc === upc) {
-            console.log(product);
+            // console.log(product);
             scannedProduct.push(product);
           }
         }

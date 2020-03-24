@@ -46,21 +46,21 @@ class LogInScreen extends React.Component {
     fetch('https://pineapple-rest-api.herokuapp.com/users')
       .then((response) => response.json())
       .then((responseJson) => {
-        const userInfo = responseJson['users'];
+        const userInfo = responseJson.users;
         const users = [];
 
-        userInfo.forEach(function (user) {
-          users.push(user.username);
+        userInfo.forEach((account) => {
+          users.push(account.username);
         });
 
-        if (user.email === ''){
+        if (user.email === '') {
           Alert.alert('Please enter your log in info');
         } else if (users.includes(user.email) === false) {
           Alert.alert('No account with this email exists. Please sign up or try again.');
         } else {
-          nav.navigation.navigate('Activity')
+          nav.navigation.navigate('Activity');
         }
-    });
+      });
   }
 
   render() {

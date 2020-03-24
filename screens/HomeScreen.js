@@ -10,13 +10,13 @@ import { getAuthInfo } from '../reducers/login';
 
 class HomeScreen extends React.Component {
   componentDidMount = async () => {
-    const nav = this.props;
-    const email = nav.navigation.getParam('email');
-    const password = nav.navigation.getParam('password');
-    const gender = nav.navigation.getParam('gender');
-    const pantSize = nav.navigation.getParam('pantSize');
-    const shirtSize = nav.navigation.getParam('shirtSize');
-    const shoeSize = nav.navigation.getParam('shoeSize');
+    // const nav = this.props;
+    // const email = nav.navigation.getParam('email');
+    // const password = nav.navigation.getParam('password');
+    // const gender = nav.navigation.getParam('gender');
+    // const pantSize = nav.navigation.getParam('pantSize');
+    // const shirtSize = nav.navigation.getParam('shirtSize');
+    // const shoeSize = nav.navigation.getParam('shoeSize');
 
     // console.log(email);
     // console.log(password);

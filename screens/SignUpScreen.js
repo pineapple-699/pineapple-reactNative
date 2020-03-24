@@ -2,7 +2,10 @@ import React from 'react';
 import {
   View, StatusBar, Text, TextInput, Image, Alert
 } from 'react-native';
-import { Button, registerCustomIconType } from 'react-native-elements';
+import {
+  Button
+  // registerCustomIconType
+} from 'react-native-elements';
 import styles from '../constants/Style';
 
 const iconLogo = require('../assets/images/icon-logo.png');
@@ -26,8 +29,8 @@ class SignUpScreen extends React.Component {
     const item = this.state;
     const nav = this.props;
 
-    if (item.password != item.cPassword) {
-      Alert.alert("Your passwords do not match, please try again with matching passwords.")
+    if (item.password !== item.cPassword) {
+      Alert.alert('Your passwords do not match, please try again with matching passwords.');
     } else {
       const rawResponse = await fetch('https://pineapple-rest-api.herokuapp.com/register', {
         method: 'POST',
@@ -49,17 +52,17 @@ class SignUpScreen extends React.Component {
 
       const content = await rawResponse.json();
 
-      if (content.message === "User with the same name already exists in database!") {
-        Alert.alert("This email is already in use, please log in or try again with a different email.")
+      if (content.message === 'User with the same name already exists in database!') {
+        Alert.alert('This email is already in use, please log in or try again with a different email.');
       } else {
         nav.navigation.navigate('Activity', {
-        email: item.email,
-        password: item.password,
-        gender: item.gender,
-        pantSize: item.pantSize,
-        shirtSize: item.shirtSize,
-        shoeSize: item.shoeSize,
-        })
+          email: item.email,
+          password: item.password,
+          gender: item.gender,
+          pantSize: item.pantSize,
+          shirtSize: item.shirtSize,
+          shoeSize: item.shoeSize,
+        });
       }
       console.log(content); //eslint-disable-line
     }
@@ -67,7 +70,7 @@ class SignUpScreen extends React.Component {
 
   render() {
     const that = this.state;
-    const nav = this.props;
+    // const nav = this.props;
     return (
       <View style={styles.splashContainer}>
         <StatusBar barStyle="dark-content" />
