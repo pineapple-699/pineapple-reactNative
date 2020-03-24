@@ -28,7 +28,7 @@ class ScannerScreen extends Component {
     this.resetScanner();
   }
 
-  onBarCodeRead = ({ typo, data }) => {
+  onBarCodeRead = async ({ typo, data }) => {
     const { type, upc } = this.state;
     const { navigation } = this.props;
 
@@ -44,16 +44,12 @@ class ScannerScreen extends Component {
 
     fetch('https://pineapple-rest-api.herokuapp.com/products')
       .then((response) => response.json())
-      .then((responseJson) => {
-        const { products } = responseJson;
-        const scannedProduct = [];
+      .then(async (responseJson) => {
+        const { products } = await responseJson;
 
-        for (let i = 0; i < products.length; i += 1) {
-          const product = products[i];
-          if (product.upc === upc && product.size === 'L') {
-            scannedProduct.push(product);
-          }
-        }
+        const scannedProduct = await products
+          .filter((product) => product.upc.toString() === data.toString());
+
         this.resetScanner();
 
         if (scannedProduct && scannedProduct.length) {

@@ -9,8 +9,8 @@
     "eject": "expo eject",
     "test": "jest --watchAll",
     "test-run": "jest --forceExit --detectOpenHandles && codecov",
-    "lint": "eslint *.js **/*.js",
-    "lint-fix": "eslint *.js **/*.js --fix"
+    "lint": "eslint '**/*.{js,jsx}' --quiet",
+    "lint-fix": "eslint '**/*.{js,jsx}' --fix"
   },
   "jest": {
     "preset": "jest-expo",
