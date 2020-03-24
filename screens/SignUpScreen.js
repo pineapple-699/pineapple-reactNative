@@ -22,7 +22,7 @@ class SignUpScreen extends React.Component {
     };
   }
 
-  register = async () => {
+  handleSignUp = async () => {
     const item = this.state;
     const nav = this.props;
 
@@ -53,12 +53,12 @@ class SignUpScreen extends React.Component {
         Alert.alert("This email is already in use, please log in or try again with a different email.")
       } else {
         nav.navigation.navigate('Activity', {
-        email: that.email,
-        password: that.password,
-        gender: that.gender,
-        pantSize: that.pantSize,
-        shirtSize: that.shirtSize,
-        shoeSize: that.shoeSize,
+        email: item.email,
+        password: item.password,
+        gender: item.gender,
+        pantSize: item.pantSize,
+        shirtSize: item.shirtSize,
+        shoeSize: item.shoeSize,
         })
       }
       console.log(content); //eslint-disable-line
@@ -134,16 +134,7 @@ class SignUpScreen extends React.Component {
             buttonStyle={styles.signUpButton}
             title="Sign Up"
             type="clear"
-            onPress={() => this.register()
-              // nav.navigation.navigate('Activity', {
-              // email: that.email,
-              // password: that.password,
-              // gender: that.gender,
-              // pantSize: that.pantSize,
-              // shirtSize: that.shirtSize,
-              // shoeSize: that.shoeSize,
-            // })
-          }
+            onPress={() => this.handleSignUp()}
           />
         </View>
       </View>

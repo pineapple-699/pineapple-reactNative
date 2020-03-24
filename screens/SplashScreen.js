@@ -38,6 +38,31 @@ class LogInScreen extends React.Component {
     setAuth(true);
   }
 
+  handleLogIn = async () => {
+    // http://127.0.0.1:5000/users/name
+    const user = this.state;
+    const nav = this.props;
+
+    fetch('https://pineapple-rest-api.herokuapp.com/users')
+      .then((response) => response.json())
+      .then((responseJson) => {
+        const userInfo = responseJson['users'];
+        const users = [];
+
+        userInfo.forEach(function (user) {
+          users.push(user.username);
+        });
+
+        if (user.email === ''){
+          Alert.alert('Please enter your log in info');
+        } else if (users.includes(user.email) === false) {
+          Alert.alert('No account with this email exists. Please sign up or try again.');
+        } else {
+          nav.navigation.navigate('Activity')
+        }
+    });
+  }
+
   render() {
     const that = this.state;
     const nav = this.props;
@@ -74,7 +99,7 @@ class LogInScreen extends React.Component {
               buttonStyle={styles.authButton}
               title="Log In"
               type="clear"
-              onPress={() => Alert.alert('This should log you in, but it is not working right now')}
+              onPress={() => this.handleLogIn()}
             />
             <Button
               buttonStyle={styles.authButton}
