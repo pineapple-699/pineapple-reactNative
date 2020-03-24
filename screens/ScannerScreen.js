@@ -45,12 +45,14 @@ class ScannerScreen extends Component {
     fetch('https://pineapple-rest-api.herokuapp.com/products')
       .then((response) => response.json())
       .then((responseJson) => {
-        const { products } = responseJson;
+        const products = responseJson;
         const scannedProduct = [];
+        console.log(upc);
 
         for (let i = 0; i < products.length; i += 1) {
           const product = products[i];
-          if (product.upc === upc && product.size === 'L') {
+          if (product.upc === upc) {
+            console.log(product);
             scannedProduct.push(product);
           }
         }
