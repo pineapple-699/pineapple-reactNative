@@ -51,7 +51,17 @@ class ScannerScreen extends Component {
           .filter((product) => product.upc.toString() === data.toString());
 
         this.resetScanner();
-        console.log(scannedProduct);
+        const productSKU = scannedProduct[0].sku;
+        // console.log(productSKU);
+
+        const relatedProdcuts = await products
+          .filter((product) => product.sku.toString() === productSKU.toString());
+        
+        // console.log(scannedProduct);
+        console.log(relatedProdcuts);
+
+        const sizes = await relatedProducts
+          .push((product) => product.upc.toString() === data.toString());
 
         if (scannedProduct && scannedProduct.length) {
           navigation.navigate('Product', { productToView: scannedProduct });

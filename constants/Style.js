@@ -67,6 +67,8 @@ const styles = StyleSheet.create({
     color: '#fff',
   },
   splashText: {
+    textAlign: 'center',
+    marginHorizontal: 10,
     fontSize: 24,
     color: '#fff',
   },
@@ -146,7 +148,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   productInfo: {
-    flex: 0.8,
+    flex: 0.75,
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
@@ -165,27 +167,30 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   productDescription: {
-    flex: 0.35,
+    flex: 0.6,
     width: '100%',
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
   },
   productAttributes: {
-    flex: 0.65,
+    flex: 0.4,
     width: '100%',
-    justifyContent: 'flex-start',
+    justifyContent: 'center',
     alignItems: 'flex-start',
   },
+  productAttribute: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
   productButtons: {
-    flex: 0.2,
+    flex: 0.25,
     width: '100%',
     justifyContent: 'flex-end',
     alignItems: 'center',
   },
   // Add to cart/Confirm purchase/Nav home buttons
   largeButton: {
-    marginTop: 5,
-    marginBottom: 10,
+    marginBottom: 5,
     justifyContent: 'center',
     alignItems: 'center',
     height: 40,
@@ -195,9 +200,29 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#FCB742',
   },
+  largeButtonOutline: {
+    marginBottom: 5,
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 40,
+    width: '95%',
+    backgroundColor: '#fff',
+    borderRadius: 5,
+    borderWidth: 2,
+    borderColor: '#FCB742',
+  },
   largeButtonText: {
     color: '#fff',
     fontSize: 17,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    paddingLeft: 10,
+    paddingRight: 10
+  },
+  largeButtonTextOutline: {
+    color: '#FCB742',
+    fontSize: 17,
+    fontWeight: 'bold',
     textAlign: 'center',
     paddingLeft: 10,
     paddingRight: 10

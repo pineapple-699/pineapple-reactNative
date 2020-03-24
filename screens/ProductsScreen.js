@@ -21,6 +21,12 @@ class ProductsScreen extends React.Component {
     };
   }
 
+  handleAddToCart() {
+    const nav = this.props;
+
+    nav.navigation.navigate('Cart');
+  }
+
   // componentDidMount() {
   //   const { navigation } = this.props;
   //   const scannedProduct = navigation.getParam('productToView');
@@ -52,28 +58,36 @@ class ProductsScreen extends React.Component {
                 <Text style={styles.appText}>{productToView.description}</Text>
               </View>
               <View style={styles.productAttributes}>
-                <Text style={styles.appSectionHeader}>Size: </Text>
-                <Text style={styles.appText}>{productToView.size}</Text>
-                <Text style={styles.appSectionHeader}>Color: </Text>
-                <Text style={styles.appText}>{productToView.color}</Text>
-                <Text style={styles.appSectionHeader}>Price:</Text>
-                <Text style={styles.appText}>{productToView.price}</Text>
-                <Text style={styles.appSectionHeader}>Amount In Stock: </Text>
-                <Text style={styles.appText}>{productToView.amt}</Text>
+                <View style={styles.productAttribute}>
+                  <Text style={styles.appSectionHeader}>Size: </Text>
+                  <Text style={styles.appText}>{productToView.size}</Text>
+                </View>
+                <View style={styles.productAttribute}>
+                  <Text style={styles.appSectionHeader}>Color: </Text>
+                  <Text style={styles.appText}>{productToView.color}</Text>
+                </View>
+                <View style={styles.productAttribute}>
+                  <Text style={styles.appSectionHeader}>Price: </Text>
+                  <Text style={styles.appText}>${productToView.price}</Text>
+                </View>
+                <View style={styles.productAttribute}>
+                  <Text style={styles.appSectionHeader}>Amount In Stock: </Text>
+                  <Text style={styles.appText}>{productToView.amt}</Text>
+                </View>
               </View>
             </View>
           </View>
           <View style={styles.productButtons}>
             <TouchableOpacity
-              style={styles.largeButton}
+              style={styles.largeButtonOutline}
               onPress={() => navigation.navigate('Cart')}
               underlayColor="#fff"
             >
-              <Text style={styles.largeButtonText}>Pick Up In Store</Text>
+              <Text style={styles.largeButtonTextOutline}>Pick Up In Store</Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.largeButton}
-              onPress={() => navigation.navigate('Cart')}
+              onPress={() => this.handleAddToCart()}
               underlayColor="#fff"
             >
               <Text style={styles.largeButtonText}>Add To Cart</Text>
