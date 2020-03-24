@@ -53,7 +53,7 @@ class HomeScreen extends React.Component {
 
     return (
       <View style={styles.container}>
-        <StatusBar barStyle="dark-content" />
+        <StatusBar barStyle="light-content" />
         <Text>
           Welcome
           {` ${authInfo.firstName} ${authInfo.lastName}`}

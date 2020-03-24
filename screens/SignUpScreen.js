@@ -73,7 +73,7 @@ class SignUpScreen extends React.Component {
     // const nav = this.props;
     return (
       <View style={styles.splashContainer}>
-        <StatusBar barStyle="dark-content" />
+        <StatusBar barStyle="light-content" />
         <View style={styles.signUpHeaderView}>
           <Image
             style={styles.signUpLogo}

@@ -46,18 +46,12 @@ class ScannerScreen extends Component {
       .then((response) => response.json())
       .then(async (responseJson) => {
         const { products } = await responseJson;
-        const { scannedProduct } = await products
-        .filter((product) => product.upc.toString() === data.toString());;
-        // console.log(products[0]);
 
-        // for (let i = 0; i < products.length; i += 1) {
-        //   const product = products[i];
-        //   if (product.upc === upc && product.size === 'L') {
-        //     console.log(product);
-        //     scannedProduct.push(product);
-        //   }
-        // }
+        const scannedProduct = await products
+          .filter((product) => product.upc.toString() === data.toString());
+
         this.resetScanner();
+        console.log(scannedProduct);
 
         if (scannedProduct && scannedProduct.length) {
           navigation.navigate('Product', { productToView: scannedProduct });
@@ -65,25 +59,6 @@ class ScannerScreen extends Component {
           this.refs.toast.show('Product not available', 500);
         }
       });
-
-    // Keeping this junk for later use
-
-    // if (type.startsWith('org.gs1.EAN')) {
-    //   // Do something for EAN
-    //   console.log(`EAN scanned: ${data}`);
-    //   this.resetScanner();
-    //   this.props.navigation.navigate('Product', { upc: data });
-    // // Could maybe do something like this for coupons?
-    // // } else if (type.startsWith('org.iso.QRCode')) {
-    // //   // Do samething for QRCode
-    // //   console.log(`QRCode scanned: ${data}`);
-    // //   this.resetScanner();
-    // } else {
-    //   this.renderAlert(
-    //     'This barcode is not supported.',
-    //     `${type} : ${data}`,
-    //   );
-    // }
   }
 
   resetScanner() {

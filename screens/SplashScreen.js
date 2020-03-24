@@ -68,7 +68,7 @@ class LogInScreen extends React.Component {
     const nav = this.props;
     return (
       <View style={styles.splashContainer}>
-        <StatusBar barStyle="dark-content" />
+        <StatusBar barStyle="light-content" />
         <View style={styles.splashHeader}>
           <Image
             style={styles.splashLogo}
@@ -112,7 +112,7 @@ class LogInScreen extends React.Component {
             buttonStyle={styles.authGoogle}
             title="Log In with Google"
             type="clear"
-            onPress={() => Alert.alert('This should log you in, but it is not working right now')}
+            onPress={() => nav.navigation.navigate('Activity')}
           />
         </View>
       </View>

@@ -37,15 +37,14 @@ class ProductsScreen extends React.Component {
     const { productToView } = this.state;
     return (
       <View style={styles.container}>
-        <StatusBar barStyle="dark-content" />
+        <StatusBar barStyle="light-content" />
         <View style={styles.productImage}>
           <Text>Product Image(s)</Text>
         </View>
         <View style={styles.productContent}>
           <View style={styles.productInfo}>
             <View style={styles.productName}>
-              <Text style={styles.appSectionHeader}>Product UPC Code: </Text>
-              <Text style={styles.appText}>{productToView.upc}</Text>
+              <Text style={styles.appSectionHeader}>{productToView.product}</Text>
             </View>
             <View style={styles.productAbout}>
               <View style={styles.productDescription}>
@@ -65,7 +64,13 @@ class ProductsScreen extends React.Component {
             </View>
           </View>
           <View style={styles.productButtons}>
-            <Text style={styles.linkText}>In Store Pickup</Text>
+            <TouchableOpacity
+              style={styles.largeButton}
+              onPress={() => navigation.navigate('Cart')}
+              underlayColor="#fff"
+            >
+              <Text style={styles.largeButtonText}>Pick Up In Store</Text>
+            </TouchableOpacity>
             <TouchableOpacity
               style={styles.largeButton}
               onPress={() => navigation.navigate('Cart')}
