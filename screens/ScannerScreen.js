@@ -4,6 +4,9 @@ import Toast from 'react-native-easy-toast';
 import {
   Text, View, StyleSheet, Alert, StatusBar, Vibration
 } from 'react-native';
+import { connect } from 'react-redux';
+import { getData } from '../reducers/api';
+
 import { BarCodeScanner } from 'expo-barcode-scanner';
 import styles from '../constants/Style';
 
@@ -30,7 +33,7 @@ class ScannerScreen extends Component {
 
   onBarCodeRead = async ({ typo, data }) => {
     const { type, upc } = this.state;
-    const { navigation } = this.props;
+    const { navigation, products } = this.props;
 
     if ((typo === type && data === upc) || data === null) {
       return;
@@ -42,22 +45,20 @@ class ScannerScreen extends Component {
       type,
     });
 
-    fetch('https://pineapple-rest-api.herokuapp.com/products')
-      .then((response) => response.json())
-      .then(async (responseJson) => {
-        const { products } = await responseJson;
+    const retrievedProducts = products.then((results)=>{
+      return results
+    })
 
-        const scannedProduct = await products
-          .filter((product) => product.upc.toString() === data.toString());
+    const scannedProduct = await retrievedProducts
+      .filter((product) => product.upc.toString() === data.toString());
 
-        this.resetScanner();
+    this.resetScanner();
 
-        if (scannedProduct && scannedProduct.length) {
-          navigation.navigate('Product', { productToView: scannedProduct });
-        } else {
-          this.refs.toast.show('Product not available', 500);
-        }
-      });
+    if (scannedProduct && scannedProduct.length) {
+      navigation.navigate('Product', { productToView: scannedProduct });
+    } else {
+      this.refs.toast.show('Product not available', 500);
+    }
 
     // Keeping this junk for later use
 
@@ -137,4 +138,10 @@ class ScannerScreen extends Component {
   }
 }
 
-export default ScannerScreen;
+
+const mapStateToProps = (state) => ({
+  products: getData(state).products
+});
+
+export default connect(mapStateToProps, null)(ScannerScreen);
+
