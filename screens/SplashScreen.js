@@ -9,6 +9,7 @@ import styles from '../constants/Style';
 
 // Redux
 import { setAuthentication, setProfile } from '../reducers/login';
+import { setProducts } from '../reducers/api';
 
 const iconLogo = require('../assets/images/icon-logo.png');
 
@@ -24,7 +25,7 @@ class LogInScreen extends React.Component {
 
   componentDidMount() {
     const {
-      setAuth, setProf
+      setAuth, setProf, setProd
     } = this.props;
 
     const loggedInUser = {
@@ -34,8 +35,10 @@ class LogInScreen extends React.Component {
       last_name: 'Testerton',
     };
 
+
     setProf(loggedInUser);
     setAuth(true);
+    setProd();
   }
 
   handleLogIn = async () => {
@@ -122,7 +125,8 @@ class LogInScreen extends React.Component {
 
 const mapDispatchToProps = {
   setAuth: setAuthentication,
-  setProf: setProfile
+  setProf: setProfile,
+  setProd: setProducts
 };
 
 export default connect(null, mapDispatchToProps)(LogInScreen);
