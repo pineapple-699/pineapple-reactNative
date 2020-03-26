@@ -36,8 +36,8 @@ class ProductsScreen extends React.Component {
 
   render() {
     const { navigation } = this.props;
-    const { 
-      productToView, 
+    const {
+      productToView,
       productSize,
       sizeOptions,
       productColor,
@@ -63,13 +63,13 @@ class ProductsScreen extends React.Component {
               <View style={styles.productAttributes}>
                 <View style={styles.productOptions}>
                   <Dropdown
-                    label='Color: '
+                    label="Color: "
                     containerStyle={styles.productDropdown}
                     value={productSize}
                     data={sizeOptions}
                   />
                   <Dropdown
-                    label='Size: '
+                    label="Size: "
                     containerStyle={styles.productDropdown}
                     value={productColor}
                   />
@@ -80,7 +80,10 @@ class ProductsScreen extends React.Component {
                 </View> */}
                 <View style={styles.productAttribute}>
                   <Text style={styles.appSectionHeader}>Price: </Text>
-                  <Text style={styles.appText}>${productToView.price}</Text>
+                  <Text style={styles.appText}>
+                    $
+                    {productToView.price}
+                  </Text>
                 </View>
                 <View style={styles.productAttribute}>
                   <Text style={styles.appSectionHeader}>Amount In Stock: </Text>

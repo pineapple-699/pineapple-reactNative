@@ -1,5 +1,7 @@
 import React from 'react';
-import { Text, View, TouchableOpacity, StatusBar } from 'react-native';
+import {
+  Text, View, TouchableOpacity, StatusBar
+} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import styles from '../constants/Style';
 
