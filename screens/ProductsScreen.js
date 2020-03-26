@@ -7,7 +7,7 @@ import {
   // ActivityIndicator,
   // FlatList
 } from 'react-native';
-// import { Button } from 'react-native-elements';
+import { Dropdown } from 'react-native-material-dropdown';
 import styles from '../constants/Style';
 
 class ProductsScreen extends React.Component {
@@ -15,32 +15,35 @@ class ProductsScreen extends React.Component {
     super(props);
     const { navigation } = this.props;
     const scannedProduct = navigation.getParam('productToView');
+    const productSizes = navigation.getParam('productSizes');
+    // const productColors = navigation.getParam('productColors');
+
+    // console.log(productColors);
 
     this.state = {
       productToView: scannedProduct[0],
+      productSize: scannedProduct[0].size,
+      sizeOptions: productSizes,
+      productColor: scannedProduct[0].color,
+      // colorOptions: productColors,
     };
   }
 
   handleAddToCart() {
     const nav = this.props;
-
     nav.navigation.navigate('Cart');
   }
 
-  // componentDidMount() {
-  //   const { navigation } = this.props;
-  //   const scannedProduct = navigation.getParam('productToView');
-  //   console.log('Product Screen');
-  //   console.log(scannedProduct);
-  //   this.setState({
-  //     productToView: scannedProduct[0],
-  //   })
-
-  // }
-
   render() {
     const { navigation } = this.props;
-    const { productToView } = this.state;
+    const { 
+      productToView, 
+      productSize,
+      sizeOptions,
+      productColor,
+      // colorOptions,
+    } = this.state;
+
     return (
       <View style={styles.container}>
         <StatusBar barStyle="light-content" />
@@ -58,14 +61,23 @@ class ProductsScreen extends React.Component {
                 <Text style={styles.appText}>{productToView.description}</Text>
               </View>
               <View style={styles.productAttributes}>
-                <View style={styles.productAttribute}>
-                  <Text style={styles.appSectionHeader}>Size: </Text>
-                  <Text style={styles.appText}>{productToView.size}</Text>
+                <View style={styles.productOptions}>
+                  <Dropdown
+                    label='Color: '
+                    containerStyle={styles.productDropdown}
+                    value={productSize}
+                    data={sizeOptions}
+                  />
+                  <Dropdown
+                    label='Size: '
+                    containerStyle={styles.productDropdown}
+                    value={productColor}
+                  />
                 </View>
-                <View style={styles.productAttribute}>
+                {/* <View style={styles.productAttribute}>
                   <Text style={styles.appSectionHeader}>Color: </Text>
-                  <Text style={styles.appText}>{productToView.color}</Text>
-                </View>
+                  <Text style={styles.appText}>{productColor}</Text>
+                </View> */}
                 <View style={styles.productAttribute}>
                   <Text style={styles.appSectionHeader}>Price: </Text>
                   <Text style={styles.appText}>${productToView.price}</Text>

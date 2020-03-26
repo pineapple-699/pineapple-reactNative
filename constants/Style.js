@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
   },
   // Product Screen Styles
   productImage: {
-    flex: 0.4,
+    flex: 0.35,
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
@@ -142,7 +142,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
   },
   productContent: {
-    flex: 0.6,
+    flex: 0.65,
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
@@ -178,8 +178,18 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'flex-start',
   },
+  productOptions: {
+    flexDirection: 'row',
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  productDropdown: {
+    width: '47.5%'
+  },
   productAttribute: {
     flexDirection: 'row',
+    width: '100%',
     alignItems: 'center',
   },
   productButtons: {

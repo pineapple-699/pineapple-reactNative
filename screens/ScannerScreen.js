@@ -6,6 +6,7 @@ import {
 } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 import styles from '../constants/Style';
+// import { SizeClassIOS } from 'expo/build/ScreenOrientation/ScreenOrientation';
 
 class ScannerScreen extends Component {
   constructor(props) {
@@ -52,19 +53,27 @@ class ScannerScreen extends Component {
 
         this.resetScanner();
         const productSKU = scannedProduct[0].sku;
-        // console.log(productSKU);
 
-        const relatedProdcuts = await products
+        const relatedProducts = await products
           .filter((product) => product.sku.toString() === productSKU.toString());
-        
-        // console.log(scannedProduct);
-        console.log(relatedProdcuts);
 
-        const sizes = await relatedProducts
-          .push((product) => product.upc.toString() === data.toString());
+        const sizes = []
+        // const colors = []
+        relatedProducts.forEach(product => {
+          if (!sizes.includes(product.size)) {
+            sizes.push({"value": product.size});
+          }
+          // if (colors["value"] === product.color){
+          //   colors.push({ "value": product.color});
+          // }
+        });
 
         if (scannedProduct && scannedProduct.length) {
-          navigation.navigate('Product', { productToView: scannedProduct });
+          navigation.navigate('Product', { 
+            productToView: scannedProduct,
+            // productColors: colors,
+            productSizes: sizes, 
+          });
         } else {
           this.refs.toast.show('Product not available', 500);
         }
