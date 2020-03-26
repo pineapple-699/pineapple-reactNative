@@ -4,7 +4,10 @@ import Toast from 'react-native-easy-toast';
 import {
   Text, View, StyleSheet, Alert, StatusBar, Vibration
 } from 'react-native';
+import { connect } from 'react-redux';
 import { BarCodeScanner } from 'expo-barcode-scanner';
+import { getData } from '../reducers/api';
+
 import styles from '../constants/Style';
 
 class ScannerScreen extends Component {
@@ -28,9 +31,9 @@ class ScannerScreen extends Component {
     this.resetScanner();
   }
 
-  onBarCodeRead = ({ typo, data }) => {
+  onBarCodeRead = async ({ typo, data }) => {
     const { type, upc } = this.state;
-    const { navigation } = this.props;
+    const { navigation, products } = this.props;
 
     if ((typo === type && data === upc) || data === null) {
       return;
@@ -42,26 +45,23 @@ class ScannerScreen extends Component {
       type,
     });
 
-    fetch('https://pineapple-rest-api.herokuapp.com/products')
-      .then((response) => response.json())
-      .then((responseJson) => {
-        const { products } = responseJson;
-        const scannedProduct = [];
 
-        for (let i = 0; i < products.length; i += 1) {
-          const product = products[i];
-          if (product.upc === upc && product.size === 'L') {
-            scannedProduct.push(product);
-          }
-        }
-        this.resetScanner();
+    let retrievedProducts;
 
-        if (scannedProduct && scannedProduct.length) {
-          navigation.navigate('Product', { productToView: scannedProduct });
-        } else {
-          this.refs.toast.show('Product not available', 500);
-        }
-      });
+    await products.then((results) => {
+      retrievedProducts = results;
+    });
+
+    const scannedProduct = await retrievedProducts
+      .filter((product) => product.upc.toString() === data.toString());
+
+    this.resetScanner();
+
+    if (scannedProduct && scannedProduct.length) {
+      navigation.navigate('Product', { productToView: scannedProduct });
+    } else {
+      this.refs.toast.show('Product not available', 500);
+    }
 
     // Keeping this junk for later use
 
@@ -141,4 +141,9 @@ class ScannerScreen extends Component {
   }
 }
 
-export default ScannerScreen;
+
+const mapStateToProps = (state) => ({
+  products: getData(state).products
+});
+
+export default connect(mapStateToProps, null)(ScannerScreen);
