@@ -78,7 +78,10 @@ class LogInScreen extends React.Component {
             source={iconLogo}
           />
           <Text style={styles.splashHeaderText}>Welcome to Pineapple!</Text>
-          <Text style={styles.splashText}>Please log in below. If you do not already have an account please sign up!</Text>
+          <Text style={styles.splashText}>
+            Please log in below.
+            If you do not already have an account please sign up!
+          </Text>
         </View>
         <View style={styles.splashInputs}>
           <TextInput
