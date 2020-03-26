@@ -1,5 +1,7 @@
 import React from 'react';
-import { Text, View, TouchableOpacity } from 'react-native';
+import {
+  Text, View, TouchableOpacity, StatusBar
+} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import styles from '../constants/Style';
 
@@ -7,6 +9,7 @@ const ConfirmationScreen = (props) => {
   const { navigation } = props;
   return (
     <View style={styles.container}>
+      <StatusBar barStyle="light-content" />
       <View style={styles.cartList}>
         <Icon
           name="ios-checkmark-circle"

@@ -9,6 +9,7 @@ import { BarCodeScanner } from 'expo-barcode-scanner';
 import { getData } from '../reducers/api';
 
 import styles from '../constants/Style';
+// import { SizeClassIOS } from 'expo/build/ScreenOrientation/ScreenOrientation';
 
 class ScannerScreen extends Component {
   constructor(props) {
@@ -45,7 +46,6 @@ class ScannerScreen extends Component {
       type,
     });
 
-
     let retrievedProducts;
 
     await products.then((results) => {
@@ -56,31 +56,31 @@ class ScannerScreen extends Component {
       .filter((product) => product.upc.toString() === data.toString());
 
     this.resetScanner();
+    const productSKU = scannedProduct[0].sku;
+
+    const relatedProducts = await retrievedProducts
+      .filter((product) => product.sku.toString() === productSKU.toString());
+
+    const sizes = [];
+    // const colors = []
+    relatedProducts.forEach((product) => {
+      if (!sizes.includes(product.size)) {
+        sizes.push({ value: product.size });
+      }
+      // if (colors["value"] === product.color){
+      //   colors.push({ "value": product.color});
+      // }
+    });
 
     if (scannedProduct && scannedProduct.length) {
-      navigation.navigate('Product', { productToView: scannedProduct });
+      navigation.navigate('Product', {
+        productToView: scannedProduct,
+        // productColors: colors,
+        productSizes: sizes,
+      });
     } else {
       this.refs.toast.show('Product not available', 500);
     }
-
-    // Keeping this junk for later use
-
-    // if (type.startsWith('org.gs1.EAN')) {
-    //   // Do something for EAN
-    //   console.log(`EAN scanned: ${data}`);
-    //   this.resetScanner();
-    //   this.props.navigation.navigate('Product', { upc: data });
-    // // Could maybe do something like this for coupons?
-    // // } else if (type.startsWith('org.iso.QRCode')) {
-    // //   // Do samething for QRCode
-    // //   console.log(`QRCode scanned: ${data}`);
-    // //   this.resetScanner();
-    // } else {
-    //   this.renderAlert(
-    //     'This barcode is not supported.',
-    //     `${type} : ${data}`,
-    //   );
-    // }
   }
 
   resetScanner() {

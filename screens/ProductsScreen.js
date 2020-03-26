@@ -7,7 +7,7 @@ import {
   // ActivityIndicator,
   // FlatList
 } from 'react-native';
-// import { Button } from 'react-native-elements';
+import { Dropdown } from 'react-native-material-dropdown';
 import styles from '../constants/Style';
 
 class ProductsScreen extends React.Component {
@@ -15,37 +15,45 @@ class ProductsScreen extends React.Component {
     super(props);
     const { navigation } = this.props;
     const scannedProduct = navigation.getParam('productToView');
+    const productSizes = navigation.getParam('productSizes');
+    // const productColors = navigation.getParam('productColors');
+
+    // console.log(productColors);
 
     this.state = {
       productToView: scannedProduct[0],
+      productSize: scannedProduct[0].size,
+      sizeOptions: productSizes,
+      productColor: scannedProduct[0].color,
+      // colorOptions: productColors,
     };
   }
 
-  // componentDidMount() {
-  //   const { navigation } = this.props;
-  //   const scannedProduct = navigation.getParam('productToView');
-  //   console.log('Product Screen');
-  //   console.log(scannedProduct);
-  //   this.setState({
-  //     productToView: scannedProduct[0],
-  //   })
-
-  // }
+  handleAddToCart() {
+    const nav = this.props;
+    nav.navigation.navigate('Cart');
+  }
 
   render() {
     const { navigation } = this.props;
-    const { productToView } = this.state;
+    const {
+      productToView,
+      productSize,
+      sizeOptions,
+      productColor,
+      // colorOptions,
+    } = this.state;
+
     return (
       <View style={styles.container}>
-        <StatusBar barStyle="dark-content" />
+        <StatusBar barStyle="light-content" />
         <View style={styles.productImage}>
           <Text>Product Image(s)</Text>
         </View>
         <View style={styles.productContent}>
           <View style={styles.productInfo}>
             <View style={styles.productName}>
-              <Text style={styles.appSectionHeader}>Product UPC Code: </Text>
-              <Text style={styles.appText}>{productToView.upc}</Text>
+              <Text style={styles.appSectionHeader}>{productToView.product}</Text>
             </View>
             <View style={styles.productAbout}>
               <View style={styles.productDescription}>
@@ -53,22 +61,48 @@ class ProductsScreen extends React.Component {
                 <Text style={styles.appText}>{productToView.description}</Text>
               </View>
               <View style={styles.productAttributes}>
-                <Text style={styles.appSectionHeader}>Size: </Text>
-                <Text style={styles.appText}>{productToView.size}</Text>
-                <Text style={styles.appSectionHeader}>Color: </Text>
-                <Text style={styles.appText}>{productToView.color}</Text>
-                <Text style={styles.appSectionHeader}>Price:</Text>
-                <Text style={styles.appText}>{productToView.price}</Text>
-                <Text style={styles.appSectionHeader}>Amount In Stock: </Text>
-                <Text style={styles.appText}>{productToView.amt}</Text>
+                <View style={styles.productOptions}>
+                  <Dropdown
+                    label="Color: "
+                    containerStyle={styles.productDropdown}
+                    value={productSize}
+                    data={sizeOptions}
+                  />
+                  <Dropdown
+                    label="Size: "
+                    containerStyle={styles.productDropdown}
+                    value={productColor}
+                  />
+                </View>
+                {/* <View style={styles.productAttribute}>
+                  <Text style={styles.appSectionHeader}>Color: </Text>
+                  <Text style={styles.appText}>{productColor}</Text>
+                </View> */}
+                <View style={styles.productAttribute}>
+                  <Text style={styles.appSectionHeader}>Price: </Text>
+                  <Text style={styles.appText}>
+                    $
+                    {productToView.price}
+                  </Text>
+                </View>
+                <View style={styles.productAttribute}>
+                  <Text style={styles.appSectionHeader}>Amount In Stock: </Text>
+                  <Text style={styles.appText}>{productToView.amt}</Text>
+                </View>
               </View>
             </View>
           </View>
           <View style={styles.productButtons}>
-            <Text style={styles.linkText}>In Store Pickup</Text>
+            <TouchableOpacity
+              style={styles.largeButtonOutline}
+              onPress={() => navigation.navigate('Cart')}
+              underlayColor="#fff"
+            >
+              <Text style={styles.largeButtonTextOutline}>Pick Up In Store</Text>
+            </TouchableOpacity>
             <TouchableOpacity
               style={styles.largeButton}
-              onPress={() => navigation.navigate('Cart')}
+              onPress={() => this.handleAddToCart()}
               underlayColor="#fff"
             >
               <Text style={styles.largeButtonText}>Add To Cart</Text>
