@@ -10,18 +10,18 @@ const setProducts = createAction('SET_PRODUCTS');
 
 const reducer = handleActions(
   {
-    [setProducts]: (state, {}) => {
-      const products = fetch('https://pineapple-rest-api.herokuapp.com/products')
+    [setProducts]: (state,) => {
+      const objects = fetch('https://pineapple-rest-api.herokuapp.com/products')
         .then((response) => response.json())
         .then(async (responseJson) => {
           const { products } = await responseJson;
-          return products
+          return products;
         });
-      
+
       return {
         ...state,
-        products: products,
-      }
+        products: objects,
+      };
     },
   },
   defaultState

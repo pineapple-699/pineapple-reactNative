@@ -5,9 +5,9 @@ import {
   Text, View, StyleSheet, Alert, StatusBar, Vibration
 } from 'react-native';
 import { connect } from 'react-redux';
+import { BarCodeScanner } from 'expo-barcode-scanner';
 import { getData } from '../reducers/api';
 
-import { BarCodeScanner } from 'expo-barcode-scanner';
 import styles from '../constants/Style';
 
 class ScannerScreen extends Component {
@@ -45,9 +45,12 @@ class ScannerScreen extends Component {
       type,
     });
 
-    const retrievedProducts = products.then((results)=>{
-      return results
-    })
+
+    let retrievedProducts;
+
+    await products.then((results) => {
+      retrievedProducts = results;
+    });
 
     const scannedProduct = await retrievedProducts
       .filter((product) => product.upc.toString() === data.toString());
@@ -144,4 +147,3 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, null)(ScannerScreen);
-
