@@ -28,10 +28,11 @@ class LogInScreen extends React.Component {
     } = this.props;
 
     const loggedInUser = {
-      username: 'Test',
-      email: 'test@gmail.com',
-      first_name: 'Test',
-      last_name: 'Testerton',
+      user_id: '0',
+      username: 'Admin',
+      email: 'admin@gmail.com',
+      first_name: 'Admin',
+      last_name: 'Administrator',
     };
 
     setProf(loggedInUser);

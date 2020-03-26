@@ -8,6 +8,8 @@ import {
   // FlatList
 } from 'react-native';
 import { Dropdown } from 'react-native-material-dropdown';
+import { getAuthInfo } from '../reducers/login';
+import { connect } from 'react-redux';
 import styles from '../constants/Style';
 
 class ProductsScreen extends React.Component {
@@ -18,7 +20,7 @@ class ProductsScreen extends React.Component {
     const productSizes = navigation.getParam('productSizes');
     // const productColors = navigation.getParam('productColors');
 
-    // console.log(productColors);
+    // console.log(authInfo);
 
     this.state = {
       productToView: scannedProduct[0],
@@ -29,9 +31,31 @@ class ProductsScreen extends React.Component {
     };
   }
 
-  handleAddToCart() {
-    const nav = this.props;
-    nav.navigation.navigate('Cart');
+  handleAddToCart = async () => {
+    const { navigation, authInfo } = this.props;
+    const { productToView } = this.state;
+    console.log(productToView);
+    console.log(authInfo);
+
+    const rawResponse = await fetch('https://pineapple-rest-api.herokuapp.com/cart', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        user_id: authInfo.user_id,
+        product_upc: productToView.upc,
+        quantity: 1, 
+        type: 'add_product_for_user',
+      })
+    });
+
+    const content = await rawResponse.json();
+    console.log(authInfo.user_id)
+    console.log(content)
+
+    navigation.navigate('Cart');
   }
 
   render() {
@@ -111,4 +135,8 @@ class ProductsScreen extends React.Component {
   }
 }
 
-export default ProductsScreen;
+const mapStateToProps = (state) => ({
+  authInfo: getAuthInfo(state)
+});
+
+export default connect(mapStateToProps, null)(ProductsScreen);
