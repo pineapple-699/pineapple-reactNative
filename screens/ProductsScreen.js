@@ -34,8 +34,6 @@ class ProductsScreen extends React.Component {
   handleAddToCart = async () => {
     const { navigation, authInfo } = this.props;
     const { productToView } = this.state;
-    console.log(productToView);
-    console.log(authInfo);
 
     const rawResponse = await fetch('https://pineapple-rest-api.herokuapp.com/cart', {
       method: 'POST',
@@ -52,7 +50,6 @@ class ProductsScreen extends React.Component {
     });
 
     const content = await rawResponse.json();
-    console.log(authInfo.user_id)
     console.log(content)
 
     navigation.navigate('Cart');
@@ -72,7 +69,7 @@ class ProductsScreen extends React.Component {
       <View style={styles.container}>
         <StatusBar barStyle="light-content" />
         <View style={styles.productImage}>
-          <Text>Product Image(s)</Text>
+          <Text>{productToView.store}</Text>
         </View>
         <View style={styles.productContent}>
           <View style={styles.productInfo}>
@@ -87,13 +84,13 @@ class ProductsScreen extends React.Component {
               <View style={styles.productAttributes}>
                 <View style={styles.productOptions}>
                   <Dropdown
-                    label='Color: '
+                    label='Size: '
                     containerStyle={styles.productDropdown}
                     value={productSize}
                     data={sizeOptions}
                   />
                   <Dropdown
-                    label='Size: '
+                    label='Color: '
                     containerStyle={styles.productDropdown}
                     value={productColor}
                   />

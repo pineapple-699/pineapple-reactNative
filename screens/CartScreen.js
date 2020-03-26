@@ -28,7 +28,7 @@ class CartScreen extends React.Component {
       })
     });
     const content = await rawResponse.json();
-    console.log(content)
+    // console.log(content)
   }
   render () {
     const { navigation } = this.props;
