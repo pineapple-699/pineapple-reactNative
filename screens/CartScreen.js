@@ -13,23 +13,23 @@ class CartScreen extends React.Component {
     super(props);
   }
 
-  componentDidMount = async () => {
-    const { authInfo } = this.props;
-    console.log(authInfo);
+  // componentDidMount = async () => {
+  //   const { authInfo } = this.props;
+  //   console.log(authInfo);
 
-    const rawResponse = await fetch('https://pineapple-rest-api.herokuapp.com/cart', {
-      method: 'GET',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        user_id: authInfo.user_id,
-      })
-    });
-    const content = await rawResponse.json();
-    // console.log(content)
-  }
+  //   const rawResponse = await fetch('https://pineapple-rest-api.herokuapp.com/cart', {
+  //     method: 'GET',
+  //     headers: {
+  //       Accept: 'application/json',
+  //       'Content-Type': 'application/json'
+  //     },
+  //     body: JSON.stringify({
+  //       user_id: authInfo.user_id,
+  //     })
+  //   });
+  //   const content = await rawResponse.json();
+  //   // console.log(content)
+  // }
   render () {
     const { navigation } = this.props;
     return (
