@@ -18,7 +18,7 @@ class PaymentScreen extends React.Component {
       city: '',
       state: '',
       zipCode: '',
-    }
+    };
   }
 
   render() {
@@ -32,9 +32,11 @@ class PaymentScreen extends React.Component {
       city,
       state,
       zipCode,
-    } = this.state
+    } = this.state;
+
+    const { navigation } = this.props;
     return (
-      <View style={styles.container} >
+      <View style={styles.container}>
         <View style={styles.cartList}>
           <Text style={styles.appSectionHeader}>Payment Information</Text>
           <TextInput
@@ -126,7 +128,7 @@ class PaymentScreen extends React.Component {
       </View>
     );
   }
-};
+}
 
 export default PaymentScreen;
 

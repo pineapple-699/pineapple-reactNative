@@ -8,8 +8,8 @@ import {
   // FlatList
 } from 'react-native';
 import { Dropdown } from 'react-native-material-dropdown';
-import { getAuthInfo } from '../reducers/login';
 import { connect } from 'react-redux';
+import { getAuthInfo } from '../reducers/login';
 import styles from '../constants/Style';
 
 class ProductsScreen extends React.Component {
@@ -44,21 +44,21 @@ class ProductsScreen extends React.Component {
       body: JSON.stringify({
         user_id: authInfo.user_id,
         product_upc: productToView.upc,
-        quantity: 1, 
+        quantity: 1,
         type: 'add_product_for_user',
       })
     });
 
-    const content = await rawResponse.json();
-    console.log(content)
+    await rawResponse.json();
+
 
     navigation.navigate('Cart');
   }
 
   render() {
     const { navigation } = this.props;
-    const { 
-      productToView, 
+    const {
+      productToView,
       productSize,
       sizeOptions,
       productColor,
@@ -84,13 +84,13 @@ class ProductsScreen extends React.Component {
               <View style={styles.productAttributes}>
                 <View style={styles.productOptions}>
                   <Dropdown
-                    label='Size: '
+                    label="Size: "
                     containerStyle={styles.productDropdown}
                     value={productSize}
                     data={sizeOptions}
                   />
                   <Dropdown
-                    label='Color: '
+                    label="Color: "
                     containerStyle={styles.productDropdown}
                     value={productColor}
                   />
@@ -101,7 +101,10 @@ class ProductsScreen extends React.Component {
                 </View> */}
                 <View style={styles.productAttribute}>
                   <Text style={styles.appSectionHeader}>Price: </Text>
-                  <Text style={styles.appText}>${productToView.price}</Text>
+                  <Text style={styles.appText}>
+                    $
+                    {productToView.price}
+                  </Text>
                 </View>
                 <View style={styles.productAttribute}>
                   <Text style={styles.appSectionHeader}>Amount In Stock: </Text>
