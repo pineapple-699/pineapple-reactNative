@@ -1,6 +1,7 @@
 import { createAction, handleActions } from 'redux-actions';
 
 const defaultState = {
+  user_id: '',
   username: '',
   email: '',
   firstName: '',
@@ -17,6 +18,7 @@ const reducer = handleActions(
   {
     [setProfile]: (state, { payload }) => ({
       ...state,
+      user_id: payload.user_id,
       username: payload.username,
       email: payload.email,
       firstName: payload.first_name,

@@ -8,6 +8,8 @@ import {
   // FlatList
 } from 'react-native';
 import { Dropdown } from 'react-native-material-dropdown';
+import { connect } from 'react-redux';
+import { getAuthInfo } from '../reducers/login';
 import styles from '../constants/Style';
 
 class ProductsScreen extends React.Component {
@@ -18,7 +20,7 @@ class ProductsScreen extends React.Component {
     const productSizes = navigation.getParam('productSizes');
     // const productColors = navigation.getParam('productColors');
 
-    // console.log(productColors);
+    // console.log(authInfo);
 
     this.state = {
       productToView: scannedProduct[0],
@@ -29,9 +31,28 @@ class ProductsScreen extends React.Component {
     };
   }
 
-  handleAddToCart() {
-    const nav = this.props;
-    nav.navigation.navigate('Cart');
+  handleAddToCart = async () => {
+    const { navigation, authInfo } = this.props;
+    const { productToView } = this.state;
+
+    const rawResponse = await fetch('https://pineapple-rest-api.herokuapp.com/cart', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        user_id: authInfo.user_id,
+        product_upc: productToView.upc,
+        quantity: 1,
+        type: 'add_product_for_user',
+      })
+    });
+
+    await rawResponse.json();
+
+
+    navigation.navigate('Cart');
   }
 
   render() {
@@ -48,7 +69,7 @@ class ProductsScreen extends React.Component {
       <View style={styles.container}>
         <StatusBar barStyle="light-content" />
         <View style={styles.productImage}>
-          <Text>Product Image(s)</Text>
+          <Text>{productToView.store}</Text>
         </View>
         <View style={styles.productContent}>
           <View style={styles.productInfo}>
@@ -63,13 +84,13 @@ class ProductsScreen extends React.Component {
               <View style={styles.productAttributes}>
                 <View style={styles.productOptions}>
                   <Dropdown
-                    label="Color: "
+                    label="Size: "
                     containerStyle={styles.productDropdown}
                     value={productSize}
                     data={sizeOptions}
                   />
                   <Dropdown
-                    label="Size: "
+                    label="Color: "
                     containerStyle={styles.productDropdown}
                     value={productColor}
                   />
@@ -114,4 +135,8 @@ class ProductsScreen extends React.Component {
   }
 }
 
-export default ProductsScreen;
+const mapStateToProps = (state) => ({
+  authInfo: getAuthInfo(state)
+});
+
+export default connect(mapStateToProps, null)(ProductsScreen);

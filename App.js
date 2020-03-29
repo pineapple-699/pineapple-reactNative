@@ -16,6 +16,8 @@ const robotDevImage = require('./assets/images/robot-dev.png');
 const robotProdImage = require('./assets/images/robot-prod.png');
 const monoFont = require('./assets/fonts/SpaceMono-Regular.ttf');
 
+// console.disableYellowBox; //eslint-disable-line
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
