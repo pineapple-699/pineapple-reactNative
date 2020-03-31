@@ -31,14 +31,14 @@ const HomeStack = createStackNavigator(
         },
         title: 'Home',
         headerTitleStyle: {
-          color: "#fff",
+          color: '#fff',
         },
         headerRight:
   <Icon
     name="ios-barcode"
     size={24}
     onPress={({ navigation }) => navigation.navigate('Scanner')}
-            style={{ color: "#fff", paddingRight: 30 }}
+    style={{ color: '#fff', paddingRight: 30 }}
   />
       }
     },
@@ -64,7 +64,7 @@ const HomeStack = createStackNavigator(
         },
         title: 'Product Name',
         headerTitleStyle: {
-          color: "#fff",
+          color: '#fff',
         },
         headerLeft: null,
       }
@@ -96,7 +96,7 @@ const CartStack = createStackNavigator(
         },
         title: 'Shopping Cart',
         headerTitleStyle: {
-          color: "#fff",
+          color: '#fff',
         },
       }
     },
@@ -109,7 +109,7 @@ const CartStack = createStackNavigator(
         },
         title: 'Enter Payment Information',
         headerTitleStyle: {
-          color: "#fff",
+          color: '#fff',
         },
       }
     },
@@ -122,7 +122,7 @@ const CartStack = createStackNavigator(
         },
         title: 'Order Confirmed',
         headerTitleStyle: {
-          color: "#fff",
+          color: '#fff',
         },
         headerLeft: null,
       }
@@ -184,13 +184,13 @@ const ProfileStack = createStackNavigator(
         },
         title: 'Profile',
         headerTitleStyle: {
-          color: "#fff",
+          color: '#fff',
         },
         headerRight:
   <Icon
     name="ios-settings"
     size={24}
-            style={{ color: "#fff", paddingRight: 30 }}
+    style={{ color: '#fff', paddingRight: 30 }}
   />
       }
     },

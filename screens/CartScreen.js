@@ -1,36 +1,32 @@
 import React from 'react';
 import { Text, View, TouchableOpacity, } from 'react-native';
 
-//Redux Imports
-import { getAuthInfo } from '../reducers/login';
+// Redux Imports
 import { connect } from 'react-redux';
+import { getAuthInfo } from '../reducers/login';
 
 // Style Imports
 import styles from '../constants/Style';
 
 class CartScreen extends React.Component {
-  constructor(props) {
-    super(props);
+  componentDidMount = async () => {
+    const { authInfo } = this.props;
+
+    const rawResponse = await fetch('https://pineapple-rest-api.herokuapp.com/cart', {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        user_id: authInfo.user_id,
+      })
+    });
+    await rawResponse.json();
+    // console.log(rawResponse.json())
   }
 
-  // componentDidMount = async () => {
-  //   const { authInfo } = this.props;
-  //   console.log(authInfo);
-
-  //   const rawResponse = await fetch('https://pineapple-rest-api.herokuapp.com/cart', {
-  //     method: 'GET',
-  //     headers: {
-  //       Accept: 'application/json',
-  //       'Content-Type': 'application/json'
-  //     },
-  //     body: JSON.stringify({
-  //       user_id: authInfo.user_id,
-  //     })
-  //   });
-  //   const content = await rawResponse.json();
-  //   // console.log(content)
-  // }
-  render () {
+  render() {
     const { navigation } = this.props;
     return (
       <View style={styles.container}>
@@ -62,7 +58,7 @@ class CartScreen extends React.Component {
       </View>
     );
   }
-};
+}
 
 const mapStateToProps = (state) => ({
   authInfo: getAuthInfo(state)

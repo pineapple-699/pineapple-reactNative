@@ -1,8 +1,9 @@
 import React from 'react';
 import {
-  Text, View, Button, StatusBar
+  Text, View, StatusBar
 } from 'react-native';
 import { connect } from 'react-redux';
+import ButtonFramer from '../components/ButtonFramer';
 
 import styles from '../constants/Style';
 
@@ -59,9 +60,14 @@ class HomeScreen extends React.Component {
           {` ${authInfo.firstName} ${authInfo.lastName}`}
           !
         </Text>
-        <Button
+        {/* <Button
           title="SCAN"
           onPress={() => navigation.navigate('Scanner')}
+        /> */}
+        <ButtonFramer
+          onPress={() => navigation.navigate('Scanner')}
+          text="SCAN"
+          primary
         />
       </View>
     );

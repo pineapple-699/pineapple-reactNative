@@ -4,7 +4,10 @@ import Toast from 'react-native-easy-toast';
 import {
   Text, View, StyleSheet, Alert, StatusBar, Vibration
 } from 'react-native';
+import { connect } from 'react-redux';
 import { BarCodeScanner } from 'expo-barcode-scanner';
+import { getData } from '../reducers/api';
+
 import styles from '../constants/Style';
 // import { SizeClassIOS } from 'expo/build/ScreenOrientation/ScreenOrientation';
 
@@ -31,7 +34,7 @@ class ScannerScreen extends Component {
 
   onBarCodeRead = async ({ typo, data }) => {
     const { type, upc } = this.state;
-    const { navigation } = this.props;
+    const { navigation, products } = this.props;
 
     if ((typo === type && data === upc) || data === null) {
       return;
@@ -43,41 +46,41 @@ class ScannerScreen extends Component {
       type,
     });
 
-    fetch('https://pineapple-rest-api.herokuapp.com/products')
-      .then((response) => response.json())
-      .then(async (responseJson) => {
-        const { products } = await responseJson;
+    let retrievedProducts;
 
-        const scannedProduct = await products
-          .filter((product) => product.upc.toString() === data.toString());
+    await products.then((results) => {
+      retrievedProducts = results;
+    });
 
-        this.resetScanner();
-        const productSKU = scannedProduct[0].sku;
+    const scannedProduct = await retrievedProducts
+      .filter((product) => product.upc.toString() === data.toString());
 
-        const relatedProducts = await products
-          .filter((product) => product.sku.toString() === productSKU.toString());
+    this.resetScanner();
+    const productSKU = scannedProduct[0].sku;
 
-        const sizes = []
-        // const colors = []
-        relatedProducts.forEach(product => {
-          if (!sizes.includes(product.size)) {
-            sizes.push({"value": product.size});
-          }
-          // if (colors["value"] === product.color){
-          //   colors.push({ "value": product.color});
-          // }
-        });
+    const relatedProducts = await retrievedProducts
+      .filter((product) => product.sku.toString() === productSKU.toString());
 
-        if (scannedProduct && scannedProduct.length) {
-          navigation.navigate('Product', { 
-            productToView: scannedProduct,
-            // productColors: colors,
-            productSizes: sizes, 
-          });
-        } else {
-          this.refs.toast.show('Product not available', 500);
-        }
+    const sizes = [];
+    // const colors = []
+    relatedProducts.forEach((product) => {
+      if (!sizes.includes(product.size)) {
+        sizes.push({ value: product.size });
+      }
+      // if (colors["value"] === product.color){
+      //   colors.push({ "value": product.color});
+      // }
+    });
+
+    if (scannedProduct && scannedProduct.length) {
+      navigation.navigate('Product', {
+        productToView: scannedProduct,
+        // productColors: colors,
+        productSizes: sizes,
       });
+    } else {
+      this.refs.toast.show('Product not available', 500);
+    }
   }
 
   resetScanner() {
@@ -138,4 +141,9 @@ class ScannerScreen extends Component {
   }
 }
 
-export default ScannerScreen;
+
+const mapStateToProps = (state) => ({
+  products: getData(state).products
+});
+
+export default connect(mapStateToProps, null)(ScannerScreen);
