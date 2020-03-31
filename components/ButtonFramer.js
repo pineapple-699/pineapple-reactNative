@@ -1,26 +1,25 @@
 import * as React from 'react';
-import { theme } from '../constants/Colors';
 import styled from 'styled-components/native';
-// import {
-//   Text, TouchableOpacity
-// } from 'react-native';
+import { theme } from '../constants/Colors';
 
 // Component
-const PineappleButton = (props) => (
+const PineappleButton = ({
+  fluid, disabled, focus, primary, blank, onPress, text
+}) => (
   <StyledButton
-    fluid={props.fluid}
-    disabled={props.disabled}
-    focus={props.focus}
+    fluid={fluid}
+    disabled={disabled}
+    focus={focus}
 
-    primary={props.primary}
-    blank={props.blank}
-    onPress={props.onPress}
+    primary={primary}
+    blank={blank}
+    onPress={onPress}
   >
     <ButtonText
-      primary={props.primary}
-      blank={props.blank}
+      primary={primary}
+      blank={blank}
     >
-      {props.text}
+      {text}
     </ButtonText>
   </StyledButton>
 );
@@ -69,7 +68,7 @@ const StyledButton = styled.TouchableOpacity`
     background: ${theme.color.primaryDark} !important;
     box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1) !important;
   }
-`
+`;
 
 const ButtonText = styled.Text`
   color: ${theme.color.primary};
