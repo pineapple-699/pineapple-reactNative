@@ -15,7 +15,7 @@ export default {
 
 const space = ['0', '4px', '8px', '16px', '32px'];
 
-const font = '-apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif';
+const font = 'System';
 
 const colors = ({
   background: 'rgb(255, 255, 255)',
