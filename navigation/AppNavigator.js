@@ -31,7 +31,7 @@ const StackNavigator = createStackNavigator(
       navigationOptions: {
         header: null,
         // headerStyle: {
-        //   backgroundColor: '#9cf99c',
+        //   backgroundColor: '#FCB742',
         //   borderBottomWidth: 0,
         // },
         headerBackTitle: 'Log In',
@@ -41,7 +41,7 @@ const StackNavigator = createStackNavigator(
       screen: SignUpScreen,
       navigationOptions: {
         headerStyle: {
-          backgroundColor: '#9cf99c',
+          backgroundColor: '#FCB742',
           borderBottomWidth: 0,
         },
       }

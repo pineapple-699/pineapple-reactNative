@@ -4,7 +4,7 @@ const styles = StyleSheet.create({
 
   splashContainer: {
     flex: 1,
-    backgroundColor: '#9cf99c',
+    backgroundColor: '#FCB742',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -29,16 +29,16 @@ const styles = StyleSheet.create({
     fontSize: 17,
     marginVertical: 2,
     fontWeight: 'bold',
-    color: '#333',
+    color: '#222',
   },
   appText: {
     fontSize: 17,
-    color: '#333',
+    color: '#222',
   },
   linkText: {
     fontSize: 14,
     marginHorizontal: 10,
-    color: '#333',
+    color: '#222',
   },
 
   // Splash screen styles
@@ -64,11 +64,13 @@ const styles = StyleSheet.create({
     fontSize: 40,
     textAlign: 'center',
     fontWeight: 'bold',
-    color: '#333',
+    color: '#fff',
   },
   splashText: {
+    textAlign: 'center',
+    marginHorizontal: 10,
     fontSize: 24,
-    color: '#333',
+    color: '#fff',
   },
   authButton: { // Used on Splash and Sign Up pages
     height: 40,
@@ -131,22 +133,22 @@ const styles = StyleSheet.create({
   },
   // Product Screen Styles
   productImage: {
-    flex: 0.4,
+    flex: 0.35,
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#efefef',
-    borderBottomColor: '#333',
+    borderBottomColor: '#222',
     borderBottomWidth: 1,
   },
   productContent: {
-    flex: 0.6,
+    flex: 0.65,
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
   },
   productInfo: {
-    flex: 0.8,
+    flex: 0.75,
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
@@ -165,40 +167,72 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   productDescription: {
-    flex: 0.35,
+    flex: 0.6,
     width: '100%',
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
   },
   productAttributes: {
-    flex: 0.65,
+    flex: 0.4,
     width: '100%',
-    justifyContent: 'flex-start',
+    justifyContent: 'center',
     alignItems: 'flex-start',
   },
+  productOptions: {
+    flexDirection: 'row',
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  productDropdown: {
+    width: '47.5%'
+  },
+  productAttribute: {
+    flexDirection: 'row',
+    width: '100%',
+    alignItems: 'center',
+  },
   productButtons: {
-    flex: 0.2,
+    flex: 0.25,
     width: '100%',
     justifyContent: 'flex-end',
     alignItems: 'center',
   },
   // Add to cart/Confirm purchase/Nav home buttons
   largeButton: {
-    marginTop: 5,
-    marginBottom: 10,
+    marginBottom: 5,
     justifyContent: 'center',
     alignItems: 'center',
     height: 40,
     width: '95%',
-    color: '#333',
-    backgroundColor: '#333',
+    backgroundColor: '#FCB742',
     borderRadius: 5,
     borderWidth: 1,
-    borderColor: '#333',
+    borderColor: '#FCB742',
+  },
+  largeButtonOutline: {
+    marginBottom: 5,
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 40,
+    width: '95%',
+    backgroundColor: '#fff',
+    borderRadius: 5,
+    borderWidth: 2,
+    borderColor: '#FCB742',
   },
   largeButtonText: {
-    color: '#9cf99c',
+    color: '#fff',
     fontSize: 17,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    paddingLeft: 10,
+    paddingRight: 10
+  },
+  largeButtonTextOutline: {
+    color: '#FCB742',
+    fontSize: 17,
+    fontWeight: 'bold',
     textAlign: 'center',
     paddingLeft: 10,
     paddingRight: 10
@@ -228,7 +262,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#efefef',
-    borderColor: '#333',
+    borderColor: '#222',
     borderWidth: 1,
   },
   cartInfo: {
@@ -241,7 +275,7 @@ const styles = StyleSheet.create({
     marginVertical: 2,
     marginHorizontal: 10,
     fontWeight: 'bold',
-    color: '#333',
+    color: '#222',
   },
   cartButtons: {
     flex: 0.0825,
@@ -254,7 +288,7 @@ const styles = StyleSheet.create({
   // paymentModal: {
   //   flex: 0.5,
   //   width: '75%',
-  //   backgroundColor: '#333',
+  //   backgroundColor: '#222',
   //   justifyContent: 'center',
   //   alignItems: 'center',
   // },
@@ -265,25 +299,25 @@ const styles = StyleSheet.create({
 
   // Confirmation Screen Styles:
   confirmationIcon: {
-    color: '#9cf99c',
+    color: '#FCB742',
   },
   orderNumText: {
     fontSize: 24,
     fontWeight: 'bold',
     textAlign: 'center',
-    color: '#333',
+    color: '#222',
     margin: 10,
   },
   thankYouText: {
     fontSize: 20,
     textAlign: 'center',
-    color: '#333',
+    color: '#222',
     margin: 10,
   },
   confirmationText: {
     fontSize: 17,
     textAlign: 'center',
-    color: '#333',
+    color: '#222',
     margin: 10,
   }
 

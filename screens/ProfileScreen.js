@@ -4,7 +4,7 @@ import styles from '../constants/Style';
 
 const ProfileScreen = () => (
   <View style={styles.container}>
-    <StatusBar barStyle="dark-content" />
+    <StatusBar barStyle="light-content" />
     <Text>This is your user profile!</Text>
   </View>
 );

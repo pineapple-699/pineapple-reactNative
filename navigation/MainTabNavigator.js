@@ -26,16 +26,19 @@ const HomeStack = createStackNavigator(
       screen: HomeScreen,
       navigationOptions: {
         headerStyle: {
-          backgroundColor: '#9cf99c',
+          backgroundColor: '#FCB742',
           borderBottomWidth: 0,
         },
         title: 'Home',
+        headerTitleStyle: {
+          color: '#fff',
+        },
         headerRight:
   <Icon
     name="ios-barcode"
     size={24}
     onPress={({ navigation }) => navigation.navigate('Scanner')}
-    style={{ paddingRight: 30 }}
+    style={{ color: '#fff', paddingRight: 30 }}
   />
       }
     },
@@ -56,10 +59,14 @@ const HomeStack = createStackNavigator(
       screen: ProductsScreen,
       navigationOptions: {
         headerStyle: {
-          backgroundColor: '#9cf99c',
+          backgroundColor: '#FCB742',
           borderBottomWidth: 0,
         },
-        title: 'Product Name'
+        title: 'Product Name',
+        headerTitleStyle: {
+          color: '#fff',
+        },
+        headerLeft: null,
       }
     }
   },
@@ -72,7 +79,7 @@ HomeStack.navigationOptions = {
     <Icon name="ios-home" size={28} color={tintColor} />
   ),
   tabBarOptions: {
-    activeTintColor: '#9cf99c',
+    activeTintColor: '#FCB742',
   }
 };
 
@@ -84,30 +91,39 @@ const CartStack = createStackNavigator(
       screen: CartScreen,
       navigationOptions: {
         headerStyle: {
-          backgroundColor: '#9cf99c',
+          backgroundColor: '#FCB742',
           borderBottomWidth: 0,
         },
         title: 'Shopping Cart',
+        headerTitleStyle: {
+          color: '#fff',
+        },
       }
     },
     Payment: {
       screen: PaymentScreen,
       navigationOptions: {
         headerStyle: {
-          backgroundColor: '#9cf99c',
+          backgroundColor: '#FCB742',
           borderBottomWidth: 0,
         },
-        title: 'Enter Payment Information'
+        title: 'Enter Payment Information',
+        headerTitleStyle: {
+          color: '#fff',
+        },
       }
     },
     Confirmation: {
       screen: ConfirmationScreen,
       navigationOptions: {
         headerStyle: {
-          backgroundColor: '#9cf99c',
+          backgroundColor: '#FCB742',
           borderBottomWidth: 0,
         },
         title: 'Order Confirmed',
+        headerTitleStyle: {
+          color: '#fff',
+        },
         headerLeft: null,
       }
     }
@@ -130,7 +146,7 @@ CartStack.navigationOptions = {
   //   />
   ),
   tabBarOptions: {
-    activeTintColor: '#9cf99c',
+    activeTintColor: '#FCB742',
   }
 };
 
@@ -163,15 +179,18 @@ const ProfileStack = createStackNavigator(
       screen: ProfileScreen,
       navigationOptions: {
         headerStyle: {
-          backgroundColor: '#9cf99c',
+          backgroundColor: '#FCB742',
           borderBottomWidth: 0,
         },
         title: 'Profile',
+        headerTitleStyle: {
+          color: '#fff',
+        },
         headerRight:
   <Icon
     name="ios-settings"
     size={24}
-    style={{ paddingRight: 30 }}
+    style={{ color: '#fff', paddingRight: 30 }}
   />
       }
     },
@@ -179,7 +198,7 @@ const ProfileStack = createStackNavigator(
       screen: SettingsScreen,
       navigationOptions: {
         headerStyle: {
-          backgroundColor: '#9cf99c',
+          backgroundColor: '#FCB742',
           borderBottomWidth: 0,
         },
         title: 'Settings'
@@ -195,7 +214,7 @@ ProfileStack.navigationOptions = {
     <Icon name="ios-person" size={28} color={tintColor} />
   ),
   tabBarOptions: {
-    activeTintColor: '#9cf99c',
+    activeTintColor: '#FCB742',
   }
 };
 

@@ -29,10 +29,11 @@ class LogInScreen extends React.Component {
     } = this.props;
 
     const loggedInUser = {
-      username: 'Test',
-      email: 'test@gmail.com',
-      first_name: 'Test',
-      last_name: 'Testerton',
+      user_id: '0',
+      username: 'Admin',
+      email: 'admin@gmail.com',
+      first_name: 'Admin',
+      last_name: 'Administrator',
     };
 
 
@@ -41,19 +42,47 @@ class LogInScreen extends React.Component {
     setProd();
   }
 
+  handleLogIn = async () => {
+    // http://127.0.0.1:5000/users/name
+    const user = this.state;
+    const nav = this.props;
+
+    fetch('https://pineapple-rest-api.herokuapp.com/users')
+      .then((response) => response.json())
+      .then((responseJson) => {
+        const userInfo = responseJson.users;
+        const users = [];
+
+        userInfo.forEach((account) => {
+          users.push(account.username);
+        });
+
+        if (user.email === '') {
+          Alert.alert('Please enter your log in info');
+        } else if (users.includes(user.email) === false) {
+          Alert.alert('No account with this email exists. Please sign up or try again.');
+        } else {
+          nav.navigation.navigate('Activity');
+        }
+      });
+  }
+
   render() {
     const that = this.state;
     const nav = this.props;
     return (
       <View style={styles.splashContainer}>
-        <StatusBar barStyle="dark-content" />
+        <StatusBar barStyle="light-content" />
         <View style={styles.splashHeader}>
           <Image
             style={styles.splashLogo}
             source={iconLogo}
           />
           <Text style={styles.splashHeaderText}>Welcome to Pineapple!</Text>
-          <Text style={styles.splashText}>this is the splash screen</Text>
+          <Text style={styles.splashText}>
+            Please log in below.
+            If you do not already have an account please sign up!
+          </Text>
         </View>
         <View style={styles.splashInputs}>
           <TextInput
@@ -77,7 +106,7 @@ class LogInScreen extends React.Component {
               buttonStyle={styles.authButton}
               title="Log In"
               type="clear"
-              onPress={() => Alert.alert('This should log you in, but it is not working right now')}
+              onPress={() => this.handleLogIn()}
             />
             <Button
               buttonStyle={styles.authButton}
@@ -90,7 +119,7 @@ class LogInScreen extends React.Component {
             buttonStyle={styles.authGoogle}
             title="Log In with Google"
             type="clear"
-            onPress={() => Alert.alert('This should log you in, but it is not working right now')}
+            onPress={() => nav.navigation.navigate('Activity')}
           />
         </View>
       </View>
