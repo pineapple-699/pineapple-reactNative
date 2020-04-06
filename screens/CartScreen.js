@@ -10,18 +10,19 @@ import styles from '../constants/Style';
 
 class CartScreen extends React.Component {
   componentDidMount = async () => {
-    // const { authInfo } = this.props;
-    // const userID = authInfo.user_id;
+    const { authInfo } = this.props;
+    const userID = authInfo.user_id;
 
-    const rawResponse = await fetch('https://pineapple-rest-api.herokuapp.com/cart/2', {
+    const rawResponse = await fetch(`https://pineapple-rest-api.herokuapp.com/cart/${userID}`, {
       method: 'GET',
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'
       }
     });
-    await rawResponse.json();
-    // console.log(rawResponse.json());
+    await rawResponse.json().then((data) => {
+      console.log(data);
+    });
   }
 
   render() {

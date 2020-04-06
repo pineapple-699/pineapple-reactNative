@@ -1,17 +1,23 @@
+// General React Imports 
 import React from 'react';
 import {
   Text, View, StatusBar, TouchableOpacity
 } from 'react-native';
+
+// Componenet Imports
 // import ButtonFramer from '../components/ButtonFramer';
-import { connect } from 'react-redux';
+
+// Icon/Style Imports
+import Icon from 'react-native-vector-icons/Ionicons';
 import styles from '../constants/Style';
 
 // Redux Imports
+import { connect } from 'react-redux';
 import { getAuthInfo } from '../reducers/login';
 
 class HomeScreen extends React.Component {
-  componentDidMount = async () => {
-    // const nav = this.props;
+  componentDidMount() {
+    // const { navigation } = this.props;
     // const email = nav.navigation.getParam('email');
     // const password = nav.navigation.getParam('password');
     // const gender = nav.navigation.getParam('gender');

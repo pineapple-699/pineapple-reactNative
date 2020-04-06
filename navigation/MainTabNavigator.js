@@ -29,7 +29,7 @@ const HomeStack = createStackNavigator(
           backgroundColor: '#FCB742',
           borderBottomWidth: 0,
         },
-        title: 'Home',
+        title: 'Activity',
         headerTitleStyle: {
           color: '#fff',
         },
@@ -37,7 +37,7 @@ const HomeStack = createStackNavigator(
   <Icon
     name="ios-barcode"
     size={24}
-    onPress={({ navigation }) => navigation.navigate('Scanner')}
+    onPress={() => navigation.navigate('Scanner')}
     style={{ color: '#fff', paddingRight: 30 }}
   />
       }

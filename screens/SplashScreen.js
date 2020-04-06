@@ -12,9 +12,9 @@ import { setProducts } from '../reducers/api';
 const iconLogo = require('../assets/images/icon-logo.png');
 
 class SplashScreen extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
 
   componentDidMount() {
     const {

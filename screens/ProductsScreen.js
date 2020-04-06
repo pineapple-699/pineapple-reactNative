@@ -4,6 +4,7 @@ import {
   View,
   TouchableOpacity,
   StatusBar,
+  Image
   // ActivityIndicator,
   // FlatList
 } from 'react-native';
@@ -20,13 +21,12 @@ class ProductsScreen extends React.Component {
     const productSizes = navigation.getParam('productSizes');
     // const productColors = navigation.getParam('productColors');
 
-    // console.log(authInfo);
-
     this.state = {
       productToView: scannedProduct[0],
       productSize: scannedProduct[0].size,
       sizeOptions: productSizes,
       productColor: scannedProduct[0].color,
+      productImage: scannedProduct[0].picture,
       // colorOptions: productColors,
     };
   }
@@ -62,14 +62,18 @@ class ProductsScreen extends React.Component {
       productSize,
       sizeOptions,
       productColor,
+      productImage
       // colorOptions,
     } = this.state;
 
     return (
       <View style={styles.container}>
         <StatusBar barStyle="light-content" />
-        <View style={styles.productImage}>
-          <Text>{productToView.store}</Text>
+        <View style={styles.productHeader}>
+          <Image
+            style={styles.productImage}
+            source={{ uri: productImage }}
+          />
         </View>
         <View style={styles.productContent}>
           <View style={styles.productInfo}>

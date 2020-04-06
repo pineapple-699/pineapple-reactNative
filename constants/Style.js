@@ -190,15 +190,20 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center'
   },
+
   // Product Screen Styles
-  productImage: {
+  productHeader: {
     flex: 0.35,
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#efefef',
     borderBottomColor: '#222',
     borderBottomWidth: 1,
+  },
+  productImage: {
+    height: '90%',
+    width: '90%',
+    resizeMode: 'contain'
   },
   productContent: {
     flex: 0.65,
