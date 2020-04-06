@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     shadowColor: 'rgba(0,0,0, .5)', // IOS
     shadowOffset: { height: 2, width: 2 }, // IOS
     shadowOpacity: 2, // IOS
-    shadowRadius: 2, //IOS
+    shadowRadius: 2, // IOS
     elevation: 4, // Android
   },
   largeButtonOutline: {
@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
     shadowColor: 'rgba(0,0,0, .5)', // IOS
     shadowOffset: { height: 2, width: 2 }, // IOS
     shadowOpacity: 2, // IOS
-    shadowRadius: 2, //IOS
+    shadowRadius: 2, // IOS
     elevation: 4, // Android
   },
   largeButtonText: {
@@ -98,21 +98,21 @@ const styles = StyleSheet.create({
 
   // Splash Screen Styles
   splashHeader: {
-    flex: .55,
+    flex: 0.55,
     width: '100%',
     alignItems: 'center',
     justifyContent: 'flex-end',
     marginVertical: 10,
   },
   splashCTA: {
-    flex: .35,
+    flex: 0.35,
     width: '100%',
     alignItems: 'center',
     justifyContent: 'flex-start',
     marginVertical: 10,
   },
   splashButtons: {
-    flex: .1,
+    flex: 0.1,
     width: '100%',
     alignItems: 'center',
     justifyContent: 'flex-end',
@@ -135,19 +135,19 @@ const styles = StyleSheet.create({
 
   // Log In Screen Styles
   logInHeader: {
-    flex: .58,
+    flex: 0.58,
     width: '100%',
     alignItems: 'center',
     justifyContent: 'flex-end',
   },
   logInInputs: {
-    flex: .3,
+    flex: 0.3,
     width: '100%',
     alignItems: 'center',
     justifyContent: 'flex-start',
   },
   logInButtons: {
-    flex: .12,
+    flex: 0.12,
     width: '100%',
     alignItems: 'center',
     justifyContent: 'flex-end',

@@ -2,8 +2,6 @@ import React from 'react';
 import {
   View, StatusBar, Text, Image, TouchableOpacity
 } from 'react-native';
-
-import { Button } from 'react-native-elements';
 import { connect } from 'react-redux';
 import styles from '../constants/Style';
 
@@ -57,7 +55,8 @@ class SplashScreen extends React.Component {
         <View style={styles.splashButtons}>
           <Text
             style={styles.splashText}
-            onPress={() => navigation.navigate('LogIn')}>
+            onPress={() => navigation.navigate('LogIn')}
+          >
             Already have an account? Sign In!
           </Text>
           <TouchableOpacity

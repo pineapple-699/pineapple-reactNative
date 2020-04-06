@@ -1,12 +1,12 @@
 import React from 'react';
 import {
-  Text, View, StatusBar
+  Text, View, StatusBar, TouchableOpacity
 } from 'react-native';
+// import ButtonFramer from '../components/ButtonFramer';
 import { connect } from 'react-redux';
-import ButtonFramer from '../components/ButtonFramer';
-
 import styles from '../constants/Style';
 
+// Redux Imports
 import { getAuthInfo } from '../reducers/login';
 
 class HomeScreen extends React.Component {
@@ -60,10 +60,13 @@ class HomeScreen extends React.Component {
           {` ${authInfo.firstName} ${authInfo.lastName}`}
           !
         </Text>
-        {/* <Button
-          title="SCAN"
+        <TouchableOpacity
+          style={styles.largeButton}
           onPress={() => navigation.navigate('Scanner')}
-        /> */}
+          underlayColor="#fff"
+        >
+          <Text style={styles.largeButtonText}>Scan an Item</Text>
+        </TouchableOpacity>
         {/* <ButtonFramer
           onPress={() => navigation.navigate('Scanner')}
           text="SCAN"

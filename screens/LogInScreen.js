@@ -1,8 +1,7 @@
 import React from 'react';
 import {
-  View, StatusBar, Text, Alert, Image, TextInput, KeyboardAvoidingView, TouchableOpacity
+  View, StatusBar, Text, Alert, Image, TextInput, TouchableOpacity // , KeyboardAvoidingView
 } from 'react-native';
-import { Button } from 'react-native-elements';
 import styles from '../constants/Style';
 
 // // Redux

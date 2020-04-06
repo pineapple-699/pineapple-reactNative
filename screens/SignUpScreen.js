@@ -68,8 +68,8 @@ class SignUpScreen extends React.Component {
     const that = this.state;
     // const { navigation } = this.props;
     return (
-      <KeyboardAvoidingView 
-        behavior='padding'
+      <KeyboardAvoidingView
+        behavior="padding"
         style={styles.splashContainer}
       >
         <StatusBar barStyle="dark-content" />

@@ -9,19 +9,20 @@ import { getAuthInfo } from '../reducers/login';
 import styles from '../constants/Style';
 
 class CartScreen extends React.Component {
-  // componentDidMount = async () => {
-  //   const { authInfo } = this.props;
+  componentDidMount = async () => {
+    // const { authInfo } = this.props;
+    // const userID = authInfo.user_id;
 
-  //   const rawResponse = await fetch('https://pineapple-rest-api.herokuapp.com/cart/2e', {
-  //     method: 'GET',
-  //     headers: {
-  //       Accept: 'application/json',
-  //       'Content-Type': 'application/json'
-  //     }
-  //   });
-  //   await rawResponse.json();
-  //   console.log(rawResponse.json())
-  // }
+    const rawResponse = await fetch('https://pineapple-rest-api.herokuapp.com/cart/2', {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      }
+    });
+    await rawResponse.json();
+    // console.log(rawResponse.json());
+  }
 
   render() {
     const { navigation } = this.props;

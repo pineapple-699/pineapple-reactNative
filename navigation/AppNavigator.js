@@ -37,7 +37,8 @@ const StackNavigator = createStackNavigator(
         // },
         headerBackTitle: 'Log In',
       }
-    },LogIn: {
+    },
+    LogIn: {
       screen: LogInScreen,
       navigationOptions: {
         header: null,
