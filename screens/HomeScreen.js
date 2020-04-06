@@ -64,11 +64,11 @@ class HomeScreen extends React.Component {
           title="SCAN"
           onPress={() => navigation.navigate('Scanner')}
         /> */}
-        <ButtonFramer
+        {/* <ButtonFramer
           onPress={() => navigation.navigate('Scanner')}
           text="SCAN"
           primary
-        />
+        /> */}
       </View>
     );
   }

@@ -2,9 +2,10 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
 
+  // General Styles
   splashContainer: {
     flex: 1,
-    backgroundColor: '#FCB742',
+    backgroundColor: '#FEF0D7',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -13,20 +14,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  splashLogo: {
-    margin: 10,
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
   signUpLogo: {
     margin: 10,
     height: 110,
     width: 62,
-    alignItems: 'center',
-    justifyContent: 'center'
   },
   appSectionHeader: {
-    fontSize: 17,
+    fontSize: 14,
     marginVertical: 2,
     fontWeight: 'bold',
     color: '#222',
@@ -36,73 +30,9 @@ const styles = StyleSheet.create({
     color: '#222',
   },
   linkText: {
-    fontSize: 14,
+    fontSize: 12,
     marginHorizontal: 10,
     color: '#222',
-  },
-
-  // Splash screen styles
-  splashHeader: {
-    flex: 0.575,
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-  },
-  splashInputs: {
-    flex: 0.15,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  splashButtons: {
-    flex: 0.275,
-    alignItems: 'center',
-    justifyContent: 'flex-start'
-  },
-  splashButtonsView: {
-    flexDirection: 'row',
-  },
-  splashHeaderText: {
-    fontSize: 40,
-    textAlign: 'center',
-    fontWeight: 'bold',
-    color: '#fff',
-  },
-  splashText: {
-    textAlign: 'center',
-    marginHorizontal: 10,
-    fontSize: 24,
-    color: '#fff',
-  },
-  authButton: { // Used on Splash and Sign Up pages
-    height: 40,
-    width: 120,
-    margin: 5,
-    backgroundColor: '#fff',
-  },
-  authGoogle: {
-    height: 40,
-    width: 250,
-    margin: 5,
-    backgroundColor: '#fff',
-  },
-
-  // Sign Up Styles
-  signUpHeaderView: {
-    flex: 0.3,
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-    // backgroundColor: 'red',
-  },
-  signUpInputView: {
-    flex: 0.65,
-    justifyContent: 'center',
-    alignItems: 'center',
-    // backgroundColor: 'blue',
-  },
-  signUpButtonView: {
-    flex: 0.15,
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    // backgroundColor: 'red',
   },
   authInputs: {
     backgroundColor: '#fff',
@@ -111,18 +41,147 @@ const styles = StyleSheet.create({
     borderColor: '#9f9f9f',
     fontSize: 20,
     height: 40,
-    width: 250,
-    margin: 5,
+    width: '60%',
+    marginVertical: 5,
     paddingHorizontal: 10,
   },
-  signUpButton: {
+
+  // Button Style
+  largeButton: {
+    marginTop: 5,
+    justifyContent: 'center',
+    alignItems: 'center',
     height: 40,
-    width: 250,
-    margin: 5,
-    backgroundColor: '#fff',
+    width: '95%',
+    backgroundColor: '#FCB742',
+    borderRadius: 5,
     borderWidth: 1,
-    borderColor: '#9f9f9f',
+    borderColor: '#FCB742',
+    shadowColor: 'rgba(0,0,0, .5)', // IOS
+    shadowOffset: { height: 2, width: 2 }, // IOS
+    shadowOpacity: 2, // IOS
+    shadowRadius: 2, //IOS
+    elevation: 4, // Android
   },
+  largeButtonOutline: {
+    marginTop: 5,
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 40,
+    width: '95%',
+    backgroundColor: '#fff',
+    borderRadius: 5,
+    borderWidth: 2,
+    borderColor: '#FCB742',
+    shadowColor: 'rgba(0,0,0, .5)', // IOS
+    shadowOffset: { height: 2, width: 2 }, // IOS
+    shadowOpacity: 2, // IOS
+    shadowRadius: 2, //IOS
+    elevation: 4, // Android
+  },
+  largeButtonText: {
+    color: '#fff',
+    fontSize: 17,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginLeft: 10,
+    marginRight: 10
+  },
+  largeButtonTextOutline: {
+    color: '#FCB742',
+    fontSize: 17,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginLeft: 10,
+    marginRight: 10
+  },
+
+  // Splash Screen Styles
+  splashHeader: {
+    flex: .55,
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    marginVertical: 10,
+  },
+  splashCTA: {
+    flex: .35,
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    marginVertical: 10,
+  },
+  splashButtons: {
+    flex: .1,
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    marginVertical: 10,
+  },
+  splashLogo: {
+    marginVertical: 10,
+  },
+  splashHeaderText: {
+    fontSize: 42,
+    fontWeight: '700',
+    textAlign: 'center',
+    marginVertical: 10,
+  },
+  splashText: {
+    fontSize: 16,
+    textAlign: 'center',
+    marginBottom: 10,
+  },
+
+  // Log In Screen Styles
+  logInHeader: {
+    flex: .58,
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+  },
+  logInInputs: {
+    flex: .3,
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+  },
+  logInButtons: {
+    flex: .12,
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    marginBottom: 10,
+  },
+  LogInLogo: {
+    marginVertical: 10,
+  },
+
+  // Sign Up Styles
+  signUpHeader: {
+    flex: 0.385,
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+  },
+  signUpInputs: {
+    flex: 0.55,
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+  },
+  signUpButtons: {
+    flex: 0.065,
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    marginBottom: 10,
+  },
+
+  // ######
+  // BELOW NEEDS TO BE EDITED
+  // ######
+
   // Scanner Screen Styles
   scanScreenMessage: {
     fontSize: 20,
@@ -197,45 +256,7 @@ const styles = StyleSheet.create({
     width: '100%',
     justifyContent: 'flex-end',
     alignItems: 'center',
-  },
-  // Add to cart/Confirm purchase/Nav home buttons
-  largeButton: {
-    marginBottom: 5,
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: 40,
-    width: '95%',
-    backgroundColor: '#FCB742',
-    borderRadius: 5,
-    borderWidth: 1,
-    borderColor: '#FCB742',
-  },
-  largeButtonOutline: {
-    marginBottom: 5,
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: 40,
-    width: '95%',
-    backgroundColor: '#fff',
-    borderRadius: 5,
-    borderWidth: 2,
-    borderColor: '#FCB742',
-  },
-  largeButtonText: {
-    color: '#fff',
-    fontSize: 17,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    paddingLeft: 10,
-    paddingRight: 10
-  },
-  largeButtonTextOutline: {
-    color: '#FCB742',
-    fontSize: 17,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    paddingLeft: 10,
-    paddingRight: 10
+    marginVertical: 10,
   },
   // Cart screen styles
   cartList: {
@@ -247,7 +268,7 @@ const styles = StyleSheet.create({
   cartItem: {
     flex: 0.2,
     flexDirection: 'row',
-    paddingTop: 10,
+    marginTop: 10,
     width: '95%',
     justifyContent: 'flex-start',
     alignItems: 'center',
@@ -282,6 +303,7 @@ const styles = StyleSheet.create({
     width: '100%',
     justifyContent: 'flex-end',
     alignItems: 'center',
+    marginVertical: 10,
   },
   // Payment screen styles
 
