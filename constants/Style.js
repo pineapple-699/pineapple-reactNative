@@ -1,10 +1,12 @@
 import { StyleSheet } from 'react-native';
+import reducer from '../reducers/login';
 
 const styles = StyleSheet.create({
 
   // General Styles
   splashContainer: {
     flex: 1,
+    
     backgroundColor: '#FEF0D7',
     alignItems: 'center',
     justifyContent: 'center',
@@ -153,8 +155,9 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     marginBottom: 10,
   },
-  LogInLogo: {
-    marginVertical: 10,
+  logInLogo: {
+    height: '50%',
+    width: '28%',
   },
 
   // Sign Up Styles
@@ -177,10 +180,26 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     marginBottom: 10,
   },
+  signUpLogo: {
+    height: '52%',
+    width: '20%',
+  },
 
-  // ######
-  // BELOW NEEDS TO BE EDITED
-  // ######
+  // Activity Page Styles
+
+  activity: {
+    flex: .9,
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  activityButton: {
+    flex: .1,
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    marginBottom: 10,
+  },
 
   // Scanner Screen Styles
   scanScreenMessage: {
@@ -190,6 +209,112 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center'
   },
+
+  //Profile Screen Styles
+  profileHeaderBackground: {
+    flex: 1,
+    width: '100%',
+    backgroundColor: '#FCB742',
+    shadowColor: 'rgba(0,0,0, .5)', // IOS
+  },
+  profileHeader: {
+    flex: .1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  userPicBackground: {
+    height: '100%',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
+    position: 'absolute',
+    marginTop: 15,
+    marginLeft: 15,
+  },
+  userPic: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: 100,
+    width: 100,
+    resizeMode: 'contain',
+    borderRadius: 100,
+    backgroundColor: '#fff',
+    borderWidth: 1,
+    borderColor: '#333',
+  },
+  userInfo: {
+    flex: 1,
+    height: '100%',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-end',
+    marginBottom: 10,
+    marginLeft: 130,
+  },
+  usernameText: {
+    fontSize: 32,
+    fontWeight: '700',
+    color: '#fff',
+  },
+  profileOptions: {
+    flex: .9,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#eee',
+  },
+  userEmail: {
+    flex: .05,
+    width: '100%',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
+    marginTop: 10,
+    marginLeft: 260,
+  },
+  userEmailText: {
+    fontSize: 14,
+    fontWeight: '500'
+  },
+  settingsBackground: {
+    flex: .95,
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    marginTop: 40,
+  },
+  settingsOptionsBackground: {
+    flexDirection: 'row',
+    width: '100%',
+    height: '15%',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    backgroundColor: '#fff',
+    borderBottomWidth: 1,
+    borderColor: '#eee',
+  },
+  lastSettingsOptionsBackground: {
+    flexDirection: 'row',
+    width: '100%',
+    height: '15%',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    backgroundColor: '#fff',
+    borderBottomWidth: 1,
+    borderColor: '#eee',
+    shadowColor: 'rgba(0,0,0, .5)', // IOS
+    shadowOffset: { height: 2, width: 2 }, // IOS
+    shadowOpacity: 2, // IOS
+    shadowRadius: 2, // IOS
+    elevation: 4, // Android
+  },
+  settingsOptionsText: {
+    fontSize: 20,
+    fontWeight: '700',
+    marginHorizontal: 15,
+  },
+
+  // ######
+  // BELOW NEEDS TO BE EDITED
+  // ######
 
   // Product Screen Styles
   productHeader: {

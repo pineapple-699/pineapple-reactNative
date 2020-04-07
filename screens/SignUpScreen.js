@@ -36,7 +36,7 @@ class SignUpScreen extends React.Component {
         },
         body: JSON.stringify({
           username: item.email,
-          address: 'Ann Arbor',
+          address: '',
           password: item.password,
           sex: item.gender,
           shoe_size: item.shoeSize,
@@ -47,20 +47,21 @@ class SignUpScreen extends React.Component {
       });
 
       const content = await rawResponse.json();
+      console.log(content);
 
-      if (content.message === 'User with the same name already exists in database!') {
-        Alert.alert('This email is already in use, please log in or try again with a different email.');
-      } else {
-        nav.navigation.navigate('Activity', {
-          email: item.email,
-          password: item.password,
-          gender: item.gender,
-          pantSize: item.pantSize,
-          shirtSize: item.shirtSize,
-          shoeSize: item.shoeSize,
-        });
-      }
-      console.log(content); //eslint-disable-line
+    //   if (content.message === 'User with the same name already exists in database!') {
+    //     Alert.alert('This email is already in use, please log in or try again with a different email.');
+    //   } else {
+    //     nav.navigation.navigate('Activity', {
+    //       email: item.email,
+    //       password: item.password,
+    //       gender: item.gender,
+    //       pantSize: item.pantSize,
+    //       shirtSize: item.shirtSize,
+    //       shoeSize: item.shoeSize,
+    //     });
+    //   }
+    //   console.log(content); //eslint-disable-line
     }
   }
 

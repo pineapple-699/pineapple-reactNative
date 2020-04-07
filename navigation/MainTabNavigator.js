@@ -13,7 +13,7 @@ import PaymentScreen from '../screens/PaymentScreen';
 import ConfirmationScreen from '../screens/ConfirmationScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import SettingsScreen from '../screens/SettingsScreen';
-// Import LinksScreen from '../screens/LinksScreen';
+import UserInfoScreen from '../screens/UserInfoScreen';
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
@@ -37,7 +37,7 @@ const HomeStack = createStackNavigator(
   <Icon
     name="ios-barcode"
     size={24}
-    onPress={() => navigation.navigate('Scanner')}
+    onPress={(navigation) => navigation.navigate('Scanner')}
     style={{ color: '#fff', paddingRight: 30 }}
   />
       }
@@ -152,27 +152,6 @@ CartStack.navigationOptions = {
 
 CartStack.path = '';
 
-// const LinksStack = createStackNavigator(
-//   {
-//     Links: {
-//       screen: LinksScreen,
-//       navigationOptions: {
-//         title: 'Links',
-//       }
-//     }
-//   },
-//   config
-// );
-
-// LinksStack.navigationOptions = {
-//   tabBarLabel: 'Links',
-//   tabBarIcon: ({ focused }) => (
-//     <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
-//   ),
-// };
-
-// LinksStack.path = '';
-
 const ProfileStack = createStackNavigator(
   {
     Profile: {
@@ -182,28 +161,21 @@ const ProfileStack = createStackNavigator(
           backgroundColor: '#FCB742',
           borderBottomWidth: 0,
         },
-        title: 'Profile',
-        headerTitleStyle: {
-          color: '#fff',
-        },
-        headerRight:
-  <Icon
-    name="ios-settings"
-    size={24}
-    style={{ color: '#fff', paddingRight: 30 }}
-  />
       }
     },
     Settings: {
       screen: SettingsScreen,
       navigationOptions: {
-        headerStyle: {
-          backgroundColor: '#FCB742',
-          borderBottomWidth: 0,
-        },
-        title: 'Settings'
+        header: null,
+      }
+    },
+    User: {
+      screen: UserInfoScreen,
+      navigationOptions: {
+        header: null,
       }
     }
+
   },
   config
 );

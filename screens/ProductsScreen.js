@@ -4,7 +4,7 @@ import {
   View,
   TouchableOpacity,
   StatusBar,
-  Image
+  Image,
   // ActivityIndicator,
   // FlatList
 } from 'react-native';
@@ -21,6 +21,8 @@ class ProductsScreen extends React.Component {
     const productSizes = navigation.getParam('productSizes');
     // const productColors = navigation.getParam('productColors');
 
+    // console.log(authInfo);
+
     this.state = {
       productToView: scannedProduct[0],
       productSize: scannedProduct[0].size,
@@ -33,25 +35,23 @@ class ProductsScreen extends React.Component {
 
   handleAddToCart = async () => {
     const { navigation, authInfo } = this.props;
+    const userID = authInfo.user_id;
     const { productToView } = this.state;
 
-    const rawResponse = await fetch('https://pineapple-rest-api.herokuapp.com/cart', {
+    const rawResponse = await fetch(`https://pineapple-rest-api.herokuapp.com/cart/${userID}`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        user_id: authInfo.user_id,
-        product_upc: productToView.upc,
+        product_upc: productToView[0],
         quantity: 1,
         type: 'add_product_for_user',
       })
     });
 
     await rawResponse.json();
-
-
     navigation.navigate('Cart');
   }
 
@@ -62,7 +62,7 @@ class ProductsScreen extends React.Component {
       productSize,
       sizeOptions,
       productColor,
-      productImage
+      productImage,
       // colorOptions,
     } = this.state;
 

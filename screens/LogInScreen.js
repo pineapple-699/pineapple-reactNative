@@ -1,13 +1,12 @@
 import React from 'react';
 import {
-  View, StatusBar, Text, Alert, Image, TextInput, TouchableOpacity // , KeyboardAvoidingView
+  View, StatusBar, Text, Alert, Image, TextInput, TouchableOpacity, KeyboardAvoidingView // , KeyboardAvoidingView
 } from 'react-native';
 import styles from '../constants/Style';
 
 // // Redux
-// import { connect } from 'react-redux';
-// import { setAuthentication, setProfile } from '../reducers/login';
-// import { setProducts } from '../reducers/api';
+import { connect } from 'react-redux';
+import { setAuthentication, setProfile } from '../reducers/login';
 
 const iconLogo = require('../assets/images/icon-logo.png');
 
@@ -42,34 +41,44 @@ class LogInScreen extends React.Component {
 
   handleLogIn = async () => {
     // http://127.0.0.1:5000/users/name
-    const user = this.state;
+    const { email } = this.state;
     const { navigation } = this.props;
 
     fetch('https://pineapple-rest-api.herokuapp.com/users')
       .then((response) => response.json())
       .then((responseJson) => {
         const userInfo = responseJson.users;
-        const users = [];
 
+        // Needs to be re-written for validation
         userInfo.forEach((account) => {
-          users.push(account.username);
-        });
+          if (email === account.username) {
+            const {
+              setAuth, setProf,
+            } = this.props;
 
-        if (user.email === '') {
-          Alert.alert('Please enter your log in info');
-        } else if (users.includes(user.email) === false) {
-          Alert.alert('No account with this email exists. Please sign up or try again.');
-        } else {
-          navigation.navigate('Activity');
-        }
+            const loggedInUser = {
+              user_id: account.id,
+              username: account.username,
+              email: 'test@pineapple.com',
+              first_name: 'Real',
+              last_name: 'Person',
+            };
+            setProf(loggedInUser);
+            setAuth(true);
+            navigation.navigate('Activity');
+          }
+        });
       });
   }
 
   render() {
-    const that = this.state;
+    const { 
+      email, 
+      password,
+    } = this.state;
     const { navigation } = this.props;
     return (
-      <View style={styles.splashContainer}>
+      <KeyboardAvoidingView style={styles.splashContainer}>
         <StatusBar barStyle="dark-content" />
         <View style={styles.logInHeader}>
           <Image
@@ -83,14 +92,14 @@ class LogInScreen extends React.Component {
             placeholder="Email"
             style={styles.authInputs}
             autoCapitalize="none"
-            value={that.email}
+            value={email}
             onChangeText={(value) => { this.setState({ email: value }); }}
           />
           <TextInput
             placeholder="Password"
             style={styles.authInputs}
             autoCapitalize="none"
-            value={that.password}
+            value={password}
             onChangeText={(value) => { this.setState({ password: value }); }}
           />
         </View>
@@ -110,17 +119,14 @@ class LogInScreen extends React.Component {
             <Text style={styles.largeButtonTextOutline}>Log In With Google</Text>
           </TouchableOpacity>
         </View>
-      </View>
+      </KeyboardAvoidingView>
     );
   }
 }
 
-// const mapDispatchToProps = {
-//   setAuth: setAuthentication,
-//   setProf: setProfile,
-//   setProd: setProducts
-// };
+const mapDispatchToProps = {
+  setAuth: setAuthentication,
+  setProf: setProfile,
+};
 
-// export default connect(null, mapDispatchToProps)(LogInScreen);
-
-export default LogInScreen;
+export default connect(null, mapDispatchToProps)(LogInScreen);

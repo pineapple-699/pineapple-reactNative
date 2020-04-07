@@ -1,4 +1,4 @@
-// General React Imports 
+// General React Imports
 import React from 'react';
 import {
   Text, View, StatusBar, TouchableOpacity
@@ -8,7 +8,6 @@ import {
 // import ButtonFramer from '../components/ButtonFramer';
 
 // Icon/Style Imports
-import Icon from 'react-native-vector-icons/Ionicons';
 import styles from '../constants/Style';
 
 // Redux Imports
@@ -61,23 +60,27 @@ class HomeScreen extends React.Component {
     return (
       <View style={styles.container}>
         <StatusBar barStyle="light-content" />
-        <Text>
-          Welcome
-          {` ${authInfo.firstName} ${authInfo.lastName}`}
+        <View style={styles.activity}>
+          <Text>
+            Welcome
+          {` ${authInfo.username} `}
           !
-        </Text>
-        <TouchableOpacity
-          style={styles.largeButton}
-          onPress={() => navigation.navigate('Scanner')}
-          underlayColor="#fff"
-        >
-          <Text style={styles.largeButtonText}>Scan an Item</Text>
-        </TouchableOpacity>
-        {/* <ButtonFramer
+          </Text>
+        </View>
+        <View style={styles.activityButton}>
+          <TouchableOpacity
+            style={styles.largeButton}
+            onPress={() => navigation.navigate('Scanner')}
+            underlayColor="#fff"
+          >
+            <Text style={styles.largeButtonText}>Scan an Item</Text>
+          </TouchableOpacity>
+          {/* <ButtonFramer
           onPress={() => navigation.navigate('Scanner')}
           text="SCAN"
           primary
-        /> */}
+          /> */}
+        </View>
       </View>
     );
   }
