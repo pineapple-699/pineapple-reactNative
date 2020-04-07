@@ -18,14 +18,14 @@ function Item({ title }) {
 }
 
 class HomeScreen extends React.Component {
-  constructor(props){
-    super(props)
+  constructor(props) {
+    super(props);
     this.state = {
-      scannedData:[]
-    }
+      scannedData: []
+    };
   }
 
-  componentDidMount = async() => {
+  componentDidMount = async () => {
     const { authInfo } = this.props;
 
     const rawResponse = await fetch(`https://pineapple-rest-api.herokuapp.com/history/scan/${authInfo.user_id}`, {
@@ -36,31 +36,29 @@ class HomeScreen extends React.Component {
       },
     });
 
-    await rawResponse.json().then((data)=>{
-      data.scan_history.map(async (dat)=>{
-        const rawResponse = await fetch(`https://pineapple-rest-api.herokuapp.com/product/${dat.id}`, {
+    await rawResponse.json().then((data) => {
+      data.scan_history.map(async (dat) => {
+        const newRawResponse = await fetch(`https://pineapple-rest-api.herokuapp.com/product/${dat.id}`, {
           method: 'GET',
           headers: {
             Accept: 'application/json',
             'Content-Type': 'application/json'
           },
         });
-       await rawResponse.json().then((dat)=>{
-          this.setState(previousState => ({
-            scannedData: [...previousState.scannedData, dat.product[0]]
+        await newRawResponse.json().then((newDat) => {
+          this.setState((previousState) => ({
+            scannedData: [...previousState.scannedData, newDat.product[0]]
           }));
-        })
-      })
-  
-    })
+        });
+      });
+    });
 
     this.setState(this.state);
- 
   }
 
   render() {
     const { navigation, authInfo } = this.props;
-    const { scannedData } = this.state
+    const { scannedData } = this.state;
 
     return (
       <View style={styles.container}>
@@ -73,7 +71,7 @@ class HomeScreen extends React.Component {
         <FlatList
           data={scannedData}
           renderItem={({ item }) => <Item title={item.description} />}
-          keyExtractor={item => item.id}
+          keyExtractor={(item) => Number(item.id)}
         />
         <ButtonFramer
           onPress={() => navigation.navigate('Scanner')}

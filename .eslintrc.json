@@ -8,7 +8,8 @@
         "react/jsx-filename-extension": "off",
         "react/prop-types": "off",
         "comma-dangle": "off",
-        "react/no-string-refs":"off"
+        "react/no-string-refs":"off",
+        "react/no-access-state-in-setstate":"off"
       },
     "env": {
         "jest": true,
