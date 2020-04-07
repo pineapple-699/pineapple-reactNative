@@ -4,13 +4,14 @@ import {
   Text,
   View,
   // StatusBar
+  // TouchableOpacity
 } from 'react-native';
 
 // Icon/Style Imports
 // import Icon from 'react-native-vector-icons/Ionicons';
 import styles from '../constants/Style';
 
-const SupportScreen = () => (
+const AddressScreen = () => (
   <View style={styles.container}>
     <View style={styles.header}>
       {/* <Icon
@@ -19,7 +20,7 @@ const SupportScreen = () => (
           onPress={() => navigation.goBack()}
           style={{ color: '#fff', paddingRight: 30, marginTop: 20, marginRight: 122, }}
         /> */}
-      <Text style={styles.headerText}>Support</Text>
+      <Text style={styles.headerText}>Address Information</Text>
     </View>
     <View style={styles.body}>
       <Text>This screen will display support options to the user</Text>
@@ -27,4 +28,4 @@ const SupportScreen = () => (
   </View>
 );
 
-export default SupportScreen;
+export default AddressScreen;

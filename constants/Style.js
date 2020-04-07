@@ -1,12 +1,10 @@
 import { StyleSheet } from 'react-native';
-import reducer from '../reducers/login';
 
 const styles = StyleSheet.create({
 
   // General Styles
   splashContainer: {
     flex: 1,
-    
     backgroundColor: '#FEF0D7',
     alignItems: 'center',
     justifyContent: 'center',
@@ -16,25 +14,48 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  signUpLogo: {
-    margin: 10,
-    height: 110,
-    width: 62,
+  header: {
+    flex: 0.094,
+    flexDirection: 'row',
+    width: '100%',
+    backgroundColor: '#FCB742',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  body: {
+    flex: 0.916,
+    width: '100%',
+    backgroundColor: '#eee',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
+  },
+  headerText: {
+    fontSize: 21,
+    fontWeight: '600',
+    color: '#fff',
+    marginTop: 20,
+  },
+  headerTextWithBackButton: {
+    fontSize: 21,
+    fontWeight: '600',
+    color: '#fff',
+    marginTop: 20,
+    marginRight: 160,
   },
   appSectionHeader: {
     fontSize: 14,
     marginVertical: 2,
     fontWeight: 'bold',
-    color: '#222',
+    color: '#333',
   },
   appText: {
     fontSize: 17,
-    color: '#222',
+    color: '#333',
   },
   linkText: {
     fontSize: 12,
     marginHorizontal: 10,
-    color: '#222',
+    color: '#333',
   },
   authInputs: {
     backgroundColor: '#fff',
@@ -181,20 +202,21 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   signUpLogo: {
-    height: '52%',
-    width: '20%',
+    margin: 10,
+    height: 110,
+    width: 62,
   },
 
   // Activity Page Styles
 
   activity: {
-    flex: .9,
+    flex: 0.9,
     width: '100%',
     alignItems: 'center',
     justifyContent: 'center',
   },
   activityButton: {
-    flex: .1,
+    flex: 0.1,
     width: '100%',
     alignItems: 'center',
     justifyContent: 'flex-end',
@@ -210,7 +232,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
 
-  //Profile Screen Styles
+  // Profile Screen Styles
   profileHeaderBackground: {
     flex: 1,
     width: '100%',
@@ -218,7 +240,7 @@ const styles = StyleSheet.create({
     shadowColor: 'rgba(0,0,0, .5)', // IOS
   },
   profileHeader: {
-    flex: .1,
+    flex: 0.1,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
@@ -257,13 +279,13 @@ const styles = StyleSheet.create({
     color: '#fff',
   },
   profileOptions: {
-    flex: .9,
+    flex: 0.9,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#eee',
   },
   userEmail: {
-    flex: .05,
+    flex: 0.05,
     width: '100%',
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
@@ -275,7 +297,7 @@ const styles = StyleSheet.create({
     fontWeight: '500'
   },
   settingsBackground: {
-    flex: .95,
+    flex: 0.95,
     width: '100%',
     alignItems: 'center',
     justifyContent: 'flex-start',
@@ -310,6 +332,35 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: '700',
     marginHorizontal: 15,
+  },
+
+  // Setting Screen Styles
+  settingBackground: {
+    flexDirection: 'row',
+    width: '100%',
+    height: '10%',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    backgroundColor: '#fff',
+    borderBottomWidth: 1,
+    borderColor: '#eee',
+  },
+  settingText: {
+    fontSize: 18,
+    marginHorizontal: 15,
+  },
+  settingSectionHeader: {
+    fontSize: 18,
+    fontWeight: '600',
+    marginHorizontal: 15,
+    marginTop: 30,
+    marginBottom: 15,
+  },
+  cameraMessage: {
+    fontSize: 12,
+    color: '#B4B4B4',
+    marginHorizontal: 15,
+    marginTop: 10,
   },
 
   // ######

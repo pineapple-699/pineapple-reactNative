@@ -2,10 +2,10 @@ import React from 'react';
 import {
   View, StatusBar, Text, Image, TouchableOpacity
 } from 'react-native';
+import { connect } from 'react-redux';
 import styles from '../constants/Style';
 
 // Redux
-import { connect } from 'react-redux';
 import { setAuthentication, setProfile } from '../reducers/login';
 import { setProducts } from '../reducers/api';
 
@@ -79,4 +79,3 @@ const mapDispatchToProps = {
 };
 
 export default connect(null, mapDispatchToProps)(SplashScreen);
-

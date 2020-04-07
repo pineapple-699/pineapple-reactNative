@@ -8,10 +8,10 @@ import {
 // import ButtonFramer from '../components/ButtonFramer';
 
 // Icon/Style Imports
+import { connect } from 'react-redux';
 import styles from '../constants/Style';
 
 // Redux Imports
-import { connect } from 'react-redux';
 import { getAuthInfo } from '../reducers/login';
 
 class HomeScreen extends React.Component {
@@ -63,8 +63,8 @@ class HomeScreen extends React.Component {
         <View style={styles.activity}>
           <Text>
             Welcome
-          {` ${authInfo.username} `}
-          !
+            {` ${authInfo.username} `}
+            !
           </Text>
         </View>
         <View style={styles.activityButton}>

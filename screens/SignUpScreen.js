@@ -23,7 +23,7 @@ class SignUpScreen extends React.Component {
 
   handleSignUp = async () => {
     const item = this.state;
-    const nav = this.props;
+    // const { navigation } = this.props;
 
     if (item.password !== item.cPassword) {
       Alert.alert('Your passwords do not match, please try again with matching passwords.');
@@ -47,21 +47,7 @@ class SignUpScreen extends React.Component {
       });
 
       const content = await rawResponse.json();
-      console.log(content);
-
-    //   if (content.message === 'User with the same name already exists in database!') {
-    //     Alert.alert('This email is already in use, please log in or try again with a different email.');
-    //   } else {
-    //     nav.navigation.navigate('Activity', {
-    //       email: item.email,
-    //       password: item.password,
-    //       gender: item.gender,
-    //       pantSize: item.pantSize,
-    //       shirtSize: item.shirtSize,
-    //       shoeSize: item.shoeSize,
-    //     });
-    //   }
-    //   console.log(content); //eslint-disable-line
+      console.log(content); //eslint-disable-line
     }
   }
 

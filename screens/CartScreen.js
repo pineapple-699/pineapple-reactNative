@@ -21,7 +21,7 @@ class CartScreen extends React.Component {
       }
     });
     await rawResponse.json().then((data) => {
-      console.log(data);
+      console.log(data); //eslint-disable-line
     });
   }
 

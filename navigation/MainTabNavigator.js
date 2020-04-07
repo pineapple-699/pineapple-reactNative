@@ -14,6 +14,9 @@ import ConfirmationScreen from '../screens/ConfirmationScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import UserInfoScreen from '../screens/UserInfoScreen';
+import AddressScreen from '../screens/AddressInfoScreen';
+import PaymentMethodsScreen from '../screens/PaymentMethodScreen';
+import SupportScreen from '../screens/SupportScreen';
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
@@ -157,10 +160,7 @@ const ProfileStack = createStackNavigator(
     Profile: {
       screen: ProfileScreen,
       navigationOptions: {
-        headerStyle: {
-          backgroundColor: '#FCB742',
-          borderBottomWidth: 0,
-        },
+        header: null,
       }
     },
     Settings: {
@@ -174,10 +174,26 @@ const ProfileStack = createStackNavigator(
       navigationOptions: {
         header: null,
       }
+    },
+    Address: {
+      screen: AddressScreen,
+      navigationOptions: {
+        header: null,
+      }
+    },
+    PaymentMethods: {
+      screen: PaymentMethodsScreen,
+      navigationOptions: {
+        header: null,
+      }
+    },
+    Support: {
+      screen: SupportScreen,
+      navigationOptions: {
+        header: null,
+      }
     }
-
-  },
-  config
+  }
 );
 
 ProfileStack.navigationOptions = {

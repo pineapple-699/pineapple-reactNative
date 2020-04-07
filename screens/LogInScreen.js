@@ -1,11 +1,18 @@
 import React from 'react';
 import {
-  View, StatusBar, Text, Alert, Image, TextInput, TouchableOpacity, KeyboardAvoidingView // , KeyboardAvoidingView
+  View,
+  StatusBar,
+  Text,
+  // Alert,
+  Image,
+  TextInput,
+  TouchableOpacity,
+  KeyboardAvoidingView
 } from 'react-native';
+import { connect } from 'react-redux';
 import styles from '../constants/Style';
 
 // // Redux
-import { connect } from 'react-redux';
 import { setAuthentication, setProfile } from '../reducers/login';
 
 const iconLogo = require('../assets/images/icon-logo.png');
@@ -72,8 +79,8 @@ class LogInScreen extends React.Component {
   }
 
   render() {
-    const { 
-      email, 
+    const {
+      email,
       password,
     } = this.state;
     const { navigation } = this.props;
