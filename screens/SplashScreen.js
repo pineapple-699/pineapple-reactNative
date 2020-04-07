@@ -29,7 +29,7 @@ class LogInScreen extends React.Component {
     } = this.props;
 
     const loggedInUser = {
-      user_id: '0',
+      user_id: '1',
       username: 'Admin',
       email: 'admin@gmail.com',
       first_name: 'Admin',
