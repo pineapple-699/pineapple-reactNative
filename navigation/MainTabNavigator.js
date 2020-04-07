@@ -13,7 +13,10 @@ import PaymentScreen from '../screens/PaymentScreen';
 import ConfirmationScreen from '../screens/ConfirmationScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import SettingsScreen from '../screens/SettingsScreen';
-// Import LinksScreen from '../screens/LinksScreen';
+import UserInfoScreen from '../screens/UserInfoScreen';
+import AddressScreen from '../screens/AddressInfoScreen';
+import PaymentMethodsScreen from '../screens/PaymentMethodScreen';
+import SupportScreen from '../screens/SupportScreen';
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
@@ -29,7 +32,7 @@ const HomeStack = createStackNavigator(
           backgroundColor: '#FCB742',
           borderBottomWidth: 0,
         },
-        title: 'Home',
+        title: 'Activity',
         headerTitleStyle: {
           color: '#fff',
         },
@@ -37,7 +40,7 @@ const HomeStack = createStackNavigator(
   <Icon
     name="ios-barcode"
     size={24}
-    onPress={({ navigation }) => navigation.navigate('Scanner')}
+    onPress={(navigation) => navigation.navigate('Scanner')}
     style={{ color: '#fff', paddingRight: 30 }}
   />
       }
@@ -152,60 +155,45 @@ CartStack.navigationOptions = {
 
 CartStack.path = '';
 
-// const LinksStack = createStackNavigator(
-//   {
-//     Links: {
-//       screen: LinksScreen,
-//       navigationOptions: {
-//         title: 'Links',
-//       }
-//     }
-//   },
-//   config
-// );
-
-// LinksStack.navigationOptions = {
-//   tabBarLabel: 'Links',
-//   tabBarIcon: ({ focused }) => (
-//     <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
-//   ),
-// };
-
-// LinksStack.path = '';
-
 const ProfileStack = createStackNavigator(
   {
     Profile: {
       screen: ProfileScreen,
       navigationOptions: {
-        headerStyle: {
-          backgroundColor: '#FCB742',
-          borderBottomWidth: 0,
-        },
-        title: 'Profile',
-        headerTitleStyle: {
-          color: '#fff',
-        },
-        headerRight:
-  <Icon
-    name="ios-settings"
-    size={24}
-    style={{ color: '#fff', paddingRight: 30 }}
-  />
+        header: null,
       }
     },
     Settings: {
       screen: SettingsScreen,
       navigationOptions: {
-        headerStyle: {
-          backgroundColor: '#FCB742',
-          borderBottomWidth: 0,
-        },
-        title: 'Settings'
+        header: null,
+      }
+    },
+    User: {
+      screen: UserInfoScreen,
+      navigationOptions: {
+        header: null,
+      }
+    },
+    Address: {
+      screen: AddressScreen,
+      navigationOptions: {
+        header: null,
+      }
+    },
+    PaymentMethods: {
+      screen: PaymentMethodsScreen,
+      navigationOptions: {
+        header: null,
+      }
+    },
+    Support: {
+      screen: SupportScreen,
+      navigationOptions: {
+        header: null,
       }
     }
-  },
-  config
+  }
 );
 
 ProfileStack.navigationOptions = {

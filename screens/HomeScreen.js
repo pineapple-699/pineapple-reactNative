@@ -1,12 +1,17 @@
+// General React Imports
 import React from 'react';
 import {
-  Text, View, StatusBar, FlatList
+  Text, View, StatusBar, TouchableOpacity, FlatList
 } from 'react-native';
-import { connect } from 'react-redux';
-import ButtonFramer from '../components/ButtonFramer';
 
+// Componenet Imports
+// import ButtonFramer from '../components/ButtonFramer';
+
+// Icon/Style Imports
+import { connect } from 'react-redux';
 import styles from '../constants/Style';
 
+// Redux Imports
 import { getAuthInfo } from '../reducers/login';
 
 function Item({ title }) {
@@ -63,21 +68,32 @@ class HomeScreen extends React.Component {
     return (
       <View style={styles.container}>
         <StatusBar barStyle="light-content" />
-        <Text>
-          Welcome
-          {` ${authInfo.firstName} ${authInfo.lastName}`}
-          !
-        </Text>
+        <View style={styles.activity}>
+          <Text>
+            Welcome
+            {` ${authInfo.username} `}
+            !
+          </Text>
+        </View>
         <FlatList
           data={scannedData}
           renderItem={({ item }) => <Item title={item.description} />}
-          keyExtractor={(item) => Number(item.id)}
+          keyExtractor={(item) => parseInt(item.id)}
         />
-        <ButtonFramer
+        <View style={styles.activityButton}>
+          <TouchableOpacity
+            style={styles.largeButton}
+            onPress={() => navigation.navigate('Scanner')}
+            underlayColor="#fff"
+          >
+            <Text style={styles.largeButtonText}>Scan an Item</Text>
+          </TouchableOpacity>
+          {/* <ButtonFramer
           onPress={() => navigation.navigate('Scanner')}
           text="SCAN"
           primary
-        />
+          /> */}
+        </View>
       </View>
     );
   }

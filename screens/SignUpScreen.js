@@ -1,11 +1,7 @@
 import React from 'react';
 import {
-  View, StatusBar, Text, TextInput, Image, Alert
+  View, StatusBar, Text, TextInput, Image, Alert, TouchableOpacity, KeyboardAvoidingView
 } from 'react-native';
-import {
-  Button
-  // registerCustomIconType
-} from 'react-native-elements';
 import styles from '../constants/Style';
 
 const iconLogo = require('../assets/images/icon-logo.png');
@@ -27,7 +23,7 @@ class SignUpScreen extends React.Component {
 
   handleSignUp = async () => {
     const item = this.state;
-    const nav = this.props;
+    // const { navigation } = this.props;
 
     if (item.password !== item.cPassword) {
       Alert.alert('Your passwords do not match, please try again with matching passwords.');
@@ -40,7 +36,7 @@ class SignUpScreen extends React.Component {
         },
         body: JSON.stringify({
           username: item.email,
-          address: 'Ann Arbor',
+          address: '',
           password: item.password,
           sex: item.gender,
           shoe_size: item.shoeSize,
@@ -51,37 +47,27 @@ class SignUpScreen extends React.Component {
       });
 
       const content = await rawResponse.json();
-
-      if (content.message === 'User with the same name already exists in database!') {
-        Alert.alert('This email is already in use, please log in or try again with a different email.');
-      } else {
-        nav.navigation.navigate('Activity', {
-          email: item.email,
-          password: item.password,
-          gender: item.gender,
-          pantSize: item.pantSize,
-          shirtSize: item.shirtSize,
-          shoeSize: item.shoeSize,
-        });
-      }
       console.log(content); //eslint-disable-line
     }
   }
 
   render() {
     const that = this.state;
-    // const nav = this.props;
+    // const { navigation } = this.props;
     return (
-      <View style={styles.splashContainer}>
-        <StatusBar barStyle="light-content" />
-        <View style={styles.signUpHeaderView}>
+      <KeyboardAvoidingView
+        behavior="padding"
+        style={styles.splashContainer}
+      >
+        <StatusBar barStyle="dark-content" />
+        <View style={styles.signUpHeader}>
           <Image
             style={styles.signUpLogo}
             source={iconLogo}
           />
           <Text style={styles.splashHeaderText}>Sign Up!</Text>
         </View>
-        <View style={styles.signUpInputView}>
+        <View style={styles.signUpInputs}>
           <TextInput
             placeholder="Email"
             style={styles.authInputs}
@@ -132,15 +118,16 @@ class SignUpScreen extends React.Component {
             onChangeText={(value) => { this.setState({ shoeSize: value }); }}
           />
         </View>
-        <View style={styles.signUpButtonView}>
-          <Button
-            buttonStyle={styles.signUpButton}
-            title="Sign Up"
-            type="clear"
+        <View style={styles.signUpButtons}>
+          <TouchableOpacity
+            style={styles.largeButton}
             onPress={() => this.handleSignUp()}
-          />
+            underlayColor="#fff"
+          >
+            <Text style={styles.largeButtonText}>Sign Up</Text>
+          </TouchableOpacity>
         </View>
-      </View>
+      </KeyboardAvoidingView>
     );
   }
 }

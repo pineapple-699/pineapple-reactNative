@@ -4,6 +4,7 @@ import {
   View,
   TouchableOpacity,
   StatusBar,
+  Image,
   // ActivityIndicator,
   // FlatList
 } from 'react-native';
@@ -27,31 +28,30 @@ class ProductsScreen extends React.Component {
       productSize: scannedProduct[0].size,
       sizeOptions: productSizes,
       productColor: scannedProduct[0].color,
+      productImage: scannedProduct[0].picture,
       // colorOptions: productColors,
     };
   }
 
   handleAddToCart = async () => {
     const { navigation, authInfo } = this.props;
+    const userID = authInfo.user_id;
     const { productToView } = this.state;
 
-    const rawResponse = await fetch('https://pineapple-rest-api.herokuapp.com/cart', {
+    const rawResponse = await fetch(`https://pineapple-rest-api.herokuapp.com/cart/${userID}`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        user_id: authInfo.user_id,
-        product_upc: productToView.upc,
+        product_upc: productToView[0],
         quantity: 1,
         type: 'add_product_for_user',
       })
     });
 
     await rawResponse.json();
-
-
     navigation.navigate('Cart');
   }
 
@@ -62,14 +62,18 @@ class ProductsScreen extends React.Component {
       productSize,
       sizeOptions,
       productColor,
+      productImage,
       // colorOptions,
     } = this.state;
 
     return (
       <View style={styles.container}>
         <StatusBar barStyle="light-content" />
-        <View style={styles.productImage}>
-          <Text>{productToView.store}</Text>
+        <View style={styles.productHeader}>
+          <Image
+            style={styles.productImage}
+            source={{ uri: productImage }}
+          />
         </View>
         <View style={styles.productContent}>
           <View style={styles.productInfo}>
