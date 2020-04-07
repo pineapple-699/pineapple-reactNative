@@ -1,74 +1,99 @@
+// General React Imports
 import React from 'react';
 import {
-  Text, View, StatusBar
+  Text, View, StatusBar, TouchableOpacity, FlatList
 } from 'react-native';
-import { connect } from 'react-redux';
-import ButtonFramer from '../components/ButtonFramer';
 
+// Componenet Imports
+// import ButtonFramer from '../components/ButtonFramer';
+
+// Icon/Style Imports
+import { connect } from 'react-redux';
 import styles from '../constants/Style';
 
+// Redux Imports
 import { getAuthInfo } from '../reducers/login';
 
+function Item({ title }) {
+  return (
+    <View style={styles.item}>
+      <Text style={styles.title}>{title}</Text>
+    </View>
+  );
+}
+
 class HomeScreen extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      scannedData: []
+    };
+  }
+
   componentDidMount = async () => {
-    // const nav = this.props;
-    // const email = nav.navigation.getParam('email');
-    // const password = nav.navigation.getParam('password');
-    // const gender = nav.navigation.getParam('gender');
-    // const pantSize = nav.navigation.getParam('pantSize');
-    // const shirtSize = nav.navigation.getParam('shirtSize');
-    // const shoeSize = nav.navigation.getParam('shoeSize');
+    const { authInfo } = this.props;
 
-    // console.log(email);
-    // console.log(password);
-    // console.log(gender);
-    // console.log(pantSize);
-    // console.log(shirtSize);
-    // console.log(shoeSize);
+    const rawResponse = await fetch(`https://pineapple-rest-api.herokuapp.com/history/scan/${authInfo.user_id}`, {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+    });
 
-    // const rawResponse = await fetch('https://pineapple-rest-api.herokuapp.com/register', {
-    //   method: 'POST',
-    //   headers: {
-    //     Accept: 'application/json',
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify({
-    //     username: email,
-    //     address: 'Ann Arbor',
-    //     password,
-    //     sex: gender,
-    //     shoe_size: shoeSize,
-    //     shirt_size: shirtSize,
-    //     pant_size_waist: pantSize,
-    //     pant_size_length: 'N/A'
-    //   })
-    // });
+    await rawResponse.json().then((data) => {
+      data.scan_history.map(async (dat) => {
+        const newRawResponse = await fetch(`https://pineapple-rest-api.herokuapp.com/product/${dat.id}`, {
+          method: 'GET',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json'
+          },
+        });
+        await newRawResponse.json().then((newDat) => {
+          this.setState((previousState) => ({
+            scannedData: [...previousState.scannedData, newDat.product[0]]
+          }));
+        });
+      });
+    });
 
-    // const content = await rawResponse.json();
-
-    // console.log(content.message); //eslint-disable-line
+    this.setState(this.state);
   }
 
   render() {
     const { navigation, authInfo } = this.props;
+    const { scannedData } = this.state;
 
     return (
       <View style={styles.container}>
         <StatusBar barStyle="light-content" />
-        <Text>
-          Welcome
-          {` ${authInfo.firstName} ${authInfo.lastName}`}
-          !
-        </Text>
-        {/* <Button
-          title="SCAN"
-          onPress={() => navigation.navigate('Scanner')}
-        /> */}
-        <ButtonFramer
+        <View style={styles.activity}>
+          <Text>
+            Welcome
+            {` ${authInfo.username} `}
+            !
+          </Text>
+        </View>
+        <FlatList
+          data={scannedData}
+          renderItem={({ item }) => <Item title={item.description} />}
+          keyExtractor={(item) => parseInt(item.id)}
+        />
+        <View style={styles.activityButton}>
+          <TouchableOpacity
+            style={styles.largeButton}
+            onPress={() => navigation.navigate('Scanner')}
+            underlayColor="#fff"
+          >
+            <Text style={styles.largeButtonText}>Scan an Item</Text>
+          </TouchableOpacity>
+          {/* <ButtonFramer
           onPress={() => navigation.navigate('Scanner')}
           text="SCAN"
           primary
-        />
+          /> */}
+        </View>
       </View>
     );
   }
@@ -78,4 +103,4 @@ const mapStateToProps = (state) => ({
   authInfo: getAuthInfo(state)
 });
 
-export default connect(mapStateToProps, null)(HomeScreen);
+export default connect(mapStateToProps)(HomeScreen);

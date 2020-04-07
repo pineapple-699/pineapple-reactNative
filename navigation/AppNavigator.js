@@ -7,7 +7,8 @@ import MainTabNavigator from './MainTabNavigator';
 
 // Screen Imports
 import loadingScreen from '../screens/AppLoading';
-import LogInScreen from '../screens/SplashScreen';
+import SplashScreen from '../screens/SplashScreen';
+import LogInScreen from '../screens/LogInScreen';
 import SignUpScreen from '../screens/SignUpScreen';
 
 const LoadNavigator = createStackNavigator(
@@ -26,6 +27,17 @@ const LoadNavigator = createStackNavigator(
 
 const StackNavigator = createStackNavigator(
   {
+    Splash: {
+      screen: SplashScreen,
+      navigationOptions: {
+        header: null,
+        // headerStyle: {
+        //   backgroundColor: '#FCB742',
+        //   borderBottomWidth: 0,
+        // },
+        headerBackTitle: 'Log In',
+      }
+    },
     LogIn: {
       screen: LogInScreen,
       navigationOptions: {
@@ -40,10 +52,12 @@ const StackNavigator = createStackNavigator(
     SignUp: {
       screen: SignUpScreen,
       navigationOptions: {
-        headerStyle: {
-          backgroundColor: '#FCB742',
-          borderBottomWidth: 0,
-        },
+        header: null,
+        // headerStyle: {
+        //   backgroundColor: '#FCB742',
+        //   borderBottomWidth: 0,
+        // },
+        headerBackTitle: 'Log In',
       }
     }
   }
