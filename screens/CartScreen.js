@@ -41,6 +41,26 @@ class CartScreen extends React.Component {
     });
   }
 
+  handleProductsInCart = (user_id, product_upc, type, quantity) =>{
+    //check cart.py in the backend for types
+    const rawResponse = await fetch(`https://pineapple-rest-api.herokuapp.com/cart/${user_id}`, {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          product_upc:product_upc,
+          type:type,
+          quantity:quantity
+        })
+      });
+
+      const content = await rawResponse.json();
+      console.log(content); //eslint-disable-line
+  }
+
+
   render() {
     const { navigation } = this.props;
     const { cart } = this.state;
