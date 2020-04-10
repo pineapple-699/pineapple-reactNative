@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     marginRight: 10
   },
-  largeButtonTextOutline: {
+  largeButtonOutlineText: {
     color: '#FCB742',
     fontSize: 17,
     fontWeight: 'bold',
@@ -209,14 +209,39 @@ const styles = StyleSheet.create({
 
   // Activity Page Styles
 
-  activity: {
-    flex: 0.9,
+  activityHeader: {
+    flex: 0.1,
     width: '100%',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
+  },
+  activityHeaderText: {
+    fontSize: 32,
+    fontWeight: '500',
+    marginLeft: 15,
+    marginTop: 30,
+  },
+  activityContent: {
+    flex: 0.75,
+    width: '100%',
+  },
+  activityProductBackground: {
+    flexDirection: 'row',
+    width: '100%',
+    height: '15%',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
+    backgroundColor: '#fff',
+    borderBottomWidth: 1,
+    borderColor: '#eee',
+  },
+  activityProductHeader: {
+    fontSize: 20,
+    fontWeight: '700',
+    marginHorizontal: 15,
   },
   activityButton: {
-    flex: 0.1,
+    flex: 0.15,
     width: '100%',
     alignItems: 'center',
     justifyContent: 'flex-end',
@@ -449,10 +474,12 @@ const styles = StyleSheet.create({
   cartItem: {
     flex: 0.2,
     flexDirection: 'row',
-    marginTop: 10,
-    width: '95%',
+    marginTop: 30,
+    width: '100%',
     justifyContent: 'flex-start',
     alignItems: 'center',
+    borderBottomWidth: 1,
+    borderBottomColor: '#C4C4C4',
   },
   cartEmpty: {
     flex: 0.8,
@@ -463,9 +490,6 @@ const styles = StyleSheet.create({
     height: '100%',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#efefef',
-    borderColor: '#222',
-    borderWidth: 1,
   },
   cartInfo: {
     flex: 0.65,

@@ -28,21 +28,7 @@ const HomeStack = createStackNavigator(
     Activity: {
       screen: HomeScreen,
       navigationOptions: {
-        headerStyle: {
-          backgroundColor: '#FCB742',
-          borderBottomWidth: 0,
-        },
-        title: 'Activity',
-        headerTitleStyle: {
-          color: '#fff',
-        },
-        headerRight:
-  <Icon
-    name="ios-barcode"
-    size={24}
-    onPress={(navigation) => navigation.navigate('Scanner')}
-    style={{ color: '#fff', paddingRight: 30 }}
-  />
+        header: null,
       }
     },
     Scanner: {

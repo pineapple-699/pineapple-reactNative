@@ -123,7 +123,7 @@ class ProductsScreen extends React.Component {
               onPress={() => navigation.navigate('Cart')}
               underlayColor="#fff"
             >
-              <Text style={styles.largeButtonTextOutline}>Pick Up In Store</Text>
+              <Text style={styles.largeButtonOutlineText}>Pick Up In Store</Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.largeButton}
