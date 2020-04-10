@@ -14,19 +14,20 @@ import styles from '../constants/Style';
 // Redux Imports
 import { getAuthInfo } from '../reducers/login';
 
-function Item({ title }) {
-  return (
-    <View style={styles.item}>
-      <Text style={styles.title}>{title}</Text>
-    </View>
-  );
-}
+// function Item({ title }) {
+//   return (
+//     <View style={styles.item}>
+//       <Text style={styles.title}>{title}</Text>
+//     </View>
+//   );
+// }
 
 class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      scannedData: []
+      scannedData: [],
+      fName: ''
     };
   }
 
@@ -58,41 +59,74 @@ class HomeScreen extends React.Component {
       });
     });
 
+    const name = authInfo.username.split('_');
+    const first = name[0].charAt(0).toUpperCase() + name[0].substring(1);
+
+    this.setState({
+      fName: first,
+    });
+
     this.setState(this.state);
   }
 
   render() {
-    const { navigation, authInfo } = this.props;
-    const { scannedData } = this.state;
+    const {
+      navigation,
+      // authInfo
+    } = this.props;
+    const { fName, scannedData } = this.state;
 
     return (
       <View style={styles.container}>
-        <StatusBar barStyle="light-content" />
-        <View style={styles.activity}>
-          <Text>
-            Welcome
-            {` ${authInfo.username} `}
-            !
-          </Text>
+        <View style={styles.header}>
+          <StatusBar barStyle="light-content" />
+          <Text style={styles.headerText}>Activity</Text>
         </View>
-        <FlatList
-          data={scannedData}
-          renderItem={({ item }) => <Item title={item.description} />}
-          keyExtractor={(item) => parseInt(item.id)}
-        />
-        <View style={styles.activityButton}>
-          <TouchableOpacity
-            style={styles.largeButton}
-            onPress={() => navigation.navigate('Scanner')}
-            underlayColor="#fff"
-          >
-            <Text style={styles.largeButtonText}>Scan an Item</Text>
-          </TouchableOpacity>
-          {/* <ButtonFramer
+        <View style={styles.body}>
+          <View style={styles.activityHeader}>
+            <Text style={styles.activityHeaderText}>
+              {' '}
+              Hi,
+              {fName}
+              !
+            </Text>
+          </View>
+          <View style={styles.activityContent}>
+            <FlatList
+              data={scannedData}
+              renderItem={({ item }) => (
+                <TouchableOpacity
+                  style={styles.activityProductBackground}
+                  onPress={() => navigation.navigate('Profile')}
+                  underlayColor="#fff"
+                >
+                  <Text style={styles.largeButtonOutlineText}>{item.desciption}</Text>
+                </TouchableOpacity>
+              )}
+              // keyExtractor={(item) => parseInt(item.id).toString()}
+            />
+          </View>
+          <View style={styles.activityButton}>
+            <TouchableOpacity
+              style={styles.largeButton}
+              onPress={() => navigation.navigate('Scanner')}
+              underlayColor="#fff"
+            >
+              <Text style={styles.largeButtonText}>Scan Barcode</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.largeButtonOutline}
+              onPress={() => navigation.navigate('Scanner')}
+              underlayColor="#fff"
+            >
+              <Text style={styles.largeButtonOutlineText}>Upload Image to Scan</Text>
+            </TouchableOpacity>
+            {/* <ButtonFramer
           onPress={() => navigation.navigate('Scanner')}
           text="SCAN"
           primary
           /> */}
+          </View>
         </View>
       </View>
     );
