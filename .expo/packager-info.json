@@ -1,10 +1,10 @@
 {
   "devToolsPort": 19002,
   "expoServerPort": 19000,
-  "packagerPort": 19004,
-  "packagerPid": 2599,
-  "expoServerNgrokUrl": "https://b2-yeu.htambala.pineapple-reactnative.exp.direct",
-  "packagerNgrokUrl": "https://packager.b2-yeu.htambala.pineapple-reactnative.exp.direct",
-  "ngrokPid": 2625,
+  "packagerPort": 19001,
+  "packagerPid": 25529,
+  "expoServerNgrokUrl": "https://qb-2ff.htambala.pineapple-reactnative.exp.direct",
+  "packagerNgrokUrl": "https://packager.qb-2ff.htambala.pineapple-reactnative.exp.direct",
+  "ngrokPid": 25541,
   "webpackServerPort": null
 }

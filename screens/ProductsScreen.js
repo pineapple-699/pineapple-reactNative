@@ -34,7 +34,7 @@ class ProductsScreen extends React.Component {
       })
     });
 
-    await rawResponse.json();
+    rawResponse.json();
 
     this.state = {
       productToView: scannedProduct[0],
