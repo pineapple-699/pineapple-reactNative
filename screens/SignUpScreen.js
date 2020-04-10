@@ -28,7 +28,7 @@ class SignUpScreen extends React.Component {
     if (item.password !== item.cPassword) {
       Alert.alert('Your passwords do not match, please try again with matching passwords.');
     } else {
-      const rawResponse = await fetch('https://pineapple-rest-api.herokuapp.com/register', {
+      const rawResponse = await fetch('https://pineapple-rest-api.herokuapp.com/user/register', {
         method: 'POST',
         headers: {
           Accept: 'application/json',
@@ -42,7 +42,10 @@ class SignUpScreen extends React.Component {
           shoe_size: item.shoeSize,
           shirt_size: item.shirtSize,
           pant_size_waist: item.pantSize,
-          pant_size_length: '30'
+          pant_size_length: '30',
+          shipping_address:"", 
+	        billing_address:""
+
         })
       });
 

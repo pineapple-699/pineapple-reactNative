@@ -16,12 +16,25 @@ import styles from '../constants/Style';
 class ProductsScreen extends React.Component {
   constructor(props) {
     super(props);
-    const { navigation } = this.props;
+    const { navigation, authInfo } = this.props;
     const scannedProduct = navigation.getParam('productToView');
     const productSizes = navigation.getParam('productSizes');
     // const productColors = navigation.getParam('productColors');
+    console.log(scannedProduct)
 
-    // console.log(authInfo);
+    const rawResponse = fetch(`https://pineapple-rest-api.herokuapp.com/history/scan`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        user_id: authInfo.user_id,
+        product_id: scannedProduct[0]
+      })
+    });
+
+    await rawResponse.json();
 
     this.state = {
       productToView: scannedProduct[0],
