@@ -70,6 +70,30 @@ const styles = StyleSheet.create({
   },
 
   // Button Style
+  smallButton: {
+    marginTop: 5,
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 40,
+    width: '25%',
+    backgroundColor: '#FCB742',
+    borderRadius: 5,
+    borderWidth: 1,
+    borderColor: '#FCB742',
+    shadowColor: 'rgba(0,0,0, .5)', // IOS
+    shadowOffset: { height: 2, width: 2 }, // IOS
+    shadowOpacity: 2, // IOS
+    shadowRadius: 2, // IOS
+    elevation: 4, // Android
+  },
+  smallButtonText: {
+    color: '#fff',
+    fontSize: 14,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginLeft: 10,
+    marginRight: 10
+  },
   largeButton: {
     marginTop: 5,
     justifyContent: 'center',
@@ -121,14 +145,14 @@ const styles = StyleSheet.create({
 
   // Splash Screen Styles
   splashHeader: {
-    flex: 0.55,
+    flex: 0.65,
     width: '100%',
     alignItems: 'center',
     justifyContent: 'flex-end',
     marginVertical: 10,
   },
   splashCTA: {
-    flex: 0.35,
+    flex: 0.25,
     width: '100%',
     alignItems: 'center',
     justifyContent: 'flex-start',
@@ -152,7 +176,15 @@ const styles = StyleSheet.create({
   },
   splashText: {
     fontSize: 16,
+    fontWeight: '600',
     textAlign: 'center',
+    marginBottom: 10,
+  },
+  splashLink: {
+    fontSize: 16,
+    fontWeight: '600',
+    textAlign: 'center',
+    color: '#FCB742',
     marginBottom: 10,
   },
 
@@ -210,10 +242,32 @@ const styles = StyleSheet.create({
   // Activity Page Styles
 
   activityHeader: {
-    flex: 0.1,
+    flex: 0.4,
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#fff',
+    marginBottom: 10,
+    shadowColor: 'rgba(0,0,0, .5)', // IOS
+    shadowOffset: { height: 2, width: 2 }, // IOS
+    shadowOpacity: 2, // IOS
+    shadowRadius: 2, // IOS
+    elevation: 4, // Android
+  },
+  activityHeaderContent: {
+    flex: 0.7,
     width: '100%',
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
+    backgroundColor: '#FEF0D7',
+  },
+  activityHeaderButtons: {
+    flex: 0.3,
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    paddingBottom: 10,
+    backgroundColor: '#FEF0D7',
   },
   activityHeaderText: {
     fontSize: 32,
@@ -221,44 +275,110 @@ const styles = StyleSheet.create({
     marginLeft: 15,
     marginTop: 30,
   },
-  noActivityContent: {
-    flex: 0.75,
+  activityText: {
+    fontSize: 18,
+    marginHorizontal: 15,
+    marginVertical: 30,
+  },
+  activityContent: {
+    flex: 0.6,
     width: '100%',
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  activityContent: {
-    flex: 0.75,
-    width: '100%',
-  },
-  activityIcon: {
-    color: '#FCB742',
-  },
-  activityProductBackground: {
-    width: '100%',
-    flexDirection: 'row',
     backgroundColor: '#fff',
-    borderBottomWidth: 1,
-    borderColor: '#eee',
+    marginBottom: 5,
+    shadowColor: 'rgba(0,0,0, .5)', // IOS
+    shadowOffset: { height: 2, width: 2 }, // IOS
+    shadowOpacity: 2, // IOS
+    shadowRadius: 2, // IOS
+    elevation: 4, // Android
   },
-  activityProductImage: {
-    flex: .25,
+  activityContentHeader: {
+    flex: 0.08,
+    width: '95%',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
+    paddingVertical: 15,
+
   },
-  activityProductInfo: {
-    flex: .75,
+  activityContentHeaderText: {
+    fontSize: 24,
+    fontWeight: '500',
+    paddingBottom: 15,
   },
-  activityProductHeader: {
-    fontSize: 20,
-    fontWeight: '700',
-    marginHorizontal: 15,
-  },
-  activityButton: {
-    flex: 0.15,
-    width: '100%',
+  activityContentCoupons: {
+    flex: 0.23,
+    flexDirection: 'row',
+    width: '95%',
     alignItems: 'center',
-    justifyContent: 'flex-end',
-    marginBottom: 10,
+    justifyContent: 'center',
+    borderBottomColor: '#efefef',
+    borderBottomWidth: 1,
   },
+  couponLogoArea: {
+    flex: 0.175,
+    width: '100%',
+    height: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  nikeLogo: {
+    width: '90%',
+    height: undefined,
+    aspectRatio: 1024 / 534
+  },
+  luluLogo: {
+    width: '90%',
+    height: undefined,
+    aspectRatio: 1024 / 1024
+  },
+  targetLogo: {
+    width: '90%',
+    height: undefined,
+    aspectRatio: 771 / 1024
+  },
+  couponDescription: {
+    flex: 0.5,
+    width: '100%',
+    height: '100%',
+    alignItems: 'flex-start',
+    justifyContent: 'center',
+    paddingHorizontal: 10,
+  },
+  couponButton: {
+    flex: 0.325,
+    width: '100%',
+    height: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  // noActivityContent: {
+  //   flex: 0.5,
+  //   width: '100%',
+  //   alignItems: 'center',
+  //   justifyContent: 'center',
+  // },
+  // activityIcon: {
+  //   color: '#FCB742',
+  // },
+  // activityProductBackground: {
+  //   width: '100%',
+  //   flexDirection: 'row',
+  //   backgroundColor: '#fff',
+  //   borderBottomWidth: 1,
+  //   borderColor: '#eee',
+  // },
+  // activityProductImage: {
+  //   flex: .25,
+  // },
+  // activityProductInfo: {
+  //   flex: .75,
+  // },
+  // activityProductHeader: {
+  //   fontSize: 20,
+  //   fontWeight: '700',
+  //   marginHorizontal: 15,
+  // },
 
   // Scanner Screen Styles
   scanScreenMessage: {
@@ -398,6 +518,44 @@ const styles = StyleSheet.create({
     color: '#B4B4B4',
     marginHorizontal: 15,
     marginTop: 10,
+  },
+
+  // Address/Billing screen styles
+  addressBackground: {
+    flexDirection: 'row',
+    width: '100%',
+    height: '12.5%',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    backgroundColor: '#fff',
+    borderBottomWidth: 1,
+    borderColor: '#eee',
+  },
+  addressHeaderText: {
+    fontSize: 18,
+    fontWeight: '600',
+    marginHorizontal: 15,
+  },
+  addressSubHeaderText: {
+    fontSize: 14,
+    color: '#c4c4c4',
+    marginHorizontal: 15,
+  },
+  addAddressBackground: {
+    flexDirection: 'row',
+    width: '100%',
+    height: '7.5%',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    backgroundColor: '#fff',
+    borderBottomWidth: 1,
+    borderColor: '#eee',
+  },
+  addAddressText: {
+    fontSize: 18,
+    fontWeight: '500',
+    color: '#FCB742',
+    marginHorizontal: 15,
   },
 
   // ######

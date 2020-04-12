@@ -17,17 +17,18 @@ class ProductsScreen extends React.Component {
     super(props);
     const { navigation } = this.props;
     const scannedProduct = navigation.getParam('productToView');
-    const productSizes = navigation.getParam('productSizes');
+    // const productSizes = navigation.getParam('productSizes');
     // const productColors = navigation.getParam('productColors');
 
     // console.log(authInfo);
 
     this.state = {
       productToView: scannedProduct[0],
-      productSize: scannedProduct[0].size,
-      sizeOptions: productSizes,
-      productColor: scannedProduct[0].color,
+      // productSize: scannedProduct[0].size,
+      // sizeOptions: productSizes,
+      // productColor: scannedProduct[0].color,
       productImage: scannedProduct[0].picture,
+      // productQuantity: 1,
       // colorOptions: productColors,
     };
   }
@@ -35,9 +36,9 @@ class ProductsScreen extends React.Component {
   componentDidMount = async () => {
     const { authInfo } = this.props;
     const { productToView } = this.state;
-    console.log(productToView)
+    console.log(productToView);
 
-    const rawResponse = await fetch(`https://pineapple-rest-api.herokuapp.com/history/scan`, {
+    const rawResponse = await fetch('https://pineapple-rest-api.herokuapp.com/history/scan', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -80,10 +81,11 @@ class ProductsScreen extends React.Component {
     const { navigation } = this.props;
     const {
       productToView,
-      productSize,
-      sizeOptions,
-      productColor,
+      // productSize,
+      // sizeOptions,
+      // productColor,
       productImage,
+      // productQuantity
       // colorOptions,
     } = this.state;
 

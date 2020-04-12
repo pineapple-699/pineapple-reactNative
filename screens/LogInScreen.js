@@ -66,9 +66,12 @@ class LogInScreen extends React.Component {
             const loggedInUser = {
               user_id: account.id,
               username: account.username,
-              email: 'test@pineapple.com',
+              email: `${account.username}@gmail.com`,
               first_name: 'Real',
               last_name: 'Person',
+              addressOne: '105 S State St',
+              addressTwo: 'Ann Arbor, MI 48109',
+              cardNumber: 'VISA ****9178'
             };
             setProf(loggedInUser);
             setAuth(true);

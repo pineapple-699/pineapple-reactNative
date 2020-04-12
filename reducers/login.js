@@ -6,6 +6,9 @@ const defaultState = {
   email: '',
   firstName: '',
   lastName: '',
+  addressOne: '',
+  addressTwo: '',
+  cardNumber: '',
   isAuthenticated: false,
 };
 
@@ -23,6 +26,9 @@ const reducer = handleActions(
       email: payload.email,
       firstName: payload.first_name,
       lastName: payload.last_name,
+      addressOne: payload.addressOne,
+      addressTwo: payload.addressTwo,
+      cardNumber: payload.cardNumber,
     }),
     [setAuthentication]: (state, { payload }) => {
       if (payload === true) {
