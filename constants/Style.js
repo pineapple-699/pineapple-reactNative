@@ -221,19 +221,31 @@ const styles = StyleSheet.create({
     marginLeft: 15,
     marginTop: 30,
   },
+  noActivityContent: {
+    flex: 0.75,
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   activityContent: {
     flex: 0.75,
     width: '100%',
   },
+  activityIcon: {
+    color: '#FCB742',
+  },
   activityProductBackground: {
-    flexDirection: 'row',
     width: '100%',
-    height: '15%',
-    alignItems: 'center',
-    justifyContent: 'space-between',
+    flexDirection: 'row',
     backgroundColor: '#fff',
     borderBottomWidth: 1,
     borderColor: '#eee',
+  },
+  activityProductImage: {
+    flex: .25,
+  },
+  activityProductInfo: {
+    flex: .75,
   },
   activityProductHeader: {
     fontSize: 20,
@@ -464,6 +476,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginVertical: 10,
   },
+
   // Cart screen styles
   cartList: {
     flex: 0.9175,
@@ -510,21 +523,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginVertical: 10,
   },
-  // Payment screen styles
 
-  // paymentModal: {
-  //   flex: 0.5,
-  //   width: '75%',
-  //   backgroundColor: '#222',
-  //   justifyContent: 'center',
-  //   alignItems: 'center',
-  // },
-  // modalContent: {
-  //   justifyContent: 'center',
-  //   alignItems: 'center',
-  // }
-
-  // Confirmation Screen Styles:
+  // Confirmation Screen Styles
   confirmationIcon: {
     color: '#FCB742',
   },

@@ -8,31 +8,31 @@ import {
 // import ButtonFramer from '../components/ButtonFramer';
 
 // Icon/Style Imports
-import { connect } from 'react-redux';
+import Icon from 'react-native-vector-icons/Ionicons';
 import styles from '../constants/Style';
 
 // Redux Imports
+import { connect } from 'react-redux';
 import { getAuthInfo } from '../reducers/login';
-
-// function Item({ title }) {
-//   return (
-//     <View style={styles.item}>
-//       <Text style={styles.title}>{title}</Text>
-//     </View>
-//   );
-// }
 
 class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      scanHistory: false,
       scannedData: [],
-      fName: ''
+      name: ''
     };
   }
 
   componentDidMount = async () => {
     const { authInfo } = this.props;
+    // const name = authInfo.username.split('_');
+    // const first = name[0].charAt(0).toUpperCase() + name[0].substring(1);
+
+    this.setState({
+      name: authInfo.username,
+    });
 
     const rawResponse = await fetch(`https://pineapple-rest-api.herokuapp.com/history/scan/${authInfo.user_id}`, {
       method: 'GET',
@@ -43,38 +43,82 @@ class HomeScreen extends React.Component {
     });
 
     await rawResponse.json().then((data) => {
-      data.scan_history.map(async (dat) => {
-        const newRawResponse = await fetch(`https://pineapple-rest-api.herokuapp.com/product/${dat.id}`, {
-          method: 'GET',
-          headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json'
-          },
+      if (data.message != 'Users scanned products not found in database!') {
+        this.setState({
+          scanHistory: true
         });
-        await newRawResponse.json().then((newDat) => {
-          this.setState((previousState) => ({
-            scannedData: [...previousState.scannedData, newDat.product[0]]
-          }));
+        data.scan_history.map(async (dat) => {
+          const newRawResponse = await fetch(`https://pineapple-rest-api.herokuapp.com/product/${dat.id}`, {
+            method: 'GET',
+            headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json'
+            },
+          });
+          await newRawResponse.json().then((newDat) => {
+            this.setState((previousState) => ({
+              scannedData: [...previousState.scannedData, newDat.product[0]]
+            }));
+          });
         });
-      });
-    });
-
-    const name = authInfo.username.split('_');
-    const first = name[0].charAt(0).toUpperCase() + name[0].substring(1);
-
-    this.setState({
-      fName: first,
+      }
     });
 
     this.setState(this.state);
   }
 
+  renderContent() {
+    const { 
+      scannedData
+    } = this.state;
+    if (this.state.scanHistory === false) {
+      return (
+        <View style={styles.noActivityContent}>
+          <Icon
+            name="ios-close-circle"
+            size={75}
+            style={styles.activityIcon}
+          />
+          <Text>You have not scanned any items yet! Click below to scan an item.</Text>
+        </View>
+      );
+    } else {
+      return (
+        <View style={styles.activityContent}>
+          <FlatList
+            data={scannedData}
+            renderItem={({ item }) =>
+              <View>
+                <TouchableOpacity
+                  style={styles.activityProductBackground}
+                  // onPress={() => navigation.navigate('Profile')}
+                  underlayColor="#fff"
+                >
+                  <View style={{ flex: .35, backgroundColor: 'red' }}>
+                    <Text style={styles.activityProductHeader}>{item.color}</Text>
+                  </View>
+                  <View style={{ flex: .65 }}>
+                    <Text style={styles.activityProductHeader}>{item.color}</Text>
+                  </View>
+                </TouchableOpacity>
+              </View>
+              //   <Text style={styles.activityProductHeader}>{item.description}</Text>
+              // </TouchableOpacity>
+            }
+            keyExtractor={item => item.id}
+          />
+        </View>
+      );
+    }
+  }
+
   render() {
     const {
-      navigation,
-      // authInfo
+      navigation
     } = this.props;
-    const { fName, scannedData } = this.state;
+    const { 
+      name 
+    } = this.state;
 
     return (
       <View style={styles.container}>
@@ -85,27 +129,10 @@ class HomeScreen extends React.Component {
         <View style={styles.body}>
           <View style={styles.activityHeader}>
             <Text style={styles.activityHeaderText}>
-              {' '}
-              Hi,
-              {fName}
-              !
+              Hi, {name}!
             </Text>
           </View>
-          <View style={styles.activityContent}>
-            <FlatList
-              data={scannedData}
-              renderItem={({ item }) => (
-                <TouchableOpacity
-                  style={styles.activityProductBackground}
-                  onPress={() => navigation.navigate('Profile')}
-                  underlayColor="#fff"
-                >
-                  <Text style={styles.largeButtonOutlineText}>{item.desciption}</Text>
-                </TouchableOpacity>
-              )}
-              // keyExtractor={(item) => parseInt(item.id).toString()}
-            />
-          </View>
+          {this.renderContent()}
           <View style={styles.activityButton}>
             <TouchableOpacity
               style={styles.largeButton}

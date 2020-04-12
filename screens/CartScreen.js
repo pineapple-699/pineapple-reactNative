@@ -34,7 +34,8 @@ class CartScreen extends React.Component {
       }
     });
     await rawResponse.json().then((data) => {
-      const newData = data.cart.products[0];
+      const newData = data.cart.products;
+      console.log(newData);
       this.setState({
         cart: newData.product_info,
       });

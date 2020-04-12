@@ -8,7 +8,6 @@ import {
   // ActivityIndicator,
   // FlatList
 } from 'react-native';
-import { Dropdown } from 'react-native-material-dropdown';
 import { connect } from 'react-redux';
 import { getAuthInfo } from '../reducers/login';
 import styles from '../constants/Style';
@@ -31,6 +30,28 @@ class ProductsScreen extends React.Component {
       productImage: scannedProduct[0].picture,
       // colorOptions: productColors,
     };
+  }
+
+  componentDidMount = async () => {
+    const { authInfo } = this.props;
+    const { productToView } = this.state;
+    console.log(productToView)
+
+    const rawResponse = await fetch(`https://pineapple-rest-api.herokuapp.com/history/scan`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        user_id: authInfo.user_id,
+        product_id: productToView.id
+      })
+    });
+
+    await rawResponse.json().then((data) => {
+      console.log(data);
+    });
   }
 
   handleAddToCart = async () => {
@@ -87,17 +108,7 @@ class ProductsScreen extends React.Component {
               </View>
               <View style={styles.productAttributes}>
                 <View style={styles.productOptions}>
-                  <Dropdown
-                    label="Size: "
-                    containerStyle={styles.productDropdown}
-                    value={productSize}
-                    data={sizeOptions}
-                  />
-                  <Dropdown
-                    label="Color: "
-                    containerStyle={styles.productDropdown}
-                    value={productColor}
-                  />
+                  <Text> test </Text>
                 </View>
                 {/* <View style={styles.productAttribute}>
                   <Text style={styles.appSectionHeader}>Color: </Text>
