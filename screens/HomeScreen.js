@@ -15,6 +15,8 @@ import {
 
 // Icon/Style Imports
 // import Icon from 'react-native-vector-icons/Ionicons';
+
+// Redux Imports
 import { connect } from 'react-redux';
 import styles from '../constants/Style';
 
@@ -40,7 +42,6 @@ class HomeScreen extends React.Component {
     const { authInfo } = this.props;
     // const name = authInfo.username.split('_');
     // const first = name[0].charAt(0).toUpperCase() + name[0].substring(1);
-    console.log(authInfo);
     this.setState({
       name: authInfo.username,
     });

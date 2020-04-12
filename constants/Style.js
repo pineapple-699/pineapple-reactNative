@@ -26,8 +26,13 @@ const styles = StyleSheet.create({
     flex: 0.916,
     width: '100%',
     backgroundColor: '#eee',
-    alignItems: 'flex-start',
-    justifyContent: 'flex-start',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  cartBody: {
+    flex: 0.916,
+    width: '100%',
+    backgroundColor: '#eee',
   },
   headerText: {
     fontSize: 21,
@@ -389,6 +394,102 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
 
+  // Cart Screen Styles
+  noCartContent: {
+    flex: 0.9,
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  cartContent: {
+    flex: 0.9,
+    width: '100%',
+  },
+  cartItem: {
+    flex: 1,
+    height: 215,
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    backgroundColor: '#fff',
+    borderBottomWidth: 1,
+    borderBottomColor: '#efefef',
+    paddingHorizontal: 15,
+  },
+  cartItemInfo: {
+    flex: 0.8,
+    width: '100%',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-around'
+  },
+  itemButtons: {
+    flex: 0.2,
+    width: '100%',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-around'
+  },
+  itemImage: {
+    flex: 0.4,
+  },
+  itemInfo: {
+    flex: 0.6,
+  },
+  itemHeader: {
+    fontSize: 18,
+    fontWeight: '600',
+  },
+  itemPrice: {
+    fontSize: 16,
+    marginVertical: 10,
+  },
+  itemAttribute: {
+    fontSize: 14,
+    color: '#c4c4c4'
+  },
+  cartButtons: {
+    flex: 0.1,
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  cartIcon: {
+    color: '#FCB742'
+  },
+
+  // Confirm Purchase Screen Styles
+  paymentOptionsList: {
+    flex: 0.9,
+    height: '100%',
+    width: '100%',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
+  },
+
+  // Confirmation Screen Styles
+  confirmationIcon: {
+    color: '#FCB742',
+  },
+  orderNumText: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    color: '#222',
+    margin: 10,
+  },
+  thankYouText: {
+    fontSize: 20,
+    textAlign: 'center',
+    color: '#222',
+    margin: 10,
+  },
+  confirmationText: {
+    fontSize: 17,
+    textAlign: 'center',
+    color: '#222',
+    margin: 10,
+  },
+
   // Profile Screen Styles
   profileHeaderBackground: {
     flex: 1,
@@ -502,6 +603,12 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderColor: '#eee',
   },
+  settingsList: {
+    height: '100%',
+    width: '100%',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
+  },
   settingText: {
     fontSize: 18,
     marginHorizontal: 15,
@@ -521,6 +628,12 @@ const styles = StyleSheet.create({
   },
 
   // Address/Billing screen styles
+  optionsList: {
+    height: '100%',
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+  },
   addressBackground: {
     flexDirection: 'row',
     width: '100%',
@@ -634,78 +747,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginVertical: 10,
   },
-
-  // Cart screen styles
-  cartList: {
-    flex: 0.9175,
-    width: '100%',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  cartItem: {
-    flex: 0.2,
-    flexDirection: 'row',
-    marginTop: 30,
-    width: '100%',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    borderBottomWidth: 1,
-    borderBottomColor: '#C4C4C4',
-  },
-  cartEmpty: {
-    flex: 0.8,
-    backgroundColor: 'orange',
-  },
-  cartImage: {
-    flex: 0.35,
-    height: '100%',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  cartInfo: {
-    flex: 0.65,
-    justifyContent: 'center',
-    alignItems: 'flex-start',
-  },
-  cartSectionHeader: {
-    fontSize: 17,
-    marginVertical: 2,
-    marginHorizontal: 10,
-    fontWeight: 'bold',
-    color: '#222',
-  },
-  cartButtons: {
-    flex: 0.0825,
-    width: '100%',
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-    marginVertical: 10,
-  },
-
-  // Confirmation Screen Styles
-  confirmationIcon: {
-    color: '#FCB742',
-  },
-  orderNumText: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    color: '#222',
-    margin: 10,
-  },
-  thankYouText: {
-    fontSize: 20,
-    textAlign: 'center',
-    color: '#222',
-    margin: 10,
-  },
-  confirmationText: {
-    fontSize: 17,
-    textAlign: 'center',
-    color: '#222',
-    margin: 10,
-  }
-
 });
 
 export default styles;

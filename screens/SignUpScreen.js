@@ -77,8 +77,8 @@ class SignUpScreen extends React.Component {
 
               const loggedInUser = {
                 user_id: account.id,
-                username: account.username,
-                email: 'test@pineapple.com',
+                username: email,
+                email: `${email}@pineapple.com`,
                 first_name: 'Real',
                 last_name: 'Person',
                 addressOne: '105 S State St',

@@ -46,34 +46,36 @@ class PaymentMethodsScreen extends React.Component {
           <Text style={styles.headerText}>Payment Methods</Text>
         </View>
         <View style={styles.body}>
-          <TouchableOpacity
-            style={styles.addressBackground}
-            onPress={() => Alert.alert(
-              'This should let you edit your payment method, but it does not work yet.'
-            )}
-            underlayColor="#fff"
-          >
-            <View style={styles.addressAddress}>
-              <Text style={styles.addressHeaderText}>{cardNumber}</Text>
-              <Text style={styles.addressSubHeaderText}>Credit Card</Text>
-            </View>
-            <View style={styles.addressIcon}>
-              <Icon
-                name="ios-create"
-                size={24}
-                style={{ color: '#FCB742', paddingRight: 30 }}
-              />
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.addAddressBackground}
-            onPress={() => Alert.alert(
-              'This should let you add a new payment method, but it does not work yet.'
-            )}
-            underlayColor="#fff"
-          >
-            <Text style={styles.addAddressText}>Add New Payment Method</Text>
-          </TouchableOpacity>
+          <View style={styles.optionsList}>
+            <TouchableOpacity
+              style={styles.addressBackground}
+              onPress={() => Alert.alert(
+                'This should let you edit your payment method, but it does not work yet.'
+              )}
+              underlayColor="#fff"
+            >
+              <View style={styles.addressAddress}>
+                <Text style={styles.addressHeaderText}>{cardNumber}</Text>
+                <Text style={styles.addressSubHeaderText}>Credit Card</Text>
+              </View>
+              <View style={styles.addressIcon}>
+                <Icon
+                  name="ios-create"
+                  size={24}
+                  style={{ color: '#FCB742', paddingRight: 30 }}
+                />
+              </View>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.addAddressBackground}
+              onPress={() => Alert.alert(
+                'This should let you add a new payment method, but it does not work yet.'
+              )}
+              underlayColor="#fff"
+            >
+              <Text style={styles.addAddressText}>Add New Payment Method</Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
     );

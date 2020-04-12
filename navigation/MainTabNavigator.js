@@ -79,43 +79,21 @@ const CartStack = createStackNavigator(
     Cart: {
       screen: CartScreen,
       navigationOptions: {
-        headerStyle: {
-          backgroundColor: '#FCB742',
-          borderBottomWidth: 0,
-        },
-        title: 'Shopping Cart',
-        headerTitleStyle: {
-          color: '#fff',
-        },
+        header: null,
       }
     },
     Payment: {
       screen: PaymentScreen,
       navigationOptions: {
-        headerStyle: {
-          backgroundColor: '#FCB742',
-          borderBottomWidth: 0,
-        },
-        title: 'Enter Payment Information',
-        headerTitleStyle: {
-          color: '#fff',
-        },
+        header: null,
       }
     },
     Confirmation: {
       screen: ConfirmationScreen,
       navigationOptions: {
-        headerStyle: {
-          backgroundColor: '#FCB742',
-          borderBottomWidth: 0,
-        },
-        title: 'Order Confirmed',
-        headerTitleStyle: {
-          color: '#fff',
-        },
-        headerLeft: null,
+        header: null,
       }
-    }
+    },
   },
   config
 );

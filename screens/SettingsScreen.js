@@ -40,51 +40,53 @@ const SettingsScreen = () => {
         <Text style={styles.headerText}>App Settings</Text>
       </View>
       <View style={styles.body}>
-        <Text style={styles.settingSectionHeader}>APP BADGING</Text>
-        <View
-          style={styles.settingBackground}
-        >
-          <Text style={styles.settingText}>Enable App Badging</Text>
-          <Switch
-            trackColor={{ false: '#C4C4C4', true: '#4CB098' }}
-            thumbColor={badgingEnabled ? '#fff' : '#fff'}
-            ios_backgroundColor="#fff"
-            onValueChange={badgingSwitch}
-            style={{ marginRight: 15, }}
-            value={badgingEnabled}
-          />
+        <View style={styles.settingsList}>
+          <Text style={styles.settingSectionHeader}>APP BADGING</Text>
+          <View
+            style={styles.settingBackground}
+          >
+            <Text style={styles.settingText}>Enable App Badging</Text>
+            <Switch
+              trackColor={{ false: '#C4C4C4', true: '#4CB098' }}
+              thumbColor={badgingEnabled ? '#fff' : '#fff'}
+              ios_backgroundColor="#fff"
+              onValueChange={badgingSwitch}
+              style={{ marginRight: 15, }}
+              value={badgingEnabled}
+            />
+          </View>
+          <Text style={styles.settingSectionHeader}>CAMERA</Text>
+          <View
+            style={styles.settingBackground}
+          >
+            <Text style={styles.settingText}>Allow Camera Access</Text>
+            <Switch
+              trackColor={{ false: '#C4C4C4', true: '#4CB098' }}
+              thumbColor={cameraEnabled ? '#fff' : '#fff'}
+              ios_backgroundColor="#fff"
+              onValueChange={cameraSwitch}
+              style={{ marginRight: 15, }}
+              value={cameraEnabled}
+            />
+          </View>
+          <View
+            style={styles.settingBackground}
+          >
+            <Text style={styles.settingText}>Allow Camera Roll Access</Text>
+            <Switch
+              trackColor={{ false: '#C4C4C4', true: '#4CB098' }}
+              thumbColor={cameraRollEnabled ? '#fff' : '#fff'}
+              ios_backgroundColor="#fff"
+              onValueChange={cameraRollSwitch}
+              style={{ marginRight: 15, }}
+              value={cameraRollEnabled}
+            />
+          </View>
+          <Text style={styles.cameraMessage}>
+            Camera roll is diabled on this device.
+            It can be enabled by sliding the toggle above to on.
+          </Text>
         </View>
-        <Text style={styles.settingSectionHeader}>CAMERA</Text>
-        <View
-          style={styles.settingBackground}
-        >
-          <Text style={styles.settingText}>Allow Camera Access</Text>
-          <Switch
-            trackColor={{ false: '#C4C4C4', true: '#4CB098' }}
-            thumbColor={cameraEnabled ? '#fff' : '#fff'}
-            ios_backgroundColor="#fff"
-            onValueChange={cameraSwitch}
-            style={{ marginRight: 15, }}
-            value={cameraEnabled}
-          />
-        </View>
-        <View
-          style={styles.settingBackground}
-        >
-          <Text style={styles.settingText}>Allow Camera Roll Access</Text>
-          <Switch
-            trackColor={{ false: '#C4C4C4', true: '#4CB098' }}
-            thumbColor={cameraRollEnabled ? '#fff' : '#fff'}
-            ios_backgroundColor="#fff"
-            onValueChange={cameraRollSwitch}
-            style={{ marginRight: 15, }}
-            value={cameraRollEnabled}
-          />
-        </View>
-        <Text style={styles.cameraMessage}>
-          Camera roll is diabled on this device.
-          It can be enabled by sliding the toggle above to on.
-        </Text>
       </View>
     </View>
   );

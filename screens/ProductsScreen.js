@@ -36,7 +36,6 @@ class ProductsScreen extends React.Component {
   componentDidMount = async () => {
     const { authInfo } = this.props;
     const { productToView } = this.state;
-    console.log(productToView);
 
     const rawResponse = await fetch('https://pineapple-rest-api.herokuapp.com/history/scan', {
       method: 'POST',
@@ -51,7 +50,7 @@ class ProductsScreen extends React.Component {
     });
 
     await rawResponse.json().then((data) => {
-      console.log(data);
+      console.log(data); //eslint-disable-line
     });
   }
 
@@ -59,6 +58,7 @@ class ProductsScreen extends React.Component {
     const { navigation, authInfo } = this.props;
     const userID = authInfo.user_id;
     const { productToView } = this.state;
+    // console.log(productToView.upc)
 
     const rawResponse = await fetch(`https://pineapple-rest-api.herokuapp.com/cart/${userID}`, {
       method: 'POST',
@@ -67,14 +67,16 @@ class ProductsScreen extends React.Component {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        product_upc: productToView[0],
+        product_upc: productToView.upc,
         quantity: 1,
         type: 'add_product_for_user',
       })
     });
 
-    await rawResponse.json();
-    navigation.navigate('Cart');
+    await rawResponse.json().then((data) => {
+      console.log(data); //eslint-disable-line
+      navigation.navigate('Cart');
+    });
   }
 
   render() {
