@@ -120,13 +120,6 @@ class LogInScreen extends React.Component {
           >
             <Text style={styles.largeButtonText}>Sign In</Text>
           </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.largeButtonOutline}
-            onPress={() => navigation.navigate('Activity')}
-            underlayColor="#fff"
-          >
-            <Text style={styles.largeButtonOutlineText}>Log In With Google</Text>
-          </TouchableOpacity>
         </View>
       </KeyboardAvoidingView>
     );
