@@ -244,7 +244,7 @@ class HomeScreen extends React.Component {
                 />
               </View>
               <View style={styles.couponDescription}>
-                <Text>Up to 25% off Mens and Womens workout apparell.</Text>
+                <Text>Up to 25% off Mens and Womens workout apparel.</Text>
               </View>
               <View style={styles.couponButton}>
                 <TouchableOpacity

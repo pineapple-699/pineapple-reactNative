@@ -12,10 +12,9 @@ import {
 import { connect } from 'react-redux';
 import styles from '../constants/Style';
 
-// // Redux
 import { setAuthentication, setProfile } from '../reducers/login';
 
-const iconLogo = require('../assets/images/icon-logo.png');
+import iconLogo from '../assets/images/icon-logo.png';
 
 class LogInScreen extends React.Component {
   constructor(props) {
@@ -88,11 +87,11 @@ class LogInScreen extends React.Component {
     } = this.state;
     const { navigation } = this.props;
     return (
-      <KeyboardAvoidingView style={styles.splashContainer}>
+      <KeyboardAvoidingView style={styles.splashContainer} behavior="padding" enabled>
         <StatusBar barStyle="dark-content" />
         <View style={styles.logInHeader}>
           <Image
-            style={styles.logInLogo}
+            // style={styles.logInLogo}
             source={iconLogo}
           />
           <Text style={styles.splashHeaderText}>Sign In</Text>
