@@ -31,53 +31,53 @@ const targetLogo = require('../assets/images/target-logo.png');
 class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
+    const { authInfo } = this.props;
     this.state = {
-      scanHistory: false,
-      scannedData: [],
-      name: ''
+      // scanHistory: false,
+      // scannedData: [],
+      name: authInfo.username,
     };
   }
 
-  componentDidMount = async () => {
-    const { authInfo } = this.props;
-    // const name = authInfo.username.split('_');
-    // const first = name[0].charAt(0).toUpperCase() + name[0].substring(1);
-    this.setState({
-      name: authInfo.username,
-    });
+  // componentDidMount() {
+  // const name = authInfo.username.split('_');
+  // const first = name[0].charAt(0).toUpperCase() + name[0].substring(1);
+  // this.setState({
+  //   name: authInfo.username,
+  // });
 
-    const rawResponse = await fetch(`https://pineapple-rest-api.herokuapp.com/history/scan/${authInfo.user_id}`, {
-      method: 'GET',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      },
-    });
+  // const rawResponse = await fetch(`https://pineapple-rest-api.herokuapp.com/history/scan/${authInfo.user_id}`, {
+  //   method: 'GET',
+  //   headers: {
+  //     Accept: 'application/json',
+  //     'Content-Type': 'application/json'
+  //   },
+  // });
 
-    await rawResponse.json().then((data) => {
-      if (data.message !== 'Users scanned products not found in database!') {
-        this.setState({
-          scanHistory: true
-        });
-        data.scan_history.map(async (dat) => {
-          const newRawResponse = await fetch(`https://pineapple-rest-api.herokuapp.com/product/${dat.id}`, {
-            method: 'GET',
-            headers: {
-              Accept: 'application/json',
-              'Content-Type': 'application/json'
-            },
-          });
-          await newRawResponse.json().then((newDat) => {
-            this.setState((previousState) => ({
-              scannedData: [...previousState.scannedData, newDat.product[0]]
-            }));
-          });
-        });
-      }
-    });
+  // await rawResponse.json().then((data) => {
+  //   if (data.message !== 'Users scanned products not found in database!') {
+  //     this.setState({
+  //       scanHistory: true
+  //     });
+  //     data.scan_history.map(async (dat) => {
+  //       const newRawResponse = await fetch(`https://pineapple-rest-api.herokuapp.com/product/${dat.id}`, {
+  //         method: 'GET',
+  //         headers: {
+  //           Accept: 'application/json',
+  //           'Content-Type': 'application/json'
+  //         },
+  //       });
+  //       await newRawResponse.json().then((newDat) => {
+  //         this.setState((previousState) => ({
+  //           scannedData: [...previousState.scannedData, newDat.product[0]]
+  //         }));
+  //       });
+  //     });
+  //   }
+  // });
 
-    this.setState(this.state);
-  }
+  //   this.setState(this.state);
+  // }
 
   // renderContent() {
   //   const {

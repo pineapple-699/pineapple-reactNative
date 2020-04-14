@@ -8,6 +8,9 @@ import {
   Alert,
 } from 'react-native';
 
+import { NavigationEvents } from 'react-navigation';
+
+
 // Icon/Style Imports
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -21,6 +24,9 @@ import styles from '../constants/Style';
 class CartScreen extends React.Component {
   constructor(props) {
     super(props);
+    // const { navigation } = this.props;
+
+    // const userCart = navigation.getParam('cart');
 
     this.state = {
       cart: []
@@ -44,6 +50,32 @@ class CartScreen extends React.Component {
         cart: newData,
       });
     });
+  }
+
+  handleRemove = async (item) => {
+    const { authInfo } = this.props;
+    const userID = authInfo.user_id;
+
+    const removeItem = await fetch(`https://pineapple-rest-api.herokuapp.com/cart/${userID}`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        product_upc: item.product_info.upc,
+        quantity: item.quantity,
+        type: 'remove_product_for_user',
+      })
+    });
+
+    await removeItem.json().then((data) => {
+      console.log(data); //eslint-disable-line
+    });
+
+    this.componentDidMount();
+
+    Alert.alert('Item removed');
   }
 
   renderContent() {
@@ -112,7 +144,7 @@ class CartScreen extends React.Component {
                 </View>
                 <View style={styles.itemButtons}>
                   <Text
-                    onPress={() => Alert.alert('Item Removed')}
+                    onPress={() => this.handleRemove(item)}
                     style={styles.largeButtonOutlineText}
                   >
                     Remove
@@ -126,7 +158,7 @@ class CartScreen extends React.Component {
                 </View>
               </View>
             )}
-            keyExtractor={(item) => item.id}
+            keyExtractor={(item) => item.upc}
           />
         </View>
         <View style={styles.cartButtons}>
@@ -145,6 +177,7 @@ class CartScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
+        <NavigationEvents onDidFocus={() => this.componentDidMount()} />
         <View style={styles.header}>
           <Text style={styles.headerText}>Shopping Cart</Text>
         </View>
