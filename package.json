@@ -10,7 +10,8 @@
     "test": "jest --watchAll",
     "test-run": "jest --forceExit --detectOpenHandles && codecov",
     "lint": "eslint '**/*.{js,jsx}' --quiet",
-    "lint-fix": "eslint '**/*.{js,jsx}' --fix"
+    "lint-fix": "eslint '**/*.{js,jsx}' --fix",
+    "publish": "expo publish && expo build:ios && expo build:android"
   },
   "jest": {
     "preset": "jest-expo",

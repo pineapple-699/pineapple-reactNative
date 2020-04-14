@@ -63,9 +63,9 @@ const HomeStack = createStackNavigator(
 );
 
 HomeStack.navigationOptions = {
-  tabBarLabel: 'Home',
+  tabBarLabel: 'Scan',
   tabBarIcon: ({ tintColor }) => (
-    <Icon name="ios-home" size={28} color={tintColor} />
+    <Icon name="ios-barcode" size={28} color={tintColor} />
   ),
   tabBarOptions: {
     activeTintColor: '#FCB742',
@@ -79,49 +79,27 @@ const CartStack = createStackNavigator(
     Cart: {
       screen: CartScreen,
       navigationOptions: {
-        headerStyle: {
-          backgroundColor: '#FCB742',
-          borderBottomWidth: 0,
-        },
-        title: 'Shopping Cart',
-        headerTitleStyle: {
-          color: '#fff',
-        },
+        header: null,
       }
     },
     Payment: {
       screen: PaymentScreen,
       navigationOptions: {
-        headerStyle: {
-          backgroundColor: '#FCB742',
-          borderBottomWidth: 0,
-        },
-        title: 'Enter Payment Information',
-        headerTitleStyle: {
-          color: '#fff',
-        },
+        header: null,
       }
     },
     Confirmation: {
       screen: ConfirmationScreen,
       navigationOptions: {
-        headerStyle: {
-          backgroundColor: '#FCB742',
-          borderBottomWidth: 0,
-        },
-        title: 'Order Confirmed',
-        headerTitleStyle: {
-          color: '#fff',
-        },
-        headerLeft: null,
+        header: null,
       }
-    }
+    },
   },
   config
 );
 
 CartStack.navigationOptions = {
-  tabBarLabel: 'Shopping Cart',
+  tabBarLabel: 'Cart',
   tabBarIcon: ({ tintColor }) => (
     <Icon name="ios-cart" size={28} color={tintColor} />
   // tabBarIcon: ({ focused }) => (

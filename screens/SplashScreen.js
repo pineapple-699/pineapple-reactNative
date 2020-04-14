@@ -1,6 +1,10 @@
 import React from 'react';
 import {
-  View, StatusBar, Text, Image, TouchableOpacity
+  View,
+  StatusBar,
+  Text,
+  Image,
+  TouchableOpacity
 } from 'react-native';
 import { connect } from 'react-redux';
 import styles from '../constants/Style';
@@ -9,7 +13,7 @@ import styles from '../constants/Style';
 import { setAuthentication, setProfile } from '../reducers/login';
 import { setProducts } from '../reducers/api';
 
-const iconLogo = require('../assets/images/icon-logo.png');
+const iconLogo = require('../assets/images/splashhero.png');
 
 class SplashScreen extends React.Component {
   // constructor(props) {
@@ -27,6 +31,9 @@ class SplashScreen extends React.Component {
       email: 'admin@gmail.com',
       first_name: 'Admin',
       last_name: 'Administrator',
+      addressOne: '105 S State St',
+      addressTwo: 'Ann Arbor, MI 48109',
+      cardNumber: 'VISA ****9178'
     };
 
 
@@ -54,10 +61,12 @@ class SplashScreen extends React.Component {
         </View>
         <View style={styles.splashButtons}>
           <Text
-            style={styles.splashText}
+            style={styles.splashLink}
             onPress={() => navigation.navigate('LogIn')}
           >
-            Already have an account? Sign In!
+            Already have an account?
+            {' '}
+            <Text style={{ textDecorationLine: 'underline' }}>Sign In!</Text>
           </Text>
           <TouchableOpacity
             style={styles.largeButton}

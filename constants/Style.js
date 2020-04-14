@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#FEF0D7',
     alignItems: 'center',
-    justifyContent: 'center',
+    // justifyContent: 'center',
   },
   container: {
     flex: 1,
@@ -26,8 +26,13 @@ const styles = StyleSheet.create({
     flex: 0.916,
     width: '100%',
     backgroundColor: '#eee',
-    alignItems: 'flex-start',
-    justifyContent: 'flex-start',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  cartBody: {
+    flex: 0.916,
+    width: '100%',
+    backgroundColor: '#eee',
   },
   headerText: {
     fontSize: 21,
@@ -70,6 +75,30 @@ const styles = StyleSheet.create({
   },
 
   // Button Style
+  smallButton: {
+    marginTop: 5,
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 40,
+    width: '25%',
+    backgroundColor: '#FCB742',
+    borderRadius: 5,
+    borderWidth: 1,
+    borderColor: '#FCB742',
+    shadowColor: 'rgba(0,0,0, .5)', // IOS
+    shadowOffset: { height: 2, width: 2 }, // IOS
+    shadowOpacity: 2, // IOS
+    shadowRadius: 2, // IOS
+    elevation: 4, // Android
+  },
+  smallButtonText: {
+    color: '#fff',
+    fontSize: 14,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginLeft: 10,
+    marginRight: 10
+  },
   largeButton: {
     marginTop: 5,
     justifyContent: 'center',
@@ -121,14 +150,14 @@ const styles = StyleSheet.create({
 
   // Splash Screen Styles
   splashHeader: {
-    flex: 0.55,
+    flex: 0.65,
     width: '100%',
     alignItems: 'center',
     justifyContent: 'flex-end',
     marginVertical: 10,
   },
   splashCTA: {
-    flex: 0.35,
+    flex: 0.25,
     width: '100%',
     alignItems: 'center',
     justifyContent: 'flex-start',
@@ -152,7 +181,15 @@ const styles = StyleSheet.create({
   },
   splashText: {
     fontSize: 16,
+    fontWeight: '600',
     textAlign: 'center',
+    marginBottom: 10,
+  },
+  splashLink: {
+    fontSize: 16,
+    fontWeight: '600',
+    textAlign: 'center',
+    color: '#FCB742',
     marginBottom: 10,
   },
 
@@ -199,7 +236,8 @@ const styles = StyleSheet.create({
     width: '100%',
     alignItems: 'center',
     justifyContent: 'flex-end',
-    marginBottom: 10,
+    paddingBottom: 40,
+    backgroundColor: '#FEF0D7'
   },
   signUpLogo: {
     margin: 10,
@@ -210,10 +248,32 @@ const styles = StyleSheet.create({
   // Activity Page Styles
 
   activityHeader: {
-    flex: 0.1,
+    flex: 0.4,
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#fff',
+    marginBottom: 10,
+    shadowColor: 'rgba(0,0,0, .5)', // IOS
+    shadowOffset: { height: 2, width: 2 }, // IOS
+    shadowOpacity: 2, // IOS
+    shadowRadius: 2, // IOS
+    elevation: 4, // Android
+  },
+  activityHeaderContent: {
+    flex: 0.7,
     width: '100%',
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
+    backgroundColor: '#FEF0D7',
+  },
+  activityHeaderButtons: {
+    flex: 0.3,
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    paddingBottom: 10,
+    backgroundColor: '#FEF0D7',
   },
   activityHeaderText: {
     fontSize: 32,
@@ -221,32 +281,110 @@ const styles = StyleSheet.create({
     marginLeft: 15,
     marginTop: 30,
   },
-  activityContent: {
-    flex: 0.75,
-    width: '100%',
-  },
-  activityProductBackground: {
-    flexDirection: 'row',
-    width: '100%',
-    height: '15%',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    backgroundColor: '#fff',
-    borderBottomWidth: 1,
-    borderColor: '#eee',
-  },
-  activityProductHeader: {
-    fontSize: 20,
-    fontWeight: '700',
+  activityText: {
+    fontSize: 18,
     marginHorizontal: 15,
+    marginVertical: 30,
   },
-  activityButton: {
-    flex: 0.15,
+  activityContent: {
+    flex: 0.6,
     width: '100%',
     alignItems: 'center',
-    justifyContent: 'flex-end',
-    marginBottom: 10,
+    justifyContent: 'center',
+    backgroundColor: '#fff',
+    marginBottom: 5,
+    shadowColor: 'rgba(0,0,0, .5)', // IOS
+    shadowOffset: { height: 2, width: 2 }, // IOS
+    shadowOpacity: 2, // IOS
+    shadowRadius: 2, // IOS
+    elevation: 4, // Android
   },
+  activityContentHeader: {
+    flex: 0.08,
+    width: '95%',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
+    paddingVertical: 15,
+
+  },
+  activityContentHeaderText: {
+    fontSize: 24,
+    fontWeight: '500',
+    paddingBottom: 15,
+  },
+  activityContentCoupons: {
+    flex: 0.23,
+    flexDirection: 'row',
+    width: '95%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderBottomColor: '#efefef',
+    borderBottomWidth: 1,
+  },
+  couponLogoArea: {
+    flex: 0.175,
+    width: '100%',
+    height: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  nikeLogo: {
+    width: '90%',
+    height: undefined,
+    aspectRatio: 1024 / 534
+  },
+  luluLogo: {
+    width: '90%',
+    height: undefined,
+    aspectRatio: 1024 / 1024
+  },
+  targetLogo: {
+    width: '90%',
+    height: undefined,
+    aspectRatio: 771 / 1024
+  },
+  couponDescription: {
+    flex: 0.5,
+    width: '100%',
+    height: '100%',
+    alignItems: 'flex-start',
+    justifyContent: 'center',
+    paddingHorizontal: 10,
+  },
+  couponButton: {
+    flex: 0.325,
+    width: '100%',
+    height: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  // noActivityContent: {
+  //   flex: 0.5,
+  //   width: '100%',
+  //   alignItems: 'center',
+  //   justifyContent: 'center',
+  // },
+  // activityIcon: {
+  //   color: '#FCB742',
+  // },
+  // activityProductBackground: {
+  //   width: '100%',
+  //   flexDirection: 'row',
+  //   backgroundColor: '#fff',
+  //   borderBottomWidth: 1,
+  //   borderColor: '#eee',
+  // },
+  // activityProductImage: {
+  //   flex: .25,
+  // },
+  // activityProductInfo: {
+  //   flex: .75,
+  // },
+  // activityProductHeader: {
+  //   fontSize: 20,
+  //   fontWeight: '700',
+  //   marginHorizontal: 15,
+  // },
 
   // Scanner Screen Styles
   scanScreenMessage: {
@@ -255,6 +393,102 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     alignItems: 'center',
     justifyContent: 'center'
+  },
+
+  // Cart Screen Styles
+  noCartContent: {
+    flex: 0.9,
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  cartContent: {
+    flex: 0.9,
+    width: '100%',
+  },
+  cartItem: {
+    flex: 1,
+    height: 215,
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    backgroundColor: '#fff',
+    borderBottomWidth: 1,
+    borderBottomColor: '#efefef',
+    paddingHorizontal: 15,
+  },
+  cartItemInfo: {
+    flex: 0.8,
+    width: '100%',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-around'
+  },
+  itemButtons: {
+    flex: 0.2,
+    width: '100%',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-around'
+  },
+  itemImage: {
+    flex: 0.4,
+  },
+  itemInfo: {
+    flex: 0.6,
+  },
+  itemHeader: {
+    fontSize: 18,
+    fontWeight: '600',
+  },
+  itemPrice: {
+    fontSize: 16,
+    marginVertical: 10,
+  },
+  itemAttribute: {
+    fontSize: 14,
+    color: '#c4c4c4'
+  },
+  cartButtons: {
+    flex: 0.1,
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  cartIcon: {
+    color: '#FCB742'
+  },
+
+  // Confirm Purchase Screen Styles
+  paymentOptionsList: {
+    flex: 0.9,
+    height: '100%',
+    width: '100%',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
+  },
+
+  // Confirmation Screen Styles
+  confirmationIcon: {
+    color: '#FCB742',
+  },
+  orderNumText: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    color: '#222',
+    margin: 10,
+  },
+  thankYouText: {
+    fontSize: 20,
+    textAlign: 'center',
+    color: '#222',
+    margin: 10,
+  },
+  confirmationText: {
+    fontSize: 17,
+    textAlign: 'center',
+    color: '#222',
+    margin: 10,
   },
 
   // Profile Screen Styles
@@ -370,6 +604,12 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderColor: '#eee',
   },
+  settingsList: {
+    height: '100%',
+    width: '100%',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
+  },
   settingText: {
     fontSize: 18,
     marginHorizontal: 15,
@@ -386,6 +626,50 @@ const styles = StyleSheet.create({
     color: '#B4B4B4',
     marginHorizontal: 15,
     marginTop: 10,
+  },
+
+  // Address/Billing screen styles
+  optionsList: {
+    height: '100%',
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+  },
+  addressBackground: {
+    flexDirection: 'row',
+    width: '100%',
+    height: '12.5%',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    backgroundColor: '#fff',
+    borderBottomWidth: 1,
+    borderColor: '#eee',
+  },
+  addressHeaderText: {
+    fontSize: 18,
+    fontWeight: '600',
+    marginHorizontal: 15,
+  },
+  addressSubHeaderText: {
+    fontSize: 14,
+    color: '#c4c4c4',
+    marginHorizontal: 15,
+  },
+  addAddressBackground: {
+    flexDirection: 'row',
+    width: '100%',
+    height: '7.5%',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    backgroundColor: '#fff',
+    borderBottomWidth: 1,
+    borderColor: '#eee',
+  },
+  addAddressText: {
+    fontSize: 18,
+    fontWeight: '500',
+    color: '#FCB742',
+    marginHorizontal: 15,
   },
 
   // ######
@@ -464,90 +748,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginVertical: 10,
   },
-  // Cart screen styles
-  cartList: {
-    flex: 0.9175,
-    width: '100%',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  cartItem: {
-    flex: 0.2,
-    flexDirection: 'row',
-    marginTop: 30,
-    width: '100%',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    borderBottomWidth: 1,
-    borderBottomColor: '#C4C4C4',
-  },
-  cartEmpty: {
-    flex: 0.8,
-    backgroundColor: 'orange',
-  },
-  cartImage: {
-    flex: 0.35,
-    height: '100%',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  cartInfo: {
-    flex: 0.65,
-    justifyContent: 'center',
-    alignItems: 'flex-start',
-  },
-  cartSectionHeader: {
-    fontSize: 17,
-    marginVertical: 2,
-    marginHorizontal: 10,
-    fontWeight: 'bold',
-    color: '#222',
-  },
-  cartButtons: {
-    flex: 0.0825,
-    width: '100%',
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-    marginVertical: 10,
-  },
-  // Payment screen styles
-
-  // paymentModal: {
-  //   flex: 0.5,
-  //   width: '75%',
-  //   backgroundColor: '#222',
-  //   justifyContent: 'center',
-  //   alignItems: 'center',
-  // },
-  // modalContent: {
-  //   justifyContent: 'center',
-  //   alignItems: 'center',
-  // }
-
-  // Confirmation Screen Styles:
-  confirmationIcon: {
-    color: '#FCB742',
-  },
-  orderNumText: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    color: '#222',
-    margin: 10,
-  },
-  thankYouText: {
-    fontSize: 20,
-    textAlign: 'center',
-    color: '#222',
-    margin: 10,
-  },
-  confirmationText: {
-    fontSize: 17,
-    textAlign: 'center',
-    color: '#222',
-    margin: 10,
-  }
-
 });
 
 export default styles;

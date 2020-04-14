@@ -8,7 +8,6 @@ import {
   // ActivityIndicator,
   // FlatList
 } from 'react-native';
-import { Dropdown } from 'react-native-material-dropdown';
 import { connect } from 'react-redux';
 import { getAuthInfo } from '../reducers/login';
 import styles from '../constants/Style';
@@ -18,7 +17,7 @@ class ProductsScreen extends React.Component {
     super(props);
     const { navigation, authInfo } = this.props;
     const scannedProduct = navigation.getParam('productToView');
-    const productSizes = navigation.getParam('productSizes');
+    // const productSizes = navigation.getParam('productSizes');
     // const productColors = navigation.getParam('productColors');
     console.log(scannedProduct)
 
@@ -38,18 +37,41 @@ class ProductsScreen extends React.Component {
 
     this.state = {
       productToView: scannedProduct[0],
-      productSize: scannedProduct[0].size,
-      sizeOptions: productSizes,
-      productColor: scannedProduct[0].color,
+      // productSize: scannedProduct[0].size,
+      // sizeOptions: productSizes,
+      // productColor: scannedProduct[0].color,
       productImage: scannedProduct[0].picture,
+      // productQuantity: 1,
       // colorOptions: productColors,
     };
+  }
+
+  componentDidMount = async () => {
+    const { authInfo } = this.props;
+    const { productToView } = this.state;
+
+    const rawResponse = await fetch('https://pineapple-rest-api.herokuapp.com/history/scan', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        user_id: authInfo.user_id,
+        product_id: productToView.id
+      })
+    });
+
+    await rawResponse.json().then((data) => {
+      console.log(data); //eslint-disable-line
+    });
   }
 
   handleAddToCart = async () => {
     const { navigation, authInfo } = this.props;
     const userID = authInfo.user_id;
     const { productToView } = this.state;
+    // console.log(productToView.upc)
 
     const rawResponse = await fetch(`https://pineapple-rest-api.herokuapp.com/cart/${userID}`, {
       method: 'POST',
@@ -58,24 +80,27 @@ class ProductsScreen extends React.Component {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        product_upc: productToView[0],
+        product_upc: productToView.upc,
         quantity: 1,
         type: 'add_product_for_user',
       })
     });
 
-    await rawResponse.json();
-    navigation.navigate('Cart');
+    await rawResponse.json().then((data) => {
+      console.log(data); //eslint-disable-line
+      navigation.navigate('Cart');
+    });
   }
 
   render() {
     const { navigation } = this.props;
     const {
       productToView,
-      productSize,
-      sizeOptions,
-      productColor,
+      // productSize,
+      // sizeOptions,
+      // productColor,
       productImage,
+      // productQuantity
       // colorOptions,
     } = this.state;
 
@@ -100,17 +125,7 @@ class ProductsScreen extends React.Component {
               </View>
               <View style={styles.productAttributes}>
                 <View style={styles.productOptions}>
-                  <Dropdown
-                    label="Size: "
-                    containerStyle={styles.productDropdown}
-                    value={productSize}
-                    data={sizeOptions}
-                  />
-                  <Dropdown
-                    label="Color: "
-                    containerStyle={styles.productDropdown}
-                    value={productColor}
-                  />
+                  <Text> test </Text>
                 </View>
                 {/* <View style={styles.productAttribute}>
                   <Text style={styles.appSectionHeader}>Color: </Text>

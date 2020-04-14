@@ -20,28 +20,39 @@ class ProfileScreen extends React.Component {
     super(props);
 
     this.state = {
-      fName: '',
-      lName: '',
+      uName: '',
+      uEmail: '',
+      // fName: '',
+      // lName: '',
     };
   }
 
   componentDidMount() {
     const { authInfo } = this.props;
-    const name = authInfo.username.split('_');
-    const first = name[0].charAt(0).toUpperCase() + name[0].substring(1);
-    const last = name[1].charAt(0).toUpperCase() + name[1].substring(1);
+    const name = authInfo.username;
+    const { email } = authInfo;
+    // const name = authInfo.username.split('_');
+    // const first = name[0].charAt(0).toUpperCase() + name[0].substring(1);
+    // const last = name[1].charAt(0).toUpperCase() + name[1].substring(1);
 
     this.setState({
-      fName: first,
-      lName: last,
+      uName: name,
+      uEmail: email,
+      // fName: first,
+      // lName: last,
     });
   }
 
   render() {
-    const { navigation, authInfo } = this.props;
     const {
-      fName,
-      lName,
+      navigation,
+      // authInfo
+    } = this.props;
+    const {
+      // fName,
+      // lName,
+      uName,
+      uEmail
     } = this.state;
     return (
       <View style={styles.container}>
@@ -52,17 +63,14 @@ class ProfileScreen extends React.Component {
           <View style={styles.profileHeader}>
             <View style={styles.userInfo}>
               <Text style={styles.usernameText}>
-                {fName}
-                {' '}
-                {lName}
+                {uName}
               </Text>
             </View>
           </View>
           <View style={styles.profileOptions}>
             <View style={styles.userEmail}>
               <Text style={styles.userEmailText}>
-                {authInfo.username}
-                @gmail.com
+                {uEmail}
               </Text>
             </View>
             <View style={styles.settingsBackground}>
@@ -124,6 +132,18 @@ class ProfileScreen extends React.Component {
                   name="ios-arrow-forward"
                   size={24}
                   style={{ color: '#333', paddingRight: 30 }}
+                />
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.lastSettingsOptionsBackground}
+                onPress={() => navigation.navigate('Splash')}
+                underlayColor="#fff"
+              >
+                <Text style={[styles.settingsOptionsText, { color: '#ff0000' }]}>Logout</Text>
+                <Icon
+                  name="ios-log-out"
+                  size={24}
+                  style={{ color: '#ff0000', paddingRight: 30 }}
                 />
               </TouchableOpacity>
             </View>

@@ -3,7 +3,6 @@ import {
   View,
   StatusBar,
   Text,
-  // Alert,
   Image,
   TextInput,
   TouchableOpacity,
@@ -12,10 +11,9 @@ import {
 import { connect } from 'react-redux';
 import styles from '../constants/Style';
 
-// // Redux
 import { setAuthentication, setProfile } from '../reducers/login';
 
-const iconLogo = require('../assets/images/icon-logo.png');
+import iconLogo from '../assets/images/icon-logo.png';
 
 class LogInScreen extends React.Component {
   constructor(props) {
@@ -66,9 +64,12 @@ class LogInScreen extends React.Component {
             const loggedInUser = {
               user_id: account.id,
               username: account.username,
-              email: 'test@pineapple.com',
+              email: `${account.username}@gmail.com`,
               first_name: 'Real',
               last_name: 'Person',
+              addressOne: '105 S State St',
+              addressTwo: 'Ann Arbor, MI 48109',
+              cardNumber: 'VISA ****9178'
             };
             setProf(loggedInUser);
             setAuth(true);
@@ -83,13 +84,12 @@ class LogInScreen extends React.Component {
       email,
       password,
     } = this.state;
-    const { navigation } = this.props;
     return (
-      <KeyboardAvoidingView style={styles.splashContainer}>
+      <KeyboardAvoidingView style={styles.splashContainer} behavior="padding" enabled>
         <StatusBar barStyle="dark-content" />
         <View style={styles.logInHeader}>
           <Image
-            style={styles.logInLogo}
+            // style={styles.logInLogo}
             source={iconLogo}
           />
           <Text style={styles.splashHeaderText}>Sign In</Text>
@@ -117,13 +117,6 @@ class LogInScreen extends React.Component {
             underlayColor="#fff"
           >
             <Text style={styles.largeButtonText}>Sign In</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.largeButtonOutline}
-            onPress={() => navigation.navigate('Activity')}
-            underlayColor="#fff"
-          >
-            <Text style={styles.largeButtonOutlineText}>Log In With Google</Text>
           </TouchableOpacity>
         </View>
       </KeyboardAvoidingView>
