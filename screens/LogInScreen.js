@@ -85,7 +85,6 @@ class LogInScreen extends React.Component {
       email,
       password,
     } = this.state;
-    const { navigation } = this.props;
     return (
       <KeyboardAvoidingView style={styles.splashContainer} behavior="padding" enabled>
         <StatusBar barStyle="dark-content" />

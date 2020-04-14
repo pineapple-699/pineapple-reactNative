@@ -8,7 +8,8 @@ import styles from '../constants/Style';
 // Redux Imports
 import { setAuthentication, setProfile } from '../reducers/login';
 
-const iconLogo = require('../assets/images/icon-logo.png');
+import iconLogo from '../assets/images/icon-logo.png';
+
 
 class SignUpScreen extends React.Component {
   constructor(props) {
@@ -109,68 +110,68 @@ class SignUpScreen extends React.Component {
     return (
       <KeyboardAvoidingView
         behavior="padding"
-        style={styles.splashContainer}
+        style={[styles.splashContainer]}
+        enabled
       >
         <StatusBar barStyle="dark-content" />
-        <View style={styles.signUpHeader}>
+        <View style={styles.logInHeader}>
           <Image
             style={styles.signUpLogo}
             source={iconLogo}
           />
           <Text style={styles.splashHeaderText}>Sign Up!</Text>
         </View>
-        <View style={styles.signUpInputs}>
-          <TextInput
-            placeholder="Email"
-            style={styles.authInputs}
-            autoCapitalize="none"
-            value={email}
-            onChangeText={(value) => { this.setState({ email: value }); }}
-          />
-          <TextInput
-            placeholder="Password"
-            style={styles.authInputs}
-            autoCapitalize="none"
-            value={password}
-            onChangeText={(value) => { this.setState({ password: value }); }}
-          />
-          <TextInput
-            placeholder="Confirm Password"
-            style={styles.authInputs}
-            autoCapitalize="none"
-            value={cPassword}
-            onChangeText={(value) => { this.setState({ cPassword: value }); }}
-          />
-          <TextInput
-            placeholder="Gender"
-            style={styles.authInputs}
-            autoCapitalize="none"
-            value={gender}
-            onChangeText={(value) => { this.setState({ gender: value }); }}
-          />
-          <TextInput
-            placeholder="Pant Size"
-            style={styles.authInputs}
-            autoCapitalize="none"
-            value={pantSize}
-            onChangeText={(value) => { this.setState({ pantSize: value }); }}
-          />
-          <TextInput
-            placeholder="Shirt Size"
-            style={styles.authInputs}
-            autoCapitalize="none"
-            value={shirtSize}
-            onChangeText={(value) => { this.setState({ shirtSize: value }); }}
-          />
-          <TextInput
-            placeholder="Shoe Size"
-            style={styles.authInputs}
-            autoCapitalize="none"
-            value={shoeSize}
-            onChangeText={(value) => { this.setState({ shoeSize: value }); }}
-          />
-        </View>
-        <View style={styles.signUpButtons}>
+        <TextInput
+          placeholder="Email"
+          style={styles.authInputs}
+          autoCapitalize="none"
+          value={email}
+          onChangeText={(value) => { this.setState({ email: value }); }}
+        />
+        <TextInput
+          placeholder="Password"
+          style={styles.authInputs}
+          autoCapitalize="none"
+          value={password}
+          onChangeText={(value) => { this.setState({ password: value }); }}
+        />
+        <TextInput
+          placeholder="Confirm Password"
+          style={styles.authInputs}
+          autoCapitalize="none"
+          value={cPassword}
+          onChangeText={(value) => { this.setState({ cPassword: value }); }}
+        />
+        <TextInput
+          placeholder="Gender"
+          style={styles.authInputs}
+          autoCapitalize="none"
+          value={gender}
+          onChangeText={(value) => { this.setState({ gender: value }); }}
+        />
+        <TextInput
+          placeholder="Pant Size"
+          style={styles.authInputs}
+          autoCapitalize="none"
+          value={pantSize}
+          onChangeText={(value) => { this.setState({ pantSize: value }); }}
+        />
+        <TextInput
+          placeholder="Shirt Size"
+          style={styles.authInputs}
+          autoCapitalize="none"
+          value={shirtSize}
+          onChangeText={(value) => { this.setState({ shirtSize: value }); }}
+        />
+        <TextInput
+          placeholder="Shoe Size"
+          style={styles.authInputs}
+          autoCapitalize="none"
+          value={shoeSize}
+          onChangeText={(value) => { this.setState({ shoeSize: value }); }}
+        />
+        <View style={styles.signUpButtons} />
+        <View style={styles.logInButtons}>
           <TouchableOpacity
             style={styles.largeButton}
             onPress={() => this.handleSignUp()}
