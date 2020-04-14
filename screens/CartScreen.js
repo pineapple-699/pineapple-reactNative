@@ -161,7 +161,6 @@ const mapStateToProps = (state) => ({
 export default connect(mapStateToProps, null)(CartScreen);
 
 
-
 // const rawResponse = await fetch(`https://pineapple-rest-api.herokuapp.com/history/purchase/${userid}`, {
 //       method: 'GET',
 //       headers: {

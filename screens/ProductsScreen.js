@@ -19,9 +19,9 @@ class ProductsScreen extends React.Component {
     const scannedProduct = navigation.getParam('productToView');
     // const productSizes = navigation.getParam('productSizes');
     // const productColors = navigation.getParam('productColors');
-    console.log(scannedProduct)
+    // console.log(scannedProduct);
 
-    const rawResponse = fetch(`https://pineapple-rest-api.herokuapp.com/history/scan`, {
+    const rawResponse = fetch('https://pineapple-rest-api.herokuapp.com/history/scan', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
