@@ -3,7 +3,6 @@ import {
   View,
   StatusBar,
   Text,
-  // Alert,
   Image,
   TextInput,
   TouchableOpacity,
