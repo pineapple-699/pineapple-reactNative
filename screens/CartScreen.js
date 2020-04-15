@@ -52,6 +52,26 @@ class CartScreen extends React.Component {
     });
   }
 
+  handleGetCart = async () => {
+    const { authInfo } = this.props;
+    
+    const userID = authInfo.user_id;
+
+    const rawResponse = await fetch(`https://pineapple-rest-api.herokuapp.com/cart/${userID}`, {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      }
+    });
+    await rawResponse.json().then((data) => {
+      const newData = data.cart.products;
+      this.setState({
+        cart: newData,
+      });
+    });
+  }
+
   handleRemove = async (item) => {
     const { authInfo } = this.props;
     const userID = authInfo.user_id;
@@ -64,7 +84,7 @@ class CartScreen extends React.Component {
       },
       body: JSON.stringify({
         product_upc: item.product_info.upc,
-        quantity: item.quantity,
+        // quantity: item.quantity,
         type: 'remove_product_for_user',
       })
     });
@@ -73,18 +93,16 @@ class CartScreen extends React.Component {
       console.log(data); //eslint-disable-line
     });
 
-    this.componentDidMount();
+    this.handleGetCart();
+
+    // this.componentDidMount();
 
     Alert.alert('Item removed');
   }
 
   renderContent() {
-    const {
-      navigation
-    } = this.props;
-    const {
-      cart
-    } = this.state;
+    const { navigation } = this.props;
+    const { cart } = this.state;
     if (cart.length === 0) {
       return (
         <View style={styles.body}>

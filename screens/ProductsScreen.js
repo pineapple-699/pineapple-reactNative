@@ -25,7 +25,7 @@ class ProductsScreen extends React.Component {
     // const productColors = navigation.getParam('productColors');
     // console.log(scannedProduct);
 
-    const rawResponse = fetch('https://pineapple-rest-api.herokuapp.com/history/scan', {
+    fetch('https://pineapple-rest-api.herokuapp.com/history/scan', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -37,9 +37,9 @@ class ProductsScreen extends React.Component {
       })
     });
 
-    rawResponse.json().then((result)=>{
-      console.log(result);
-    })
+    // rawResponse.then((result)=>{
+    //   console.log(result);
+    // })
 
     this.state = {
       productToView: scannedProduct[0],
