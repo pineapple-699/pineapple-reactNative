@@ -192,3 +192,27 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, null)(CartScreen);
+
+
+// const rawResponse = await fetch(`https://pineapple-rest-api.herokuapp.com/history/purchase/${userid}`, {
+//       method: 'GET',
+//       headers: {
+//         Accept: 'application/json',
+//         'Content-Type': 'application/json'
+//       },
+//     });
+
+// const rawResponse = fetch(`https://pineapple-rest-api.herokuapp.com/history/purchase/${userid}`, {
+//       method: 'POST',
+//       headers: {
+//         Accept: 'application/json',
+//         'Content-Type': 'application/json'
+//       },
+//       body: JSON.stringify({
+//         product_id: "WHATEVERPRODUCTIDYOUHAVE"
+//       })
+//     });
+
+//     rawResponse.json().then((data)=>{
+//       console.log(data)
+//     })

@@ -2,3 +2,5 @@
 node_modules
 .expo/
 coverage
+
+_builds

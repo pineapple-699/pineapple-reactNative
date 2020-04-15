@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#FEF0D7',
     alignItems: 'center',
-    justifyContent: 'center',
+    // justifyContent: 'center',
   },
   container: {
     flex: 1,
@@ -236,7 +236,8 @@ const styles = StyleSheet.create({
     width: '100%',
     alignItems: 'center',
     justifyContent: 'flex-end',
-    marginBottom: 10,
+    paddingBottom: 40,
+    backgroundColor: '#FEF0D7'
   },
   signUpLogo: {
     margin: 10,

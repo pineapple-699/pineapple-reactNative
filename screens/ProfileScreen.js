@@ -134,6 +134,18 @@ class ProfileScreen extends React.Component {
                   style={{ color: '#333', paddingRight: 30 }}
                 />
               </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.lastSettingsOptionsBackground}
+                onPress={() => navigation.navigate('Splash')}
+                underlayColor="#fff"
+              >
+                <Text style={[styles.settingsOptionsText, { color: '#ff0000' }]}>Logout</Text>
+                <Icon
+                  name="ios-log-out"
+                  size={24}
+                  style={{ color: '#ff0000', paddingRight: 30 }}
+                />
+              </TouchableOpacity>
             </View>
           </View>
           <View style={styles.userPicBackground}>
