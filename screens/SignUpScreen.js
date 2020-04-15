@@ -91,7 +91,6 @@ class SignUpScreen extends React.Component {
               navigation.navigate('Activity');
             }
           });
-
         });
     }
   }

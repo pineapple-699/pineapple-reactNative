@@ -25,7 +25,8 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "io.reactnative.pineapple13243546"
+      "bundleIdentifier": "io.reactnative.pineapple13243546",
+      "buildNumber": "0.0.2"
     }
   }
 }

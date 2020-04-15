@@ -54,7 +54,7 @@ class CartScreen extends React.Component {
 
   handleGetCart = async () => {
     const { authInfo } = this.props;
-    
+
     const userID = authInfo.user_id;
 
     const rawResponse = await fetch(`https://pineapple-rest-api.herokuapp.com/cart/${userID}`, {
