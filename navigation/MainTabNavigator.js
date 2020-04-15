@@ -47,17 +47,9 @@ const HomeStack = createStackNavigator(
     Product: {
       screen: ProductsScreen,
       navigationOptions: {
-        headerStyle: {
-          backgroundColor: '#FCB742',
-          borderBottomWidth: 0,
-        },
-        title: 'Product Name',
-        headerTitleStyle: {
-          color: '#fff',
-        },
-        headerLeft: null,
+        header: null,
       }
-    }
+    },
   },
   config
 );

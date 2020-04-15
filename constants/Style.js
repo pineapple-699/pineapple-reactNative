@@ -358,33 +358,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  // noActivityContent: {
-  //   flex: 0.5,
-  //   width: '100%',
-  //   alignItems: 'center',
-  //   justifyContent: 'center',
-  // },
-  // activityIcon: {
-  //   color: '#FCB742',
-  // },
-  // activityProductBackground: {
-  //   width: '100%',
-  //   flexDirection: 'row',
-  //   backgroundColor: '#fff',
-  //   borderBottomWidth: 1,
-  //   borderColor: '#eee',
-  // },
-  // activityProductImage: {
-  //   flex: .25,
-  // },
-  // activityProductInfo: {
-  //   flex: .75,
-  // },
-  // activityProductHeader: {
-  //   fontSize: 20,
-  //   fontWeight: '700',
-  //   marginHorizontal: 15,
-  // },
 
   // Scanner Screen Styles
   scanScreenMessage: {
@@ -393,6 +366,75 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     alignItems: 'center',
     justifyContent: 'center'
+  },
+
+  // Product Screen Styles
+  productHeader: {
+    flex: 0.35,
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+  },
+  productImage: {
+    height: '95%',
+    width: '95%',
+    resizeMode: 'contain'
+  },
+  productContent: {
+    flex: 0.65,
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+  },
+  productInfo: {
+    flex: 0.75,
+    width: '95%',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
+  },
+  productHeaderText: {
+    fontSize: 24,
+    fontWeight: '600',
+    paddingVertical: 10,
+  },
+  productSubHeaderText: {
+    fontSize: 17,
+    paddingBottom: 10,
+  },
+  productAttribute: {
+    flex: 0.35,
+    width: '100%',
+    alignItems: 'flex-start',
+    justifyContent: 'center'
+  },
+  productQuantity: {
+    flex: 0.30,
+    width: '100%',
+    alignItems: 'flex-start',
+    justifyContent: 'center'
+  },
+  productAttributeOptions: {
+    flexDirection: 'row',
+  },
+  productColors: {
+    backgroundColor: 'navy'
+  },
+  productSizes: {
+    height: 35,
+    width: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#efefef',
+    marginRight: 10,
+  },
+  productButtons: {
+    flex: 0.25,
+    width: '100%',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    marginVertical: 10,
   },
 
   // Cart Screen Styles
@@ -675,79 +717,6 @@ const styles = StyleSheet.create({
   // ######
   // BELOW NEEDS TO BE EDITED
   // ######
-
-  // Product Screen Styles
-  productHeader: {
-    flex: 0.35,
-    width: '100%',
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderBottomColor: '#222',
-    borderBottomWidth: 1,
-  },
-  productImage: {
-    height: '90%',
-    width: '90%',
-    resizeMode: 'contain'
-  },
-  productContent: {
-    flex: 0.65,
-    width: '100%',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  productInfo: {
-    flex: 0.75,
-    width: '100%',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  productName: {
-    flex: 0.2,
-    flexDirection: 'row',
-    width: '95%',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-  },
-  productAbout: {
-    flex: 0.8,
-    width: '95%',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  productDescription: {
-    flex: 0.6,
-    width: '100%',
-    justifyContent: 'flex-start',
-    alignItems: 'flex-start',
-  },
-  productAttributes: {
-    flex: 0.4,
-    width: '100%',
-    justifyContent: 'center',
-    alignItems: 'flex-start',
-  },
-  productOptions: {
-    flexDirection: 'row',
-    width: '100%',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  productDropdown: {
-    width: '47.5%'
-  },
-  productAttribute: {
-    flexDirection: 'row',
-    width: '100%',
-    alignItems: 'center',
-  },
-  productButtons: {
-    flex: 0.25,
-    width: '100%',
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-    marginVertical: 10,
-  },
 });
 
 export default styles;
