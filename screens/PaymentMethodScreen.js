@@ -36,8 +36,7 @@ class PaymentMethodsScreen extends React.Component {
     } = this.state;
     return (
       <View style={styles.container}>
-        <View style={styles.header}>
-        </View>
+        <View style={styles.header} />
         <View style={styles.body}>
           <View style={styles.optionsList}>
             <TouchableOpacity

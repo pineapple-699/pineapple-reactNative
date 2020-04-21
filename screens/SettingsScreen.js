@@ -30,8 +30,7 @@ const SettingsScreen = () => {
   const cameraRollSwitch = () => setCameraRollEnabled((previousState) => !previousState);
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-      </View>
+      <View style={styles.header} />
       <View style={styles.body}>
         <View style={styles.settingsList}>
           <Text style={styles.settingSectionHeader}>APP BADGING</Text>
