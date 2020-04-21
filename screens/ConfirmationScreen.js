@@ -17,15 +17,6 @@ const ConfirmationScreen = (props) => {
   const { authInfo } = props;
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        {/* <Icon
-          name="ios-arrow-back"
-          size={24}
-          onPress={() => navigation.goBack()}
-          style={{ color: '#fff', paddingRight: 30, marginTop: 20, marginRight: 122, }}
-        /> */}
-        <Text style={styles.headerText}>Order Confirmation</Text>
-      </View>
       <View style={styles.body}>
         <Icon
           name="ios-checkmark-circle"

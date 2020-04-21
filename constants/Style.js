@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     fontSize: 21,
     fontWeight: '600',
     color: '#fff',
-    marginTop: 20,
+    // marginTop: 20,
   },
   headerTextWithBackButton: {
     fontSize: 21,

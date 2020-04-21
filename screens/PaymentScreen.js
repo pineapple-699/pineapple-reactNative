@@ -39,15 +39,9 @@ class PaymentScreen extends React.Component {
     } = this.state;
     return (
       <View style={styles.container}>
-        <View style={styles.header}>
-          {/* <Icon
-          name="ios-arrow-back"
-          size={24}
-          onPress={() => navigation.goBack()}
-          style={{ color: '#fff', paddingRight: 30, marginTop: 20, marginRight: 122, }}
-        /> */}
+        {/* <View style={styles.header}>
           <Text style={styles.headerText}>Confirm Purchase</Text>
-        </View>
+        </View> */}
         <View style={styles.body}>
           <View style={styles.paymentOptionsList}>
             <Text style={styles.settingSectionHeader}>Shipping Information</Text>

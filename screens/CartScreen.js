@@ -196,9 +196,9 @@ class CartScreen extends React.Component {
     return (
       <View style={styles.container}>
         <NavigationEvents onDidFocus={() => this.componentDidMount()} />
-        <View style={styles.header}>
+        {/* <View style={styles.header}>
           <Text style={styles.headerText}>Shopping Cart</Text>
-        </View>
+        </View> */}
         {this.renderContent()}
       </View>
     );

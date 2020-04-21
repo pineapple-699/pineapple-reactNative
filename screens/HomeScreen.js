@@ -136,7 +136,6 @@ class HomeScreen extends React.Component {
       <View style={styles.container}>
         <View style={styles.header}>
           <StatusBar barStyle="light-content" />
-          <Text style={styles.headerText}>Activity</Text>
         </View>
         <View style={styles.body}>
           <View style={styles.activityHeader}>

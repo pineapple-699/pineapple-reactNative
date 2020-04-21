@@ -3,6 +3,7 @@ import { Platform } from 'react-native';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import Icon from 'react-native-vector-icons/Ionicons';
+import styles from '../constants/Style';
 
 // Import Screens
 import HomeScreen from '../screens/HomeScreen';
@@ -28,8 +29,11 @@ const HomeStack = createStackNavigator(
     Activity: {
       screen: HomeScreen,
       navigationOptions: {
-        header: null,
-      }
+        headerTransparent: true,
+        headerStyle: styles.header,
+        title: 'Activity',
+        headerTitleStyle: styles.headerText,
+      },
     },
     Scanner: {
       screen: ScannerScreen,
@@ -47,8 +51,13 @@ const HomeStack = createStackNavigator(
     Product: {
       screen: ProductsScreen,
       navigationOptions: {
-        header: null,
-      }
+        headerTransparent: true,
+        headerStyle: styles.header,
+        title: 'Product Name',
+        headerTitleStyle: {
+          color: '#fff',
+        },
+      },
     },
   },
   config
@@ -71,20 +80,29 @@ const CartStack = createStackNavigator(
     Cart: {
       screen: CartScreen,
       navigationOptions: {
-        header: null,
-      }
+        headerTransparent: true,
+        headerStyle: styles.header,
+        title: 'Shopping Cart',
+        headerTitleStyle: styles.headerText,
+      },
     },
     Payment: {
       screen: PaymentScreen,
       navigationOptions: {
-        header: null,
-      }
+        headerTransparent: true,
+        headerStyle: styles.header,
+        title: 'Confirm Purchase',
+        headerTitleStyle: styles.headerText,
+      },
     },
     Confirmation: {
       screen: ConfirmationScreen,
       navigationOptions: {
-        header: null,
-      }
+        headerTransparent: true,
+        headerStyle: styles.header,
+        title: 'Order Confirmation',
+        headerTitleStyle: styles.headerText,
+      },
     },
   },
   config
@@ -94,15 +112,6 @@ CartStack.navigationOptions = {
   tabBarLabel: 'Cart',
   tabBarIcon: ({ tintColor }) => (
     <Icon name="ios-cart" size={28} color={tintColor} />
-  // tabBarIcon: ({ focused }) => (
-  //   <TabBarIcon
-  //     focused={focused}
-  //     name={
-  //       Platform.OS === 'ios'
-  //         ? `ios-information-circle${focused ? '' : '-outline'}`
-  //         : 'md-information-circle'
-  //     }
-  //   />
   ),
   tabBarOptions: {
     activeTintColor: '#FCB742',
