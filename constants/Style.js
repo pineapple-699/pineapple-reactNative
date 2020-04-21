@@ -19,6 +19,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     width: '100%',
     backgroundColor: '#FCB742',
+    color:'#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -445,7 +446,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   cartContent: {
-    flex: 0.9,
+    flex: 3,
     width: '100%',
   },
   cartItem: {

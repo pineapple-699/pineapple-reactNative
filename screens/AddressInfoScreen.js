@@ -38,13 +38,6 @@ class AddressScreen extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.header}>
-          {/* <Icon
-          name="ios-arrow-back"
-          size={24}
-          onPress={() => navigation.goBack()}
-          style={{ color: '#fff', paddingRight: 30, marginTop: 20, marginRight: 122, }}
-        /> */}
-          <Text style={styles.headerText}>Address Information</Text>
         </View>
         <View style={styles.body}>
           <View style={styles.optionsList}>

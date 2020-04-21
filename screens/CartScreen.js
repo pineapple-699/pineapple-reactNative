@@ -130,6 +130,7 @@ class CartScreen extends React.Component {
       <View style={styles.cartBody}>
         <View style={styles.cartContent}>
           <FlatList
+          style={{paddingTop:"15%"}}
             data={cart}
             renderItem={({ item }) => (
               <View style={styles.cartItem}>

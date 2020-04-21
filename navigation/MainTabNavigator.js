@@ -31,6 +31,7 @@ const HomeStack = createStackNavigator(
       navigationOptions: {
         headerTransparent: true,
         headerStyle: styles.header,
+        headerTintColor: '#fff',
         title: 'Activity',
         headerTitleStyle: styles.headerText,
       },
@@ -46,6 +47,7 @@ const HomeStack = createStackNavigator(
         headerTitleStyle: {
           color: '#fff',
         },
+        headerTintColor: '#fff',
       },
     },
     Product: {
@@ -57,6 +59,7 @@ const HomeStack = createStackNavigator(
         headerTitleStyle: {
           color: '#fff',
         },
+        headerTintColor: '#fff',
       },
     },
   },
@@ -82,6 +85,7 @@ const CartStack = createStackNavigator(
       navigationOptions: {
         headerTransparent: true,
         headerStyle: styles.header,
+        headerTintColor: '#fff',
         title: 'Shopping Cart',
         headerTitleStyle: styles.headerText,
       },
@@ -91,6 +95,7 @@ const CartStack = createStackNavigator(
       navigationOptions: {
         headerTransparent: true,
         headerStyle: styles.header,
+        headerTintColor: '#fff',
         title: 'Confirm Purchase',
         headerTitleStyle: styles.headerText,
       },
@@ -100,6 +105,7 @@ const CartStack = createStackNavigator(
       navigationOptions: {
         headerTransparent: true,
         headerStyle: styles.header,
+        headerTintColor: '#fff',
         title: 'Order Confirmation',
         headerTitleStyle: styles.headerText,
       },
@@ -131,32 +137,52 @@ const ProfileStack = createStackNavigator(
     Settings: {
       screen: SettingsScreen,
       navigationOptions: {
-        header: null,
-      }
+        headerTransparent: true,
+        headerStyle: styles.header,
+        headerTintColor: '#fff',
+        title: 'App Settings',
+        headerTitleStyle: styles.headerText,
+      },
     },
     User: {
       screen: UserInfoScreen,
       navigationOptions: {
-        header: null,
-      }
+        headerTransparent: true,
+        headerStyle: styles.header,
+        headerTintColor: '#fff',
+        title: 'User Info Screen',
+        headerTitleStyle: styles.headerText,
+      },
     },
     Address: {
       screen: AddressScreen,
       navigationOptions: {
-        header: null,
-      }
+        headerTransparent: true,
+        headerStyle: styles.header,
+        headerTintColor: '#fff',
+        title: 'Address Information',
+        headerTitleStyle: styles.headerText,
+      },
     },
     PaymentMethods: {
       screen: PaymentMethodsScreen,
       navigationOptions: {
-        header: null,
-      }
+        headerTransparent: true,
+        headerStyle: styles.header,
+        headerTintColor: '#fff',
+        title: 'Payment Methods',
+        headerTitleStyle: styles.headerText,
+      },
     },
     Support: {
       screen: SupportScreen,
       navigationOptions: {
-        header: null,
-      }
+        headerTransparent: true,
+        headerStyle: styles.header,
+        headerTintColor: '#fff',
+        title: 'Support',
+        headerTitleStyle: styles.headerText,
+      },
     }
   }
 );

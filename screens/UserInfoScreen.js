@@ -19,7 +19,6 @@ const UserInfoScreen = () => (
           onPress={() => navigation.goBack()}
           style={{ color: '#fff', paddingRight: 30, marginTop: 20, marginRight: 122, }}
         /> */}
-      <Text style={styles.headerText}>Support</Text>
     </View>
     <View style={styles.body}>
       <Text>This screen will display support options to the user</Text>
