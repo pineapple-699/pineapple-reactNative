@@ -11,7 +11,9 @@
     "test-run": "jest --forceExit --detectOpenHandles && codecov",
     "lint": "eslint '**/*.{js,jsx}' --quiet",
     "lint-fix": "eslint '**/*.{js,jsx}' --fix",
-    "publish": "expo publish && expo build:ios && expo build:android"
+    "publish": "expo publish && expo build:ios && expo build:android",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "jest": {
     "preset": "jest-expo",
@@ -47,7 +49,8 @@
     "react-test-renderer": "16.13.0",
     "redux": "^4.0.5",
     "redux-actions": "^2.6.5",
-    "styled-components": "^5.0.1"
+    "styled-components": "^5.0.1",
+    "snyk": "^1.316.1"
   },
   "devDependencies": {
     "@babel/core": "7.0.0",
@@ -65,5 +68,6 @@
     "jest-expo": "36.0.1",
     "prettier": "1.19.1"
   },
-  "private": true
+  "private": true,
+  "snyk": true
 }
